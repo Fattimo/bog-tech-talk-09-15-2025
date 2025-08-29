@@ -1,0 +1,597 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* View Transition Styles */
+@supports (view-transition-name: none) {
+    /* View transition root */
+    ::view-transition {
+        pointer-events: none;
+    }
+
+    /* Slide transitions */
+    ::view-transition-old(slide-content),
+    ::view-transition-new(slide-content) {
+        animation-duration: 600ms;
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Title transitions */
+    ::view-transition-old(main-title),
+    ::view-transition-new(main-title),
+    ::view-transition-old(section-title),
+    ::view-transition-new(section-title) {
+        animation-duration: 800ms;
+        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Card transitions */
+    ::view-transition-old(card-1),
+    ::view-transition-new(card-1) {
+        animation-delay: 0ms;
+    }
+
+    ::view-transition-old(card-2),
+    ::view-transition-new(card-2) {
+        animation-delay: 100ms;
+    }
+
+    ::view-transition-old(card-3),
+    ::view-transition-new(card-3) {
+        animation-delay: 200ms;
+    }
+
+    ::view-transition-old(card-4),
+    ::view-transition-new(card-4) {
+        animation-delay: 300ms;
+    }
+
+    /* Demo element transitions */
+    ::view-transition-old(demo-element),
+    ::view-transition-new(demo-element) {
+        animation-duration: 1000ms;
+        animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+}
+
+/* Presentation Container */
+.presentation-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+    overflow: hidden;
+}
+
+/* Navigation */
+.slide-navigation {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slide-counter {
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 16.67%; /* 1/6 for first slide */
+}
+
+/* Slide Container */
+.slide-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Individual Slides */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide-content {
+    max-width: 1200px;
+    width: 90%;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Typography */
+.slide-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.slide-subtitle {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 400;
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+/* Title Slide Specific */
+.title-slide {
+    text-align: center;
+}
+
+.slide-meta {
+    margin-top: 3rem;
+}
+
+.slide-meta p {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin: 0.5rem 0;
+}
+
+/* Content Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+.feature-card p {
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Browser Support Styles */
+.browser-support {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.browser-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.browser-item:hover {
+    transform: translateY(-5px);
+}
+
+.browser-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.browser-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+}
+
+.version {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+}
+
+.status {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.supported .status {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.partial .status {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Code Example */
+.code-example {
+    background: #1e293b;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.code-example pre {
+    margin: 0;
+    padding: 2rem;
+    overflow-x: auto;
+}
+
+.code-example code {
+    color: #e2e8f0;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Demo Area */
+.demo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.demo-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.demo-card.transformed {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+}
+
+.demo-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: inherit;
+}
+
+.demo-card p {
+    color: inherit;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.demo-button {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+}
+
+.demo-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.demo-card.transformed .demo-button {
+    background: white;
+    color: #667eea;
+}
+
+.demo-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #64748b;
+    border: 2px solid #e2e8f0;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #475569;
+}
+
+/* Final Slide */
+.final-content {
+    margin-top: 3rem;
+}
+
+.final-message {
+    font-size: 1.5rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.resource-link {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.resource-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background: #667eea;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .slide-navigation {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .slide-counter {
+        font-size: 0.8rem;
+        min-width: 50px;
+    }
+
+    .slide-content {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .browser-support {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .feature-card,
+    .browser-item {
+        padding: 1.5rem;
+    }
+
+    .code-example pre {
+        padding: 1.5rem;
+    }
+
+    .code-example code {
+        font-size: 0.8rem;
+    }
+
+    .demo-card {
+        padding: 2rem;
+        max-width: 350px;
+    }
+
+    .links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Keyboard Navigation Focus Styles */
+.nav-btn:focus-visible,
+.demo-button:focus-visible,
+.secondary-btn:focus-visible,
+.resource-link:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fallback animations for browsers without view transitions */
+@media (prefers-reduced-motion: no-preference) {
+    .slide:not(.active) {
+        transform: translateX(100%);
+    }
+
+    .slide.active {
+        animation: slideInFromRight 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .slide {
+        background: white;
+        color: black;
+    }
+
+    .feature-card,
+    .browser-item,
+    .demo-card {
+        border: 2px solid black;
+    }
+}
+
+/* Print styles */
+@media print {
+    .slide-navigation,
+    .progress-bar {
+        display: none;
+    }
+
+    .slide {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        page-break-after: always;
+        background: white;
+        color: black;
+    }
+}

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Browser Baseline Tech Talk - View Transitions Demo</title>
+        <link rel="stylesheet" href="styles.css" />
+        <meta name="view-transition" content="same-origin" />
+    </head>
+    <body>
+        <div class="presentation-container">
+            <!-- Navigation Controls -->
+            <nav class="slide-navigation" aria-label="Slide navigation">
+                <button id="prev-btn" class="nav-btn" aria-label="Previous slide" disabled>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                    </svg>
+                </button>
+                <span id="slide-counter" class="slide-counter">1 / 6</span>
+                <button id="next-btn" class="nav-btn" aria-label="Next slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                    </svg>
+                </button>
+            </nav>
+
+            <!-- Slide Container -->
+            <main class="slide-container" id="slide-container">
+                <!-- Slide 1: Title -->
+                <section class="slide active" data-slide="1" style="view-transition-name: slide-1">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title" style="view-transition-name: main-title">
+                            Browser Baseline Features
+                        </h1>
+                        <h2 class="slide-subtitle" style="view-transition-name: subtitle">
+                            Exploring Complex Modern Web APIs
+                        </h2>
+                        <div class="slide-meta">
+                            <p>Tech Talk • 2025</p>
+                            <p>Featuring View Transitions API</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 2: View Transitions Overview -->
+                <section class="slide" data-slide="2" style="view-transition-name: slide-2">
+                    <div class="slide-content">
+                        <h1 class="slide-title" style="view-transition-name: section-title">
+                            View Transitions API
+                        </h1>
+                        <div class="content-grid">
+                            <div class="feature-card" style="view-transition-name: card-1">
+                                <h3>🎯 Purpose</h3>
+                                <p>
+                                    Smooth, performant transitions between different states of a web
+                                    application
+                                </p>
+                            </div>
+                            <div class="feature-card" style="view-transition-name: card-2">
+                                <h3>🚀 Performance</h3>
+                                <p>GPU-accelerated animations that don't block the main thread</p>
+                            </div>
+                            <div class="feature-card" style="view-transition-name: card-3">
+                                <h3>🎨 Control</h3>
+                                <p>Fine-grained control over transition timing and easing</p>
+                            </div>
+                            <div class="feature-card" style="view-transition-name: card-4">
+                                <h3>📱 Responsive</h3>
+                                <p>Works seamlessly across different screen sizes and devices</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 3: Browser Support -->
+                <section class="slide" data-slide="3" style="view-transition-name: slide-3">
+                    <div class="slide-content">
+                        <h1 class="slide-title" style="view-transition-name: section-title">
+                            Browser Support Status
+                        </h1>
+                        <div class="browser-support">
+                            <div
+                                class="browser-item supported"
+                                style="view-transition-name: chrome-support"
+                            >
+                                <div class="browser-icon">🌐</div>
+                                <h3>Chrome</h3>
+                                <p class="version">111+</p>
+                                <span class="status">✅ Supported</span>
+                            </div>
+                            <div
+                                class="browser-item supported"
+                                style="view-transition-name: edge-support"
+                            >
+                                <div class="browser-icon">🔷</div>
+                                <h3>Edge</h3>
+                                <p class="version">111+</p>
+                                <span class="status">✅ Supported</span>
+                            </div>
+                            <div
+                                class="browser-item partial"
+                                style="view-transition-name: firefox-support"
+                            >
+                                <div class="browser-icon">🦊</div>
+                                <h3>Firefox</h3>
+                                <p class="version">In Development</p>
+                                <span class="status">🚧 Coming Soon</span>
+                            </div>
+                            <div
+                                class="browser-item partial"
+                                style="view-transition-name: safari-support"
+                            >
+                                <div class="browser-icon">🧭</div>
+                                <h3>Safari</h3>
+                                <p class="version">In Development</p>
+                                <span class="status">🚧 Coming Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 4: Code Example -->
+                <section class="slide" data-slide="4" style="view-transition-name: slide-4">
+                    <div class="slide-content">
+                        <h1 class="slide-title" style="view-transition-name: section-title">
+                            Basic Implementation
+                        </h1>
+                        <div class="code-example" style="view-transition-name: code-block">
+                            <pre><code class="javascript">// Basic View Transition
+function navigateToSlide(slideNumber) {
+  if (!document.startViewTransition) {
+    // Fallback for unsupported browsers
+    showSlide(slideNumber);
+    return;
+  }
+
+  // Start the view transition
+  document.startViewTransition(() => {
+    showSlide(slideNumber);
+  });
+}
+
+// CSS for smooth transitions
+.slide {
+  view-transition-name: slide-content;
+}
+
+::view-transition-old(slide-content),
+::view-transition-new(slide-content) {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 5: Live Demo -->
+                <section class="slide" data-slide="5" style="view-transition-name: slide-5">
+                    <div class="slide-content">
+                        <h1 class="slide-title" style="view-transition-name: section-title">
+                            Live Demo
+                        </h1>
+                        <div class="demo-area">
+                            <div
+                                class="demo-card"
+                                id="demo-card"
+                                style="view-transition-name: demo-element"
+                            >
+                                <h3>Interactive Element</h3>
+                                <p>Click the button below to see view transitions in action!</p>
+                                <button id="demo-btn" class="demo-button">Transform Me!</button>
+                            </div>
+                            <div class="demo-controls">
+                                <button id="reset-demo" class="secondary-btn">Reset Demo</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 6: Thank You -->
+                <section class="slide" data-slide="6" style="view-transition-name: slide-6">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title" style="view-transition-name: final-title">
+                            Thank You!
+                        </h1>
+                        <div class="final-content">
+                            <p class="final-message">Questions & Discussion</p>
+                            <div class="links">
+                                <a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API"
+                                    target="_blank"
+                                    class="resource-link"
+                                >
+                                    📚 MDN Documentation
+                                </a>
+                                <a href="https://github.com" target="_blank" class="resource-link">
+                                    🐙 Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Progress Indicator -->
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

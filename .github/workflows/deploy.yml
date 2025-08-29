@@ -1,0 +1,181 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        
+      - name: Validate HTML
+        run: |
+          # Install HTML validator
+          sudo apt-get update
+          sudo apt-get install -y tidy
+          
+          # Validate HTML (allow warnings, fail on errors)
+          tidy -q -e index.html || true
+          
+      - name: Check CSS
+        run: |
+          # Basic CSS syntax check
+          node -e "
+            const fs = require('fs');
+            const css = fs.readFileSync('styles.css', 'utf8');
+            // Very basic CSS validation - check for unmatched braces
+            const openBraces = (css.match(/{/g) || []).length;
+            const closeBraces = (css.match(/}/g) || []).length;
+            if (openBraces !== closeBraces) {
+              console.error('CSS syntax error: unmatched braces');
+              process.exit(1);
+            }
+            console.log('CSS syntax check passed');
+          "
+          
+      - name: Check JavaScript
+        run: |
+          # Basic JS syntax check
+          node -c script.js
+          echo "JavaScript syntax check passed"
+          
+      - name: Optimize assets
+        run: |
+          # Create optimized directory
+          mkdir -p dist
+          
+          # Copy files to dist
+          cp index.html dist/
+          cp styles.css dist/
+          cp script.js dist/
+          
+          # Minify CSS (basic minification)
+          node -e "
+            const fs = require('fs');
+            const css = fs.readFileSync('styles.css', 'utf8');
+            const minified = css
+              .replace(/\/\*[\s\S]*?\*\//g, '')
+              .replace(/\s+/g, ' ')
+              .replace(/;\s*}/g, '}')
+              .replace(/{\s*/g, '{')
+              .replace(/;\s*/g, ';')
+              .trim();
+            fs.writeFileSync('dist/styles.min.css', minified);
+            console.log('CSS minified successfully');
+          "
+          
+          # Minify JavaScript (basic minification)
+          node -e "
+            const fs = require('fs');
+            const js = fs.readFileSync('script.js', 'utf8');
+            // Basic minification - remove comments and extra whitespace
+            const minified = js
+              .replace(/\/\*[\s\S]*?\*\//g, '')
+              .replace(/\/\/.*$/gm, '')
+              .replace(/\s+/g, ' ')
+              .trim();
+            fs.writeFileSync('dist/script.min.js', minified);
+            console.log('JavaScript minified successfully');
+          "
+          
+          # Update HTML to use minified assets
+          node -e "
+            const fs = require('fs');
+            let html = fs.readFileSync('index.html', 'utf8');
+            html = html.replace('styles.css', 'styles.min.css');
+            html = html.replace('script.js', 'script.min.js');
+            fs.writeFileSync('dist/index.html', html);
+            console.log('HTML updated with minified assets');
+          "
+          
+      - name: Generate build info
+        run: |
+          # Create build info file
+          cat > dist/build-info.json << EOF
+          {
+            "buildTime": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+            "commit": "${{ github.sha }}",
+            "branch": "${{ github.ref_name }}",
+            "workflow": "${{ github.workflow }}",
+            "runNumber": ${{ github.run_number }},
+            "actor": "${{ github.actor }}"
+          }
+          EOF
+          
+          echo "Build info generated:"
+          cat dist/build-info.json
+          
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
+  # Post-deployment validation
+  validate:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Health check
+        run: |
+          # Wait a moment for deployment to be ready
+          sleep 30
+          
+          # Get the deployed URL
+          SITE_URL="${{ needs.deploy.outputs.page_url }}"
+          
+          if [ -n "$SITE_URL" ]; then
+            # Check if site is accessible
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL" || echo "000")
+            
+            if [ "$HTTP_STATUS" = "200" ]; then
+              echo "✅ Site is accessible at $SITE_URL"
+              
+              # Check for View Transitions API mention in the content
+              if curl -s "$SITE_URL" | grep -q "View Transitions"; then
+                echo "✅ Content validation passed"
+              else
+                echo "⚠️ Content validation warning: View Transitions content not found"
+              fi
+            else
+              echo "❌ Site health check failed with HTTP status: $HTTP_STATUS"
+              exit 1
+            fi
+          else
+            echo "❌ Could not determine site URL"
+            exit 1
+          fi

@@ -1,0 +1,20 @@
+{
+  "name": "browser-baseline-tech-talk",
+  "version": "1.0.0",
+  "description": "View Transitions API demo presentation",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "start": "python3 -m http.server 8000",
+    "lint": "eslint *.js",
+    "lint:fix": "eslint *.js --fix",
+    "format": "prettier --write *.js *.html *.css",
+    "format:check": "prettier --check *.js *.html *.css"
+  },
+  "author": "fattimo",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.2.5"
+  }
+}
