@@ -5,69 +5,76 @@
     box-sizing: border-box;
 }
 
+/* Pylon-inspired Color Tokens */
+:root {
+    /* Primary Brand Colors from Pylon */
+    --pylon-primary-blue: #0066ff;
+    --pylon-primary-purple: #6366f1;
+    --pylon-primary-teal: #06b6d4;
+
+    /* Neutral Colors */
+    --pylon-gray-50: #f8fafc;
+    --pylon-gray-100: #f1f5f9;
+    --pylon-gray-200: #e2e8f0;
+    --pylon-gray-300: #cbd5e1;
+    --pylon-gray-400: #94a3b8;
+    --pylon-gray-500: #64748b;
+    --pylon-gray-600: #475569;
+    --pylon-gray-700: #334155;
+    --pylon-gray-800: #1e293b;
+    --pylon-gray-900: #0f172a;
+
+    /* Semantic Colors */
+    --pylon-success: #10b981;
+    --pylon-warning: #f59e0b;
+    --pylon-error: #ef4444;
+
+    /* Gradients */
+    --pylon-gradient-primary: linear-gradient(
+        135deg,
+        var(--pylon-primary-blue) 0%,
+        var(--pylon-primary-purple) 100%
+    );
+    --pylon-gradient-secondary: linear-gradient(
+        135deg,
+        var(--pylon-primary-teal) 0%,
+        var(--pylon-primary-blue) 100%
+    );
+    --pylon-gradient-neutral: linear-gradient(
+        135deg,
+        var(--pylon-gray-50) 0%,
+        var(--pylon-gray-200) 100%
+    );
+
+    /* Isometric Shadows */
+    --pylon-shadow-isometric: 8px 8px 0px var(--pylon-primary-blue);
+    --pylon-shadow-isometric-hover: 12px 12px 0px var(--pylon-primary-blue);
+    --pylon-shadow-isometric-small: 4px 4px 0px var(--pylon-primary-purple);
+    --pylon-shadow-card: 0 20px 40px rgba(6, 102, 255, 0.15);
+
+    /* Border Radius */
+    --pylon-radius-small: 8px;
+    --pylon-radius-medium: 12px;
+    --pylon-radius-large: 20px;
+    --pylon-radius-xl: 32px;
+}
+
 html {
     font-size: 16px;
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #333;
+    font-family:
+        'Inter',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        sans-serif;
+    background: var(--pylon-gradient-primary);
+    color: var(--pylon-gray-900);
     overflow: hidden;
     height: 100vh;
-}
-
-/* View Transition Styles */
-@supports (view-transition-name: none) {
-    /* View transition root */
-    ::view-transition {
-        pointer-events: none;
-    }
-
-    /* Slide transitions */
-    ::view-transition-old(slide-content),
-    ::view-transition-new(slide-content) {
-        animation-duration: 600ms;
-        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Title transitions */
-    ::view-transition-old(main-title),
-    ::view-transition-new(main-title),
-    ::view-transition-old(section-title),
-    ::view-transition-new(section-title) {
-        animation-duration: 800ms;
-        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    /* Card transitions */
-    ::view-transition-old(card-1),
-    ::view-transition-new(card-1) {
-        animation-delay: 0ms;
-    }
-
-    ::view-transition-old(card-2),
-    ::view-transition-new(card-2) {
-        animation-delay: 100ms;
-    }
-
-    ::view-transition-old(card-3),
-    ::view-transition-new(card-3) {
-        animation-delay: 200ms;
-    }
-
-    ::view-transition-old(card-4),
-    ::view-transition-new(card-4) {
-        animation-delay: 300ms;
-    }
-
-    /* Demo element transitions */
-    ::view-transition-old(demo-element),
-    ::view-transition-new(demo-element) {
-        animation-duration: 1000ms;
-        animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
 }
 
 /* Presentation Container */
@@ -76,7 +83,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #f8fafc;
+    background: var(--pylon-gray-50);
     overflow: hidden;
 }
 
@@ -88,18 +95,24 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: white;
     backdrop-filter: blur(10px);
     padding: 0.75rem 1.5rem;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--pylon-radius-xl);
+    border: 2px solid var(--pylon-primary-blue);
     z-index: 1000;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--pylon-shadow-isometric);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-navigation:hover {
+    box-shadow: var(--pylon-shadow-isometric-hover);
+    transform: translate(-2px, -2px);
 }
 
 .nav-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
+    background: var(--pylon-gradient-primary);
+    border: 2px solid var(--pylon-primary-blue);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -109,22 +122,26 @@ body {
     cursor: pointer;
     color: white;
     transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
+    box-shadow: var(--pylon-shadow-isometric-small);
 }
 
 .nav-btn:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+    background: var(--pylon-gradient-secondary);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--pylon-primary-purple);
 }
 
 .nav-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    background: var(--pylon-gray-300);
+    border-color: var(--pylon-gray-400);
+    box-shadow: 2px 2px 0px var(--pylon-gray-400);
 }
 
 .slide-counter {
-    color: white;
-    font-weight: 600;
+    color: var(--pylon-primary-blue);
+    font-weight: 700;
     font-size: 0.9rem;
     min-width: 60px;
     text-align: center;
@@ -136,16 +153,18 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.2);
+    height: 6px;
+    background: var(--pylon-gray-200);
     z-index: 1000;
+    border-top: 2px solid var(--pylon-primary-blue);
 }
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    background: var(--pylon-gradient-primary);
     transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     width: 16.67%; /* 1/6 for first slide */
+    box-shadow: 0 -2px 8px rgba(6, 102, 255, 0.3);
 }
 
 /* Slide Container */
@@ -170,7 +189,7 @@ body {
     transition:
         opacity 0.3s ease,
         visibility 0.3s ease;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: var(--pylon-gradient-neutral);
 }
 
 .slide.active {
@@ -188,19 +207,20 @@ body {
 /* Typography */
 .slide-title {
     font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--pylon-gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .slide-subtitle {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 400;
-    color: #64748b;
+    font-weight: 500;
+    color: var(--pylon-gray-600);
     margin-bottom: 2rem;
 }
 
@@ -215,7 +235,7 @@ body {
 
 .slide-meta p {
     font-size: 1.2rem;
-    color: #64748b;
+    color: var(--pylon-gray-500);
     margin: 0.5rem 0;
 }
 
@@ -230,27 +250,45 @@ body {
 .feature-card {
     background: white;
     padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: var(--pylon-radius-large);
+    box-shadow: var(--pylon-shadow-card);
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid var(--pylon-primary-blue);
+    position: relative;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: -8px;
+    bottom: -8px;
+    background: var(--pylon-primary-blue);
+    border-radius: var(--pylon-radius-large);
+    z-index: -1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transform: translate(-4px, -4px);
+}
+
+.feature-card:hover::before {
+    transform: translate(4px, 4px);
 }
 
 .feature-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #1e293b;
+    color: var(--pylon-gray-900);
+    font-weight: 700;
 }
 
 .feature-card p {
-    color: #64748b;
+    color: var(--pylon-gray-600);
     line-height: 1.6;
     font-size: 1.1rem;
 }
@@ -266,14 +304,41 @@ body {
 .browser-item {
     background: white;
     padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: var(--pylon-radius-large);
+    box-shadow: var(--pylon-shadow-card);
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid var(--pylon-gray-300);
+    position: relative;
+}
+
+.browser-item::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: -6px;
+    bottom: -6px;
+    background: var(--pylon-gray-300);
+    border-radius: var(--pylon-radius-large);
+    z-index: -1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.browser-item.supported::before {
+    background: var(--pylon-success);
+}
+
+.browser-item.partial::before {
+    background: var(--pylon-warning);
 }
 
 .browser-item:hover {
-    transform: translateY(-5px);
+    transform: translate(-3px, -3px);
+}
+
+.browser-item:hover::before {
+    transform: translate(3px, 3px);
 }
 
 .browser-icon {
@@ -313,11 +378,25 @@ body {
 
 /* Code Example */
 .code-example {
-    background: #1e293b;
-    border-radius: 15px;
+    background: var(--pylon-gray-900);
+    border-radius: var(--pylon-radius-large);
     overflow: hidden;
     margin-top: 2rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--pylon-shadow-card);
+    border: 2px solid var(--pylon-primary-blue);
+    position: relative;
+}
+
+.code-example::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: -6px;
+    bottom: -6px;
+    background: var(--pylon-primary-blue);
+    border-radius: var(--pylon-radius-large);
+    z-index: -1;
 }
 
 .code-example pre {
@@ -345,18 +424,37 @@ body {
 .demo-card {
     background: white;
     padding: 3rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: var(--pylon-radius-large);
+    box-shadow: var(--pylon-shadow-card);
     text-align: center;
     max-width: 500px;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 2px solid var(--pylon-primary-blue);
+    position: relative;
+}
+
+.demo-card::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: -8px;
+    bottom: -8px;
+    background: var(--pylon-primary-blue);
+    border-radius: var(--pylon-radius-large);
+    z-index: -1;
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .demo-card.transformed {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--pylon-gradient-primary);
     color: white;
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+    transform: translate(-8px, -8px) scale(1.05) rotate(3deg);
+}
+
+.demo-card.transformed::before {
+    background: var(--pylon-primary-purple);
+    transform: translate(8px, 8px) rotate(-3deg);
 }
 
 .demo-card h3 {
@@ -373,26 +471,32 @@ body {
 }
 
 .demo-button {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--pylon-gradient-primary);
     color: white;
-    border: none;
+    border: 2px solid var(--pylon-primary-blue);
     padding: 1rem 2rem;
-    border-radius: 50px;
+    border-radius: var(--pylon-radius-xl);
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--pylon-shadow-isometric-small);
+    position: relative;
 }
 
 .demo-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--pylon-primary-purple);
 }
 
 .demo-card.transformed .demo-button {
     background: white;
-    color: #667eea;
+    color: var(--pylon-primary-blue);
+    border-color: white;
+}
+
+.demo-card.transformed .demo-button:hover {
+    box-shadow: 6px 6px 0px white;
 }
 
 .demo-controls {
@@ -401,20 +505,25 @@ body {
 }
 
 .secondary-btn {
-    background: rgba(255, 255, 255, 0.1);
-    color: #64748b;
-    border: 2px solid #e2e8f0;
+    background: white;
+    color: var(--pylon-gray-600);
+    border: 2px solid var(--pylon-gray-300);
     padding: 0.75rem 1.5rem;
-    border-radius: 50px;
+    border-radius: var(--pylon-radius-xl);
     font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 2px 2px 0px var(--pylon-gray-300);
+    position: relative;
 }
 
 .secondary-btn:hover {
-    background: #f8fafc;
-    border-color: #cbd5e1;
-    color: #475569;
+    background: var(--pylon-gray-50);
+    border-color: var(--pylon-gray-400);
+    color: var(--pylon-gray-700);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--pylon-gray-400);
 }
 
 /* Final Slide */
@@ -438,77 +547,23 @@ body {
 .resource-link {
     display: inline-block;
     background: white;
-    color: #667eea;
+    color: var(--pylon-primary-blue);
     text-decoration: none;
     padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: var(--pylon-radius-xl);
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--pylon-shadow-isometric-small);
+    border: 2px solid var(--pylon-primary-blue);
+    position: relative;
 }
 
 .resource-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    background: #667eea;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--pylon-primary-purple);
+    background: var(--pylon-gradient-primary);
     color: white;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .slide-navigation {
-        top: 1rem;
-        right: 1rem;
-        padding: 0.5rem 1rem;
-    }
-
-    .nav-btn {
-        width: 35px;
-        height: 35px;
-    }
-
-    .slide-counter {
-        font-size: 0.8rem;
-        min-width: 50px;
-    }
-
-    .slide-content {
-        width: 95%;
-        padding: 1rem;
-    }
-
-    .content-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .browser-support {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .feature-card,
-    .browser-item {
-        padding: 1.5rem;
-    }
-
-    .code-example pre {
-        padding: 1.5rem;
-    }
-
-    .code-example code {
-        font-size: 0.8rem;
-    }
-
-    .demo-card {
-        padding: 2rem;
-        max-width: 350px;
-    }
-
-    .links {
-        flex-direction: column;
-        align-items: center;
-    }
+    border-color: var(--pylon-primary-purple);
 }
 
 /* Keyboard Navigation Focus Styles */
@@ -518,80 +573,4 @@ body {
 .resource-link:focus-visible {
     outline: 2px solid #667eea;
     outline-offset: 2px;
-}
-
-/* Animations */
-@keyframes slideInFromRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Fallback animations for browsers without view transitions */
-@media (prefers-reduced-motion: no-preference) {
-    .slide:not(.active) {
-        transform: translateX(100%);
-    }
-
-    .slide.active {
-        animation: slideInFromRight 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-    .slide {
-        background: white;
-        color: black;
-    }
-
-    .feature-card,
-    .browser-item,
-    .demo-card {
-        border: 2px solid black;
-    }
-}
-
-/* Print styles */
-@media print {
-    .slide-navigation,
-    .progress-bar {
-        display: none;
-    }
-
-    .slide {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        page-break-after: always;
-        background: white;
-        color: black;
-    }
 }

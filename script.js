@@ -17,12 +17,11 @@ class SlideController {
         this.updateUI();
         this.setupKeyboardNavigation();
         this.setupTouchNavigation();
-        this.checkViewTransitionSupport();
 
         // Initialize demo functionality
         this.initializeDemo();
 
-        console.log('🎯 Slide deck initialized with View Transitions API support');
+        console.log('🎯 Slide deck initialized');
     }
 
     bindEventListeners() {
@@ -96,55 +95,17 @@ class SlideController {
         });
     }
 
-    checkViewTransitionSupport() {
-        const supported = 'startViewTransition' in document;
-
-        if (supported) {
-            console.log('✅ View Transitions API is supported');
-            document.body.classList.add('view-transitions-supported');
-        } else {
-            console.log('⚠️ View Transitions API not supported, using fallback animations');
-            document.body.classList.add('view-transitions-fallback');
-        }
-
-        return supported;
-    }
-
-    async navigateToSlide(slideNumber) {
+    navigateToSlide(slideNumber) {
         if (slideNumber === this.currentSlide || this.isTransitioning) return;
         if (slideNumber < 1 || slideNumber > this.totalSlides) return;
 
         this.isTransitioning = true;
 
-        // Check if View Transitions API is supported
-        if (!document.startViewTransition) {
-            // Fallback for unsupported browsers
-            this.showSlide(slideNumber);
-            this.currentSlide = slideNumber;
-            this.updateUI();
-            this.isTransitioning = false;
-            return;
-        }
-
-        try {
-            // Start the view transition
-            const transition = document.startViewTransition(() => {
-                this.showSlide(slideNumber);
-                this.currentSlide = slideNumber;
-                this.updateUI();
-            });
-
-            // Wait for the transition to complete
-            await transition.finished;
-        } catch (error) {
-            console.error('View transition failed:', error);
-            // Fallback in case of error
-            this.showSlide(slideNumber);
-            this.currentSlide = slideNumber;
-            this.updateUI();
-        } finally {
-            this.isTransitioning = false;
-        }
+        // Simple slide navigation without view transitions
+        this.showSlide(slideNumber);
+        this.currentSlide = slideNumber;
+        this.updateUI();
+        this.isTransitioning = false;
     }
 
     showSlide(slideNumber) {
@@ -201,19 +162,19 @@ class SlideController {
         }
     }
 
-    async goToSlide(slideNumber) {
-        await this.navigateToSlide(slideNumber);
+    goToSlide(slideNumber) {
+        this.navigateToSlide(slideNumber);
     }
 
-    async nextSlide() {
+    nextSlide() {
         if (this.currentSlide < this.totalSlides) {
-            await this.navigateToSlide(this.currentSlide + 1);
+            this.navigateToSlide(this.currentSlide + 1);
         }
     }
 
-    async previousSlide() {
+    previousSlide() {
         if (this.currentSlide > 1) {
-            await this.navigateToSlide(this.currentSlide - 1);
+            this.navigateToSlide(this.currentSlide - 1);
         }
     }
 
@@ -222,58 +183,24 @@ class SlideController {
         this.demoTransformed = false;
     }
 
-    async toggleDemo() {
+    toggleDemo() {
         const demoCard = document.getElementById('demo-card');
         const demoBtn = document.getElementById('demo-btn');
 
-        if (!document.startViewTransition) {
-            // Fallback without view transitions
-            this.demoTransformed = !this.demoTransformed;
-            demoCard.classList.toggle('transformed', this.demoTransformed);
-            demoBtn.textContent = this.demoTransformed ? 'Transform Back!' : 'Transform Me!';
-            return;
-        }
-
-        try {
-            const transition = document.startViewTransition(() => {
-                this.demoTransformed = !this.demoTransformed;
-                demoCard.classList.toggle('transformed', this.demoTransformed);
-                demoBtn.textContent = this.demoTransformed ? 'Transform Back!' : 'Transform Me!';
-            });
-
-            await transition.finished;
-            console.log('🎨 Demo transformation completed with View Transition');
-        } catch (error) {
-            console.error('Demo transition failed:', error);
-        }
+        this.demoTransformed = !this.demoTransformed;
+        demoCard.classList.toggle('transformed', this.demoTransformed);
+        demoBtn.textContent = this.demoTransformed ? 'Transform Back!' : 'Transform Me!';
     }
 
-    async resetDemo() {
+    resetDemo() {
         const demoCard = document.getElementById('demo-card');
         const demoBtn = document.getElementById('demo-btn');
 
         if (!this.demoTransformed) return;
 
-        if (!document.startViewTransition) {
-            // Fallback without view transitions
-            this.demoTransformed = false;
-            demoCard.classList.remove('transformed');
-            demoBtn.textContent = 'Transform Me!';
-            return;
-        }
-
-        try {
-            const transition = document.startViewTransition(() => {
-                this.demoTransformed = false;
-                demoCard.classList.remove('transformed');
-                demoBtn.textContent = 'Transform Me!';
-            });
-
-            await transition.finished;
-            console.log('🔄 Demo reset completed with View Transition');
-        } catch (error) {
-            console.error('Demo reset transition failed:', error);
-        }
+        this.demoTransformed = false;
+        demoCard.classList.remove('transformed');
+        demoBtn.textContent = 'Transform Me!';
     }
 
     // Public API for external control
@@ -284,99 +211,12 @@ class SlideController {
     getTotalSlides() {
         return this.totalSlides;
     }
-
-    isViewTransitionSupported() {
-        return 'startViewTransition' in document;
-    }
-}
-
-// Utility functions for performance monitoring
-class PerformanceMonitor {
-    static logTransitionPerformance() {
-        if (!performance.getEntriesByType) return;
-
-        const transitions = performance
-            .getEntriesByType('measure')
-            .filter(entry => entry.name.includes('view-transition'));
-
-        transitions.forEach(transition => {
-            console.log(`📊 Transition "${transition.name}": ${transition.duration.toFixed(2)}ms`);
-        });
-    }
-
-    static startTransitionMeasure(name) {
-        if (performance.mark) {
-            performance.mark(`${name}-start`);
-        }
-    }
-
-    static endTransitionMeasure(name) {
-        if (performance.mark && performance.measure) {
-            performance.mark(`${name}-end`);
-            performance.measure(name, `${name}-start`, `${name}-end`);
-        }
-    }
-}
-
-// Feature detection and progressive enhancement
-class FeatureDetection {
-    static checkBaseline2023Features() {
-        const features = {
-            viewTransitions: 'startViewTransition' in document,
-            containerQueries: 'container' in document.documentElement.style,
-            colorMix: CSS.supports('color', 'color-mix(in srgb, red, blue)'),
-            subgrid: CSS.supports('grid-template-rows', 'subgrid'),
-            nestingCSS: CSS.supports('selector(&)'),
-            cascadeLayers: CSS.supports('@supports selector(@layer foo)')
-        };
-
-        console.log('🔍 Baseline 2023 Feature Detection:', features);
-        return features;
-    }
-
-    static enhanceForModernBrowsers() {
-        const features = this.checkBaseline2023Features();
-
-        // Add classes to body for CSS feature queries
-        Object.entries(features).forEach(([feature, supported]) => {
-            document.body.classList.add(supported ? `${feature}-supported` : `${feature}-fallback`);
-        });
-
-        return features;
-    }
-}
-
-// Error handling and fallbacks
-class ErrorHandler {
-    static handleViewTransitionError(error, fallbackFn) {
-        console.error('View Transition Error:', error);
-
-        if (typeof fallbackFn === 'function') {
-            fallbackFn();
-        }
-
-        // Report to analytics if available
-        if (window.gtag) {
-            window.gtag('event', 'view_transition_error', {
-                error_message: error.message,
-                user_agent: navigator.userAgent
-            });
-        }
-    }
 }
 
 // Initialize the application when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Feature detection
-    const features = FeatureDetection.enhanceForModernBrowsers();
-
     // Initialize slide controller
     window.slideController = new SlideController();
-
-    // Set up global error handling
-    window.addEventListener('error', event => {
-        ErrorHandler.handleViewTransitionError(event.error);
-    });
 
     // Log initialization
     console.log('🚀 Presentation initialized successfully');
@@ -407,8 +247,5 @@ if ('serviceWorker' in navigator) {
 
 // Export for potential external use
 window.PresentationAPI = {
-    SlideController,
-    PerformanceMonitor,
-    FeatureDetection,
-    ErrorHandler
+    SlideController
 };
