@@ -123,6 +123,8 @@ body {
     background: var(--pylon-gray-200);
     z-index: 1000;
     border-top: 2px solid var(--pylon-primary-blue);
+
+    view-transition-name: progress-bar;
 }
 
 .progress-fill {
@@ -141,12 +143,12 @@ body {
 }
 
 /* Custom View Transition Styles */
-::view-transition-image-pair(root) {
+::view-transition-image-pair(*) {
     isolation: auto;
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
+::view-transition-old(*),
+::view-transition-new(*) {
     animation: none;
     mix-blend-mode: normal;
     display: block;
