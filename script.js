@@ -9,6 +9,10 @@ class SlideController {
         this.totalSlides = 12;
         this.isTransitioning = false;
 
+        // Track current mouse position for view transitions
+        this.mouseX = window.innerWidth / 2;
+        this.mouseY = window.innerHeight / 2;
+
         this.init();
     }
 
@@ -17,6 +21,7 @@ class SlideController {
         this.updateUI();
         this.setupKeyboardNavigation();
         this.setupTouchNavigation();
+        this.setupMouseTracking();
 
         console.log('🎯 Slide deck initialized');
     }
@@ -82,6 +87,18 @@ class SlideController {
         });
     }
 
+    setupMouseTracking() {
+        // Track mouse position for view transitions
+        document.addEventListener('mousemove', e => {
+            this.mouseX = e.clientX;
+            this.mouseY = e.clientY;
+
+            // Set global CSS variables for mouse position
+            document.documentElement.style.setProperty('--x', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--y', `${e.clientY}px`);
+        });
+    }
+
     navigateToSlide(slideNumber) {
         if (slideNumber === this.currentSlide || this.isTransitioning) return;
         if (slideNumber < 1 || slideNumber > this.totalSlides) return;
@@ -102,13 +119,146 @@ class SlideController {
         // Show target slide
         const targetSlide = document.querySelector(`[data-slide="${slideNumber}"]`);
         if (targetSlide) {
-            document.startViewTransition(() => {
+            // Determine animation direction based on slide navigation
+            const animationType = this.getSlideAnimationType(slideNumber);
+
+            this.customViewTransition(() => {
                 activeSlide.forEach(slide => {
                     slide.classList.remove('active');
                 });
                 targetSlide.classList.add('active');
-            });
+            }, animationType);
         }
+    }
+
+    getSlideAnimationType(targetSlide) {
+        // Going forward (higher slide number) - slide left
+        if (targetSlide > this.currentSlide) {
+            return 'slideLeft';
+        }
+        // Going backward (lower slide number) - slide right
+        else if (targetSlide < this.currentSlide) {
+            return 'slideRight';
+        }
+        // Same slide (shouldn't happen, but fallback)
+        else {
+            return 'default';
+        }
+    }
+
+    customViewTransition(updateCallback, animationType = 'slideLeft') {
+        // Fallback for browsers that don't support this API
+        if (!document.startViewTransition) {
+            updateCallback();
+            return;
+        }
+
+        // Create the view transition
+        const transition = document.startViewTransition(() => {
+            updateCallback();
+        });
+
+        // Wait for the pseudo-elements to be created
+        transition.ready.then(() => {
+            this.applyTransitionAnimation(transition, animationType);
+        });
+    }
+
+    applyTransitionAnimation(transition, animationType) {
+        switch (animationType) {
+            case 'circularReveal':
+                this.circularRevealAnimation();
+                break;
+            case 'slideLeft':
+                this.slideLeftAnimation();
+                break;
+            case 'slideRight':
+                this.slideRightAnimation();
+                break;
+            case 'default':
+                // Let the browser handle default animation
+                break;
+            default:
+                console.warn(`Unknown animation type: ${animationType}. Using default.`);
+                break;
+        }
+    }
+
+    circularRevealAnimation() {
+        // Get current mouse position, or fallback to center of screen
+        const x = this.mouseX ?? window.innerWidth / 2;
+        const y = this.mouseY ?? window.innerHeight / 2;
+
+        // Calculate the distance to the furthest corner
+        const endRadius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+        );
+
+        // Animate the root's new view with circular reveal
+        document.documentElement.animate(
+            {
+                clipPath: [`circle(0 at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`]
+            },
+            {
+                duration: 500,
+                easing: 'ease-in',
+                // Specify which pseudo-element to animate
+                pseudoElement: '::view-transition-new(root)'
+            }
+        );
+    }
+
+    slideLeftAnimation() {
+        // Animate the old view sliding out to the left
+        document.documentElement.animate(
+            {
+                transform: ['translateX(0)', 'translateX(-100%)']
+            },
+            {
+                duration: 400,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-old(root)'
+            }
+        );
+
+        // Animate the new view sliding in from the right
+        document.documentElement.animate(
+            {
+                transform: ['translateX(100%)', 'translateX(0)']
+            },
+            {
+                duration: 400,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-new(root)'
+            }
+        );
+    }
+
+    slideRightAnimation() {
+        // Animate the old view sliding out to the right
+        document.documentElement.animate(
+            {
+                transform: ['translateX(0)', 'translateX(100%)']
+            },
+            {
+                duration: 400,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-old(root)'
+            }
+        );
+
+        // Animate the new view sliding in from the left
+        document.documentElement.animate(
+            {
+                transform: ['translateX(-100%)', 'translateX(0)']
+            },
+            {
+                duration: 400,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-new(root)'
+            }
+        );
     }
 
     updateUI() {
