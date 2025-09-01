@@ -97,14 +97,21 @@ class SlideController {
 
     showSlide(slideNumber) {
         // Hide all slides
-        document.querySelectorAll('.slide').forEach(slide => {
-            slide.classList.remove('active');
-        });
+        const activeSlide = document.querySelectorAll('.slide.active');
 
         // Show target slide
         const targetSlide = document.querySelector(`[data-slide="${slideNumber}"]`);
+        console.log(targetSlide);
         if (targetSlide) {
-            targetSlide.classList.add('active');
+            const transition = document.startViewTransition(() => {
+                targetSlide.classList.add('active');
+            });
+
+            transition.finished.then(() => {
+                activeSlide.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+            });
         }
     }
 

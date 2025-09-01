@@ -140,6 +140,13 @@ body {
     overflow: hidden;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+    --duration: 0.3s;
+    transition-duration: var(--duration);
+    animation-duration: var(--duration);
+}
+
 /* Individual Slides */
 .slide {
     position: absolute;
@@ -147,15 +154,17 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
+
+    display: none;
     align-items: center;
     justify-content: center;
-    visibility: hidden;
+    display: none;
+
     background: var(--pylon-gradient-neutral);
 }
 
 .slide.active {
-    visibility: visible;
+    display: flex;
 }
 
 .slide-content {
