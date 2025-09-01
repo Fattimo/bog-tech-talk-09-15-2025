@@ -101,16 +101,12 @@ class SlideController {
 
         // Show target slide
         const targetSlide = document.querySelector(`[data-slide="${slideNumber}"]`);
-        console.log(targetSlide);
         if (targetSlide) {
-            const transition = document.startViewTransition(() => {
-                targetSlide.classList.add('active');
-            });
-
-            transition.finished.then(() => {
+            document.startViewTransition(() => {
                 activeSlide.forEach(slide => {
                     slide.classList.remove('active');
                 });
+                targetSlide.classList.add('active');
             });
         }
     }
