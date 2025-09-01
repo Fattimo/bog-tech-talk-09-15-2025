@@ -105,40 +105,6 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.slide-navigation:hover {
-    box-shadow: var(--pylon-shadow-isometric-hover);
-    transform: translate(-2px, -2px);
-}
-
-.nav-btn {
-    background: var(--pylon-gradient-primary);
-    border: 2px solid var(--pylon-primary-blue);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: white;
-    transition: all 0.3s ease;
-    box-shadow: var(--pylon-shadow-isometric-small);
-}
-
-.nav-btn:hover:not(:disabled) {
-    background: var(--pylon-gradient-secondary);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--pylon-primary-purple);
-}
-
-.nav-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    background: var(--pylon-gray-300);
-    border-color: var(--pylon-gray-400);
-    box-shadow: 2px 2px 0px var(--pylon-gray-400);
-}
-
 .slide-counter {
     color: var(--pylon-primary-blue);
     font-weight: 700;
@@ -184,16 +150,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
     visibility: hidden;
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
     background: var(--pylon-gradient-neutral);
 }
 
 .slide.active {
-    opacity: 1;
     visibility: visible;
 }
 
@@ -252,9 +213,6 @@ body {
     padding: 2rem;
     border-radius: var(--pylon-radius-large);
     box-shadow: var(--pylon-shadow-card);
-    transition:
-        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 2px solid var(--pylon-primary-blue);
     position: relative;
 }
@@ -269,15 +227,6 @@ body {
     background: var(--pylon-primary-blue);
     border-radius: var(--pylon-radius-large);
     z-index: -1;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.feature-card:hover {
-    transform: translate(-4px, -4px);
-}
-
-.feature-card:hover::before {
-    transform: translate(4px, 4px);
 }
 
 .feature-card h3 {
@@ -307,7 +256,6 @@ body {
     border-radius: var(--pylon-radius-large);
     box-shadow: var(--pylon-shadow-card);
     text-align: center;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 2px solid var(--pylon-gray-300);
     position: relative;
 }
@@ -322,7 +270,6 @@ body {
     background: var(--pylon-gray-300);
     border-radius: var(--pylon-radius-large);
     z-index: -1;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .browser-item.supported::before {
@@ -331,14 +278,6 @@ body {
 
 .browser-item.partial::before {
     background: var(--pylon-warning);
-}
-
-.browser-item:hover {
-    transform: translate(-3px, -3px);
-}
-
-.browser-item:hover::before {
-    transform: translate(3px, 3px);
 }
 
 .browser-icon {
@@ -428,7 +367,6 @@ body {
     box-shadow: var(--pylon-shadow-card);
     text-align: center;
     max-width: 500px;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     border: 2px solid var(--pylon-primary-blue);
     position: relative;
 }
@@ -443,7 +381,6 @@ body {
     background: var(--pylon-primary-blue);
     border-radius: var(--pylon-radius-large);
     z-index: -1;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .demo-card.transformed {
@@ -479,24 +416,14 @@ body {
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--pylon-shadow-isometric-small);
     position: relative;
-}
-
-.demo-button:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--pylon-primary-purple);
 }
 
 .demo-card.transformed .demo-button {
     background: white;
     color: var(--pylon-primary-blue);
     border-color: white;
-}
-
-.demo-card.transformed .demo-button:hover {
-    box-shadow: 6px 6px 0px white;
 }
 
 .demo-controls {
@@ -513,17 +440,8 @@ body {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 2px 2px 0px var(--pylon-gray-300);
     position: relative;
-}
-
-.secondary-btn:hover {
-    background: var(--pylon-gray-50);
-    border-color: var(--pylon-gray-400);
-    color: var(--pylon-gray-700);
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0px var(--pylon-gray-400);
 }
 
 /* Final Slide */
@@ -552,22 +470,12 @@ body {
     padding: 1rem 2rem;
     border-radius: var(--pylon-radius-xl);
     font-weight: 700;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--pylon-shadow-isometric-small);
     border: 2px solid var(--pylon-primary-blue);
     position: relative;
 }
 
-.resource-link:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--pylon-primary-purple);
-    background: var(--pylon-gradient-primary);
-    color: white;
-    border-color: var(--pylon-primary-purple);
-}
-
 /* Keyboard Navigation Focus Styles */
-.nav-btn:focus-visible,
 .demo-button:focus-visible,
 .secondary-btn:focus-visible,
 .resource-link:focus-visible {

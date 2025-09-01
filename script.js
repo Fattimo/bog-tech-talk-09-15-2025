@@ -6,7 +6,7 @@
 class SlideController {
     constructor() {
         this.currentSlide = 1;
-        this.totalSlides = 6;
+        this.totalSlides = 12;
         this.isTransitioning = false;
 
         this.init();
@@ -18,20 +18,11 @@ class SlideController {
         this.setupKeyboardNavigation();
         this.setupTouchNavigation();
 
-        // Initialize demo functionality
-        this.initializeDemo();
-
         console.log('🎯 Slide deck initialized');
     }
 
     bindEventListeners() {
-        // Navigation buttons
-        document.getElementById('prev-btn').addEventListener('click', () => this.previousSlide());
-        document.getElementById('next-btn').addEventListener('click', () => this.nextSlide());
-
-        // Demo button
-        document.getElementById('demo-btn').addEventListener('click', () => this.toggleDemo());
-        document.getElementById('reset-demo').addEventListener('click', () => this.resetDemo());
+        // No demo functionality needed
     }
 
     setupKeyboardNavigation() {
@@ -57,10 +48,6 @@ class SlideController {
                 case 'End':
                     e.preventDefault();
                     this.goToSlide(this.totalSlides);
-                    break;
-                case 'Escape':
-                    e.preventDefault();
-                    this.resetDemo();
                     break;
             }
         });
@@ -122,14 +109,6 @@ class SlideController {
     }
 
     updateUI() {
-        // Update slide counter
-        document.getElementById('slide-counter').textContent =
-            `${this.currentSlide} / ${this.totalSlides}`;
-
-        // Update navigation buttons
-        document.getElementById('prev-btn').disabled = this.currentSlide === 1;
-        document.getElementById('next-btn').disabled = this.currentSlide === this.totalSlides;
-
         // Update progress bar
         const progressPercent = (this.currentSlide / this.totalSlides) * 100;
         document.getElementById('progress-fill').style.width = `${progressPercent}%`;
@@ -178,31 +157,6 @@ class SlideController {
         }
     }
 
-    // Demo functionality for slide 5
-    initializeDemo() {
-        this.demoTransformed = false;
-    }
-
-    toggleDemo() {
-        const demoCard = document.getElementById('demo-card');
-        const demoBtn = document.getElementById('demo-btn');
-
-        this.demoTransformed = !this.demoTransformed;
-        demoCard.classList.toggle('transformed', this.demoTransformed);
-        demoBtn.textContent = this.demoTransformed ? 'Transform Back!' : 'Transform Me!';
-    }
-
-    resetDemo() {
-        const demoCard = document.getElementById('demo-card');
-        const demoBtn = document.getElementById('demo-btn');
-
-        if (!this.demoTransformed) return;
-
-        this.demoTransformed = false;
-        demoCard.classList.remove('transformed');
-        demoBtn.textContent = 'Transform Me!';
-    }
-
     // Public API for external control
     getCurrentSlide() {
         return this.currentSlide;
@@ -222,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Presentation initialized successfully');
     console.log('📱 Touch navigation enabled');
     console.log('⌨️ Keyboard navigation enabled');
+    console.log(`📊 Total slides: ${window.slideController.getTotalSlides()}`);
 
     // Preload next slides for better performance
     setTimeout(() => {
@@ -230,20 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, 1000);
 });
-
-// Service Worker registration for offline capability (optional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker
-            .register('/sw.js')
-            .then(registration => {
-                console.log('📦 Service Worker registered:', registration);
-            })
-            .catch(error => {
-                console.log('❌ Service Worker registration failed:', error);
-            });
-    });
-}
 
 // Export for potential external use
 window.PresentationAPI = {
