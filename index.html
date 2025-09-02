@@ -324,153 +324,1364 @@
                     </div>
                 </section>
 
-                <!-- Slide 9: Animation & Visual Effects -->
+                <!-- Slide 9: Colors Title -->
                 <section class="slide" data-slide="9">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Animation & Visual Effects</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>@starting-style</h3>
-                                <p>Enter/exit transitions placeholder</p>
-                            </div>
-                            <div class="feature-card">
-                                <h3>offset-path</h3>
-                                <p>Complex animation paths placeholder</p>
-                            </div>
-                            <div class="feature-card">
-                                <h3>Masking + Mouse Effects</h3>
-                                <p>Shiny colorful effects placeholder</p>
-                            </div>
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">Modern CSS Colors</h1>
+                        <h2 class="slide-subtitle">Beyond RGB & Hex</h2>
+                        <div class="slide-meta">
+                            <p>Exploring New Color Spaces & Functions</p>
+                            <p>The Future of Web Colors</p>
                         </div>
                     </div>
                 </section>
 
-                <!-- Slide 10: Colors -->
+                <!-- Slide 10: What We Know -->
                 <section class="slide" data-slide="10">
                     <div class="slide-content">
-                        <h1 class="slide-title">Colors</h1>
+                        <h1 class="slide-title">What We Know</h1>
                         <div class="content-grid">
                             <div class="feature-card">
-                                <h3>color-mix</h3>
-                                <p>Color mixing placeholder</p>
+                                <h3>RGB & Hex</h3>
+                                <div class="color-demo">
+                                    <div class="color-box" style="background: #ff6b6b"></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: rgb(255, 107, 107)"
+                                    ></div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>color: #ff6b6b;
+color: rgb(255, 107, 107);</code></pre>
+                                </div>
                             </div>
                             <div class="feature-card">
-                                <h3>oklch</h3>
-                                <p>OKLCH color space placeholder</p>
-                            </div>
-                            <div class="feature-card">
-                                <h3>contrast-color</h3>
-                                <p>Contrast color placeholder</p>
+                                <h3>RGBA (If You're Spicy 🌶️)</h3>
+                                <div class="color-demo">
+                                    <div
+                                        class="color-box"
+                                        style="background: rgba(255, 107, 107, 0.8)"
+                                    ></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: rgba(255, 107, 107, 0.4)"
+                                    ></div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>color: rgba(255, 107, 107, 0.8);
+background: rgba(255, 107, 107, 0.4);</code></pre>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Slide 11: Backdrop Filter -->
+                <!-- Slide 11: New Age Colors -->
                 <section class="slide" data-slide="11">
                     <div class="slide-content">
-                        <h1 class="slide-title">Backdrop Filter</h1>
+                        <h1 class="slide-title">New Age Colors</h1>
                         <div class="content-grid">
                             <div class="feature-card">
-                                <h3>✨ Glassmorphism</h3>
-                                <p>Glassmorphism effects placeholder</p>
+                                <h3>OKLCH</h3>
+                                <div class="color-demo">
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.7 0.15 180)"
+                                    ></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.8 0.1 45)"
+                                    ></div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>color: oklch(0.7 0.15 180);
+/* Lightness, Chroma, Hue */</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>OKLAB</h3>
+                                <div class="color-demo">
+                                    <div
+                                        class="color-box"
+                                        style="background: oklab(0.7 0.1 0.05)"
+                                    ></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: oklab(0.6 -0.1 0.1)"
+                                    ></div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>color: oklab(0.7 0.1 0.05);
+/* Lightness, A, B */</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>LCH & Others</h3>
+                                <div class="color-demo">
+                                    <div
+                                        class="color-box"
+                                        style="background: lch(70% 50 180)"
+                                    ></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: hsl(200 100% 70%)"
+                                    ></div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>color: lch(70% 50 180);
+color: hsl(200 100% 70%);</code></pre>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Slide 12: Fonts -->
+                <!-- Slide 12: OKLAB Chart Placeholder -->
                 <section class="slide" data-slide="12">
                     <div class="slide-content">
-                        <h1 class="slide-title">Fonts</h1>
+                        <h1 class="slide-title">OKLAB Color Space</h1>
                         <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Variable Fonts</h3>
-                                <p>Variable fonts placeholder</p>
-                            </div>
-                            <div class="feature-card">
-                                <h3>Responsive Font Size</h3>
-                                <p>Math-based responsive sizing placeholder</p>
+                            <div class="feature-card" style="max-width: 800px; margin: 0 auto">
+                                <h3>Colors Beyond Monitor Capabilities</h3>
+                                <div class="oklab-chart-placeholder">
+                                    <div class="chart-container">
+                                        <div class="chart-label">
+                                            OKLAB Color Space Visualization
+                                        </div>
+                                        <div class="chart-note">
+                                            📊 Interactive Chart Placeholder
+                                        </div>
+                                        <div class="chart-description">
+                                            Shows the full range of human-visible colors, including
+                                            those that current monitors cannot display
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>
+                                    <strong>OKLAB</strong> represents colors that don't exist on
+                                    current displays, preparing us for future wide-gamut monitors.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Slide 13: Anchor Positioning -->
+                <!-- Slide 13: OKLAB Explanation -->
                 <section class="slide" data-slide="13">
+                    <div class="slide-content">
+                        <h1 class="slide-title">OKLAB for Theming</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Lightness (L)</h3>
+                                <div class="color-demo">
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.3 0.15 200)"
+                                    ></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.7 0.15 200)"
+                                    ></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.9 0.15 200)"
+                                    ></div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>/* Dark to Light */
+oklch(0.3 0.15 200)
+oklch(0.7 0.15 200)
+oklch(0.9 0.15 200)</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>Chroma (C)</h3>
+                                <div class="color-demo">
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.7 0.05 200)"
+                                    ></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.7 0.15 200)"
+                                    ></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.7 0.25 200)"
+                                    ></div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>/* Muted to Vibrant */
+oklch(0.7 0.05 200)
+oklch(0.7 0.15 200)
+oklch(0.7 0.25 200)</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>Hue (H)</h3>
+                                <div class="color-demo">
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.7 0.15 0)"
+                                    ></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.7 0.15 120)"
+                                    ></div>
+                                    <div
+                                        class="color-box"
+                                        style="background: oklch(0.7 0.15 240)"
+                                    ></div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>/* Red, Green, Blue */
+oklch(0.7 0.15 0)
+oklch(0.7 0.15 120)
+oklch(0.7 0.15 240)</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 14: Theme Hue Adjustments -->
+                <section class="slide" data-slide="14">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Theme: Adjusting Hue = New Colors</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Base Theme</h3>
+                                <div class="theme-demo">
+                                    <div class="theme-colors">
+                                        <div
+                                            class="color-box"
+                                            style="background: oklch(0.8 0.1 200)"
+                                            title="Primary"
+                                        ></div>
+                                        <div
+                                            class="color-box"
+                                            style="background: oklch(0.6 0.1 200)"
+                                            title="Secondary"
+                                        ></div>
+                                        <div
+                                            class="color-box"
+                                            style="background: oklch(0.4 0.1 200)"
+                                            title="Accent"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>--primary: oklch(0.8 0.1 200);
+--secondary: oklch(0.6 0.1 200);
+--accent: oklch(0.4 0.1 200);</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>Shifted Theme (+60°)</h3>
+                                <div class="theme-demo">
+                                    <div class="theme-colors">
+                                        <div
+                                            class="color-box"
+                                            style="background: oklch(0.8 0.1 260)"
+                                            title="Primary"
+                                        ></div>
+                                        <div
+                                            class="color-box"
+                                            style="background: oklch(0.6 0.1 260)"
+                                            title="Secondary"
+                                        ></div>
+                                        <div
+                                            class="color-box"
+                                            style="background: oklch(0.4 0.1 260)"
+                                            title="Accent"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>--primary: oklch(0.8 0.1 260);
+--secondary: oklch(0.6 0.1 260);
+--accent: oklch(0.4 0.1 260);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 15: Color-Mix -->
+                <section class="slide" data-slide="15">
+                    <div class="slide-content">
+                        <h1 class="slide-title">color-mix(): Making Colors from Colors</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Basic Mixing</h3>
+                                <div class="color-demo">
+                                    <div class="color-mix-demo">
+                                        <div
+                                            class="color-box"
+                                            style="background: red"
+                                            title="Red"
+                                        ></div>
+                                        <span>+</span>
+                                        <div
+                                            class="color-box"
+                                            style="background: blue"
+                                            title="Blue"
+                                        ></div>
+                                        <span>=</span>
+                                        <div
+                                            class="color-box"
+                                            style="background: color-mix(in srgb, red, blue)"
+                                            title="Mixed"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>color: color-mix(in srgb, red, blue);
+/* 50/50 mix by default */</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>Weighted Mixing</h3>
+                                <div class="color-demo">
+                                    <div class="color-mix-demo">
+                                        <div
+                                            class="color-box"
+                                            style="background: red"
+                                            title="Red 70%"
+                                        ></div>
+                                        <span>+</span>
+                                        <div
+                                            class="color-box"
+                                            style="background: blue"
+                                            title="Blue 30%"
+                                        ></div>
+                                        <span>=</span>
+                                        <div
+                                            class="color-box"
+                                            style="background: color-mix(in srgb, red 70%, blue)"
+                                            title="Mixed"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>color: color-mix(in srgb, red 70%, blue);
+/* 70% red, 30% blue */</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 16: Color-Mix Practical -->
+                <section class="slide" data-slide="16">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Color-Mix: Practical Usage</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>❌ Old Way: Opacity</h3>
+                                <div class="color-demo">
+                                    <div class="old-way-demo">
+                                        <div
+                                            class="color-box"
+                                            style="background: rgba(239, 68, 68, 0.5)"
+                                            title="red-500 50% opacity"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>/* Problem: Shows background through */
+background: rgba(239, 68, 68, 0.5);</code></pre>
+                                </div>
+                                <p>❌ Transparency reveals background</p>
+                            </div>
+                            <div class="feature-card">
+                                <h3>✅ New Way: Solid Lightened</h3>
+                                <div class="color-demo">
+                                    <div class="new-way-demo">
+                                        <div
+                                            class="color-box"
+                                            style="
+                                                background: color-mix(
+                                                    in srgb,
+                                                    rgb(239, 68, 68) 50%,
+                                                    white
+                                                );
+                                            "
+                                            title="red-500 lightened 50%"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>/* Solid color, lightened */
+background: color-mix(in srgb, 
+  rgb(239, 68, 68) 50%, white);</code></pre>
+                                </div>
+                                <p>✅ Solid color with perfect opacity effect</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 17: Contrast-Color Problem -->
+                <section class="slide" data-slide="17">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Common Problem: Dynamic Contrast</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>The Challenge</h3>
+                                <div class="contrast-demo">
+                                    <div
+                                        class="contrast-box"
+                                        style="background: #ffeb3b; color: black"
+                                    >
+                                        <span>Yellow background - what text color?</span>
+                                    </div>
+                                    <div
+                                        class="contrast-box"
+                                        style="background: #1a1a1a; color: white"
+                                    >
+                                        <span>Dark background - what text color?</span>
+                                    </div>
+                                </div>
+                                <p>
+                                    How do we automatically choose the right text color for any
+                                    background?
+                                </p>
+                            </div>
+                            <div class="feature-card">
+                                <h3>contrast-color() Solution</h3>
+                                <div class="contrast-demo">
+                                    <div
+                                        class="contrast-box"
+                                        style="background: #ffeb3b; color: black"
+                                    >
+                                        <span>Auto contrast text!</span>
+                                    </div>
+                                    <div
+                                        class="contrast-box"
+                                        style="background: #1a1a1a; color: white"
+                                    >
+                                        <span>Auto contrast text!</span>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>color: contrast-color(var(--bg-color));
+/* Automatically picks best contrast */</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 18: Color Math Future -->
+                <section class="slide" data-slide="18">
+                    <div class="slide-content">
+                        <h1 class="slide-title">The Future: Color Math</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Complex Color-Mix Operations</h3>
+                                <div class="math-placeholder">
+                                    <div class="math-demo">📊 Advanced Color Mixing Chart</div>
+                                    <p>
+                                        Combining multiple colors with different color spaces and
+                                        weights
+                                    </p>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>color: color-mix(in oklch, 
+  color-mix(in srgb, red, blue) 60%,
+  yellow 40%);</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>contrast-color() on the Horizon</h3>
+                                <div class="future-demo">
+                                    <div class="status-badge">🚧 Coming Soon</div>
+                                    <p>
+                                        Automatic contrast calculation for accessibility and dynamic
+                                        theming
+                                    </p>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>/* Future CSS */
+color: contrast-color(var(--any-bg));
+border: 1px solid contrast-color(
+  var(--bg) vs white, black
+);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 19: Light-Dark Theming -->
+                <section class="slide" data-slide="19">
+                    <div class="slide-content">
+                        <h1 class="slide-title">light-dark() Function</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Automatic Theme Switching</h3>
+                                <div class="light-dark-demo">
+                                    <div class="theme-container light-theme">
+                                        <div class="theme-card">
+                                            <h4>Light Mode</h4>
+                                            <p>Background: light-dark(white, #1a1a1a)</p>
+                                            <p>Text: light-dark(black, white)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>background: light-dark(white, #1a1a1a);
+color: light-dark(black, white);
+border: 1px solid light-dark(#ccc, #444);</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>System Preference Aware</h3>
+                                <div class="system-demo">
+                                    <div class="preference-indicator">
+                                        🌞 Follows system preference automatically
+                                    </div>
+                                    <p>
+                                        No more complex media queries or CSS custom property
+                                        switching!
+                                    </p>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>/* Replaces this complexity: */
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1a1a1a; }
+}
+
+/* With this simplicity: */
+background: light-dark(white, #1a1a1a);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 20: Dark Version -->
+                <section
+                    class="slide"
+                    data-slide="20"
+                    style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)"
+                >
+                    <div class="slide-content">
+                        <h1
+                            class="slide-title"
+                            style="
+                                background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                background-clip: text;
+                            "
+                        >
+                            light-dark() in Action
+                        </h1>
+                        <div class="content-grid">
+                            <div
+                                class="feature-card"
+                                style="background: #2d2d2d; border-color: #4a5568; color: white"
+                            >
+                                <h3 style="color: #e2e8f0">Dark Theme Active</h3>
+                                <div class="light-dark-demo">
+                                    <div class="theme-container dark-theme">
+                                        <div
+                                            class="theme-card"
+                                            style="
+                                                background: #374151;
+                                                border-color: #6b7280;
+                                                color: #f9fafb;
+                                            "
+                                        >
+                                            <h4 style="color: #f3f4f6">Dark Mode</h4>
+                                            <p style="color: #d1d5db">
+                                                Background: light-dark(white, #1a1a1a)
+                                            </p>
+                                            <p style="color: #d1d5db">
+                                                Text: light-dark(black, white)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example" style="background: #1f2937">
+                                    <pre><code style="color: #e5e7eb;">/* Same CSS, different result */
+background: light-dark(white, #1a1a1a);
+color: light-dark(black, white);
+border: 1px solid light-dark(#ccc, #444);</code></pre>
+                                </div>
+                            </div>
+                            <div
+                                class="feature-card"
+                                style="background: #2d2d2d; border-color: #4a5568; color: white"
+                            >
+                                <h3 style="color: #e2e8f0">Seamless Switching</h3>
+                                <div class="system-demo">
+                                    <div class="preference-indicator" style="color: #fbbf24">
+                                        🌙 Dark mode automatically applied
+                                    </div>
+                                    <p style="color: #d1d5db">
+                                        The same light-dark() function now returns the dark values!
+                                    </p>
+                                </div>
+                                <div class="code-example" style="background: #1f2937">
+                                    <pre><code style="color: #e5e7eb;">/* One function, two themes */
+.card {
+  background: light-dark(#f8fafc, #1e293b);
+  color: light-dark(#334155, #e2e8f0);
+  box-shadow: light-dark(
+    0 1px 3px rgba(0,0,0,0.1),
+    0 1px 3px rgba(0,0,0,0.5)
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 21: Duplicate Light-Dark for View Transition Demo -->
+                <section class="slide" data-slide="21">
+                    <div class="slide-content">
+                        <h1 class="slide-title">light-dark() Function</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Automatic Theme Switching</h3>
+                                <div class="light-dark-demo">
+                                    <div class="theme-container light-theme">
+                                        <div class="theme-card">
+                                            <h4>Light Mode</h4>
+                                            <p>Background: light-dark(white, #1a1a1a)</p>
+                                            <p>Text: light-dark(black, white)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>background: light-dark(white, #1a1a1a);
+color: light-dark(black, white);
+border: 1px solid light-dark(#ccc, #444);</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>System Preference Aware</h3>
+                                <div class="system-demo">
+                                    <div class="preference-indicator">
+                                        🌞 Follows system preference automatically
+                                    </div>
+                                    <p>
+                                        No more complex media queries or CSS custom property
+                                        switching!
+                                    </p>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>/* Replaces this complexity: */
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1a1a1a; }
+}
+
+/* With this simplicity: */
+background: light-dark(white, #1a1a1a);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 22: View Transitions Title -->
+                <section class="slide" data-slide="22">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">View Transitions API</h1>
+                        <h2 class="slide-subtitle">Smooth Page Transitions</h2>
+                        <div class="slide-meta">
+                            <p>Native Browser Animation Between States</p>
+                            <p>No JavaScript Animation Libraries Required</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 23: View Transitions Title (Transitioned) -->
+                <section class="slide" data-slide="23">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">🎬 View Transitions in Action</h1>
+                        <h2 class="slide-subtitle">Seamless State Changes</h2>
+                        <div class="slide-meta">
+                            <p>This slide transitioned smoothly from the previous one</p>
+                            <p>Using document.startViewTransition()</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 24: Another View Transition Title -->
+                <section class="slide" data-slide="24">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">✨ Magic of View Transitions</h1>
+                        <h2 class="slide-subtitle">Browser-Native Animations</h2>
+                        <div class="slide-meta">
+                            <p>Each slide transition is handled by the browser</p>
+                            <p>Smooth, performant, and accessible</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 25: View Transitions Code -->
+                <section class="slide" data-slide="25">
+                    <div class="slide-content">
+                        <h1 class="slide-title">What's Happening Behind the Scenes</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>JavaScript API</h3>
+                                <div class="code-example">
+                                    <pre><code>// Start a view transition
+const transition = document.startViewTransition(() => {
+  // Update the DOM
+  targetSlide.classList.add('active');
+  currentSlide.classList.remove('active');
+});
+
+// Optional: customize the transition
+transition.ready.then(() => {
+  // Apply custom animations to pseudo-elements
+  document.documentElement.animate({
+    clipPath: ['circle(0)', 'circle(100%)']
+  }, {
+    duration: 500,
+    pseudoElement: '::view-transition-new(root)'
+  });
+});</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>CSS Pseudo-Elements</h3>
+                                <div class="code-example">
+                                    <pre><code>/* Browser automatically creates these */
+::view-transition
+::view-transition-group(*)
+::view-transition-image-pair(*)
+::view-transition-old(*)
+::view-transition-new(*)
+
+/* You can style them */
+::view-transition-old(root) {
+  animation: slide-out 0.3s ease-out;
+}
+
+::view-transition-new(root) {
+  animation: slide-in 0.3s ease-in;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 26: Button Exploration -->
+                <section class="slide" data-slide="26">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">Button Exploration</h1>
+                        <h2 class="slide-subtitle">Interactive Path Animations</h2>
+                        <div class="slide-meta">
+                            <p>Using CSS Path Functions & Mouse Tracking</p>
+                            <p>Creating Dynamic Visual Effects</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 27: Glowing Path -->
+                <section class="slide" data-slide="27">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Glowing Path Using Path Functions</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>SVG Path Animation</h3>
+                                <div class="demo-area">
+                                    <div class="path-demo">
+                                        <svg width="300" height="200" class="path-svg">
+                                            <path
+                                                d="M50,100 Q150,50 250,100"
+                                                stroke="var(--pylon-primary-blue)"
+                                                stroke-width="3"
+                                                fill="none"
+                                                class="glowing-path"
+                                            />
+                                            <circle
+                                                r="8"
+                                                fill="var(--pylon-primary-blue)"
+                                                class="path-dot"
+                                            >
+                                                <animateMotion dur="3s" repeatCount="indefinite">
+                                                    <mpath href="#glow-path" />
+                                                </animateMotion>
+                                            </circle>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>.glowing-path {
+  filter: drop-shadow(0 0 10px currentColor);
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: drawPath 3s ease-in-out infinite;
+}
+
+@keyframes drawPath {
+  to { stroke-dashoffset: 0; }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 28: Expose Path Based on Mouse -->
+                <section class="slide" data-slide="28">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Expose Path Based on --x and --y</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Mouse-Reactive Path</h3>
+                                <div class="demo-area">
+                                    <div class="mouse-path-demo" id="mousePathDemo">
+                                        <div class="path-revealer">
+                                            Move mouse here to reveal path
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>.path-revealer {
+  background: linear-gradient(
+    45deg,
+    transparent,
+    var(--pylon-primary-blue)
+  );
+  clip-path: circle(50px at var(--x, 50%) var(--y, 50%));
+  transition: clip-path 0.3s ease;
+}
+
+/* JavaScript sets CSS variables */
+element.style.setProperty('--x', `${e.clientX}px`);
+element.style.setProperty('--y', `${e.clientY}px`);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 29: Masking Effect -->
+                <section class="slide" data-slide="29">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Masking Effect</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>CSS Mask with Mouse Interaction</h3>
+                                <div class="demo-area">
+                                    <div class="mask-demo" id="maskDemo">
+                                        <div class="masked-content">
+                                            <h4>Hidden Content Revealed</h4>
+                                            <p>
+                                                This content is revealed through CSS masking based
+                                                on mouse position
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>.masked-content {
+  mask: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    black 100px,
+    transparent 150px
+  );
+  background: var(--pylon-gradient-primary);
+  color: white;
+  padding: 2rem;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 30: @property Exploration -->
+                <section class="slide" data-slide="30">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">@property Exploration</h1>
+                        <h2 class="slide-subtitle">Custom CSS Properties with Superpowers</h2>
+                        <div class="slide-meta">
+                            <p>Type-Safe Custom Properties</p>
+                            <p>Smooth Animations & Interpolation</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 31: Gradient Animation -->
+                <section class="slide" data-slide="31">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Gradient Animation with @property</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Smooth Gradient Transitions</h3>
+                                <div class="demo-area">
+                                    <div class="gradient-demo">
+                                        <div class="animated-gradient">
+                                            Animated Gradient Background
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>@property --gradient-angle {
+  syntax: '&lt;angle&gt;';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animated-gradient {
+  background: linear-gradient(
+    var(--gradient-angle),
+    var(--pylon-primary-blue),
+    var(--pylon-primary-purple)
+  );
+  animation: rotateGradient 3s linear infinite;
+}
+
+@keyframes rotateGradient {
+  to { --gradient-angle: 360deg; }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 32: Smooth Number Counter -->
+                <section class="slide" data-slide="32">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Smooth Number Counter</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>CSS-Only Number Animation</h3>
+                                <div class="demo-area">
+                                    <div class="counter-demo">
+                                        <div class="number-counter" id="numberCounter">0</div>
+                                        <button class="demo-button" onclick="animateCounter()">
+                                            Count to 100
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>@property --num {
+  syntax: '&lt;integer&gt;';
+  initial-value: 0;
+  inherits: false;
+}
+
+.number-counter {
+  counter-reset: num var(--num);
+  animation: count 2s ease-in-out forwards;
+}
+
+.number-counter::before {
+  content: counter(num);
+}
+
+@keyframes count {
+  to { --num: 100; }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 33: Stopwatch with @property -->
+                <section class="slide" data-slide="33">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Stopwatch with @property</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>CSS-Only Stopwatch</h3>
+                                <div class="demo-area">
+                                    <div class="stopwatch-demo">
+                                        <div class="stopwatch-display">00:00</div>
+                                        <div class="stopwatch-controls">
+                                            <button class="demo-button">Start</button>
+                                            <button class="secondary-btn">Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>@property --seconds {
+  syntax: '&lt;integer&gt;';
+  initial-value: 0;
+  inherits: false;
+}
+
+.stopwatch-display {
+  counter-reset: sec var(--seconds);
+  animation: stopwatch 60s linear infinite paused;
+}
+
+.stopwatch-display::before {
+  content: counter(sec, decimal-leading-zero) ':00';
+}
+
+@keyframes stopwatch {
+  to { --seconds: 60; }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 34: @starting-style -->
+                <section class="slide" data-slide="34">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">@starting-style</h1>
+                        <h2 class="slide-subtitle">Entry Animations Made Simple</h2>
+                        <div class="slide-meta">
+                            <p>Define Initial Styles for New Elements</p>
+                            <p>Smooth Transitions from the Start</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 35: Generating DOM Elements -->
+                <section class="slide" data-slide="35">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Generating DOM Elements with Initial Style</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Elements Start with opacity: 0</h3>
+                                <div class="demo-area">
+                                    <div class="element-generator">
+                                        <button class="demo-button" onclick="addElement()">
+                                            Add Element
+                                        </button>
+                                        <div class="element-container" id="elementContainer"></div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>@starting-style {
+  .new-element {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+}
+
+.new-element {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all 0.5s ease;
+}
+
+/* JavaScript */
+const newEl = document.createElement('div');
+newEl.className = 'new-element';
+container.appendChild(newEl);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 36: Interpolate Size and Auto Sizes -->
+                <section class="slide" data-slide="36">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Interpolate Size & Animating to Auto Sizes</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Height: auto Animations</h3>
+                                <div class="demo-area">
+                                    <div class="auto-size-demo">
+                                        <div class="expandable-content" id="expandableContent">
+                                            <div class="content-header">
+                                                <h4>Click to expand</h4>
+                                            </div>
+                                            <div class="content-body">
+                                                <p>
+                                                    This content animates to its natural height
+                                                    using interpolate-size: allow-keywords
+                                                </p>
+                                                <p>No more JavaScript height calculations!</p>
+                                                <p>CSS can now smoothly animate to height: auto</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>/* Enable interpolation to auto */
+html {
+  interpolate-size: allow-keywords;
+}
+
+@starting-style {
+  .expandable-content .content-body {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.expandable-content .content-body {
+  height: auto;
+  opacity: 1;
+  transition: height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 37: Animating Out of Display None -->
+                <section class="slide" data-slide="37">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Animating Out of Display None</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Smooth Transitions from display: none</h3>
+                                <div class="demo-area">
+                                    <div class="display-none-demo">
+                                        <button class="demo-button" onclick="toggleDisplay()">
+                                            Toggle Element
+                                        </button>
+                                        <div class="hidden-element" id="hiddenElement">
+                                            <h4>I was display: none!</h4>
+                                            <p>Now I can animate smoothly into view</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>@starting-style {
+  .hidden-element {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+.hidden-element {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.4s ease;
+  transition-behavior: allow-discrete;
+}
+
+.hidden-element.hidden {
+  display: none;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 38: Dialogs & Popovers -->
+                <section class="slide" data-slide="38">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">Dialogs & Popovers</h1>
+                        <h2 class="slide-subtitle">Native HTML Layer Management</h2>
+                        <div class="slide-meta">
+                            <p>Beyond Z-Index Stacking Context Issues</p>
+                            <p>Built-in Accessibility & Focus Management</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 39: Dialogs & Z-Index Problems -->
+                <section class="slide" data-slide="39">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Dialogs & the Problem with Z-Index</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>❌ The Old Way: Z-Index Hell</h3>
+                                <div class="demo-area">
+                                    <div class="z-index-problem">
+                                        <div class="stacking-context">
+                                            <div class="high-z-index">z-index: 9999</div>
+                                            <div class="higher-z-index">z-index: 99999</div>
+                                            <div class="highest-z-index">z-index: 999999</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>/* Z-index arms race */
+.modal { z-index: 9999; }
+.tooltip { z-index: 99999; }
+.dropdown { z-index: 999999; }
+
+/* Still gets clipped by parent stacking context! */</code></pre>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <h3>✅ The New Way: Top Layer</h3>
+                                <div class="demo-area">
+                                    <div class="top-layer-demo">
+                                        <button class="demo-button" onclick="showDialog()">
+                                            Show Dialog
+                                        </button>
+                                        <dialog id="demoDialog" class="demo-dialog">
+                                            <h4>I'm in the top layer!</h4>
+                                            <p>
+                                                No z-index needed. I always appear above everything.
+                                            </p>
+                                            <button onclick="closeDialog()">Close</button>
+                                        </dialog>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>&lt;dialog id="myDialog"&gt;
+  &lt;h2&gt;Dialog Content&lt;/h2&gt;
+  &lt;button onclick="myDialog.close()"&gt;Close&lt;/button&gt;
+&lt;/dialog&gt;
+
+&lt;script&gt;
+myDialog.showModal(); // Moves to top layer
+&lt;/script&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 40: Popovers -->
+                <section class="slide" data-slide="40">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Popovers</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>Native Popover API</h3>
+                                <div class="demo-area">
+                                    <div class="popover-demo">
+                                        <button class="demo-button" popovertarget="basicPopover">
+                                            Toggle Popover
+                                        </button>
+                                        <div id="basicPopover" popover class="demo-popover">
+                                            <h4>I'm a native popover!</h4>
+                                            <p>No JavaScript required for basic functionality</p>
+                                            <button
+                                                popovertarget="basicPopover"
+                                                popovertargetaction="hide"
+                                            >
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>&lt;button popovertarget="myPopover"&gt;
+  Toggle Popover
+&lt;/button&gt;
+
+&lt;div id="myPopover" popover&gt;
+  &lt;h3&gt;Popover Content&lt;/h3&gt;
+  &lt;p&gt;Automatically positioned in top layer&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 41: Anchor Positioning -->
+                <section class="slide" data-slide="41">
                     <div class="slide-content">
                         <h1 class="slide-title">Anchor Positioning</h1>
                         <div class="content-grid">
                             <div class="feature-card">
-                                <h3>⚓ Positioning</h3>
-                                <p>Anchor positioning placeholder</p>
+                                <h3>CSS Anchor Positioning</h3>
+                                <div class="demo-area">
+                                    <div class="anchor-positioning-demo">
+                                        <button class="demo-button anchor-button" id="anchorButton">
+                                            I'm an anchor ⚓
+                                        </button>
+                                        <div class="anchored-popover" popover id="anchoredPopover">
+                                            <h4>Anchored to button!</h4>
+                                            <p>
+                                                I position myself relative to the anchor
+                                                automatically
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>.anchor-button {
+  anchor-name: --my-anchor;
+}
+
+.anchored-popover {
+  position: absolute;
+  top: anchor(--my-anchor bottom);
+  left: anchor(--my-anchor center);
+  translate: -50% 0;
+}</code></pre>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Slide 14: View Transitions -->
-                <section class="slide" data-slide="14">
+                <!-- Slide 42: Double Nested Menu Demo -->
+                <section class="slide" data-slide="42">
                     <div class="slide-content">
-                        <h1 class="slide-title">View Transitions</h1>
+                        <h1 class="slide-title">Demo: Double Nested Menu</h1>
                         <div class="content-grid">
                             <div class="feature-card">
-                                <h3>🔄 Transitions</h3>
-                                <p>View transitions placeholder</p>
+                                <h3>Complex Menu System</h3>
+                                <div class="demo-area">
+                                    <div class="nested-menu-demo">
+                                        <button class="demo-button" popovertarget="mainMenu">
+                                            Main Menu
+                                        </button>
+                                        <div id="mainMenu" popover class="demo-menu">
+                                            <h4>Main Menu</h4>
+                                            <button class="menu-item" popovertarget="subMenu1">
+                                                Submenu 1 →
+                                            </button>
+                                            <button class="menu-item" popovertarget="subMenu2">
+                                                Submenu 2 →
+                                            </button>
+                                            <button class="menu-item">Simple Item</button>
+                                        </div>
+                                        <div id="subMenu1" popover class="demo-submenu">
+                                            <h4>Submenu 1</h4>
+                                            <button class="menu-item">Sub Item 1</button>
+                                            <button class="menu-item">Sub Item 2</button>
+                                            <button class="menu-item" popovertarget="deepMenu">
+                                                Deep Menu →
+                                            </button>
+                                        </div>
+                                        <div id="subMenu2" popover class="demo-submenu">
+                                            <h4>Submenu 2</h4>
+                                            <button class="menu-item">Another Item</button>
+                                            <button class="menu-item">Final Item</button>
+                                        </div>
+                                        <div id="deepMenu" popover class="demo-submenu">
+                                            <h4>Deep Menu</h4>
+                                            <button class="menu-item">Deep Item 1</button>
+                                            <button class="menu-item">Deep Item 2</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <pre><code>&lt;button popovertarget="mainMenu"&gt;Menu&lt;/button&gt;
+&lt;div id="mainMenu" popover&gt;
+  &lt;button popovertarget="subMenu"&gt;Submenu&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id="subMenu" popover&gt;
+  &lt;!-- Nested menu content --&gt;
+&lt;/div&gt;
+
+/* All positioning handled automatically! */</code></pre>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Slide 15: CSS Cascade & Specificity -->
-                <section class="slide" data-slide="15">
-                    <div class="slide-content">
-                        <h1 class="slide-title">CSS Cascade & Specificity</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>@layer</h3>
-                                <p>Cascade layers placeholder</p>
-                            </div>
-                            <div class="feature-card">
-                                <h3>CSS Nesting</h3>
-                                <p>CSS nesting placeholder</p>
-                            </div>
-                            <div class="feature-card">
-                                <h3>Specificity Management</h3>
-                                <p>Specificity management placeholder</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 16: Popover -->
-                <section class="slide" data-slide="16">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Popover</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>💬 Popover</h3>
-                                <p>Popover API placeholder</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 17: Dialog -->
-                <section class="slide" data-slide="17">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Dialog</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>📋 Dialog</h3>
-                                <p>Dialog element placeholder</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 18: Thank You -->
-                <section class="slide" data-slide="18">
+                <!-- Slide 43: Thank You -->
+                <section class="slide" data-slide="43">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Thank You!</h1>
                         <div class="final-content">

@@ -53,15 +53,15 @@ class SlideController {
     }
 
     setupBrowserNavigation() {
-        // Handle browser back/forward buttons
-        window.addEventListener('popstate', event => {
-            const slideFromURL = this.getSlideFromURL() || 1;
-            if (slideFromURL !== this.currentSlide) {
-                this.currentSlide = slideFromURL;
-                this.showSlide(this.currentSlide);
-                this.updateUI();
-            }
-        });
+        // // Handle browser back/forward buttons
+        // window.addEventListener('popstate', event => {
+        //     const slideFromURL = this.getSlideFromURL() || 1;
+        //     if (slideFromURL !== this.currentSlide) {
+        //         this.currentSlide = slideFromURL;
+        //         this.showSlide(this.currentSlide);
+        //         this.updateUI();
+        //     }
+        // });
     }
 
     initializeSlideDisplay() {
