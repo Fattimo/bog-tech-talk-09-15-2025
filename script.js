@@ -31,7 +31,21 @@ class SlideController {
     }
 
     bindEventListeners() {
-        // No demo functionality needed
+        // Navigation arrow buttons
+        const prevBtn = document.getElementById('prevSlideBtn');
+        const nextBtn = document.getElementById('nextSlideBtn');
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                this.previousSlide();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                this.nextSlide();
+            });
+        }
     }
 
     getSlideFromURL() {
@@ -183,6 +197,20 @@ class SlideController {
     }
 
     getSlideAnimationType(targetSlide) {
+        // Check for custom animation overrides first
+        if (this.customAnimationOverrides?.has(targetSlide)) {
+            return this.customAnimationOverrides.get(targetSlide);
+        }
+        
+        // Use circular reveal for View Transitions demonstration slides (22-25)
+        const viewTransitionSlides = [22, 23, 24, 25];
+        if (
+            viewTransitionSlides.includes(targetSlide) ||
+            viewTransitionSlides.includes(this.currentSlide)
+        ) {
+            return 'circularReveal';
+        }
+
         // Going forward (higher slide number) - slide left
         if (targetSlide > this.currentSlide) {
             return 'slideLeft';
@@ -317,8 +345,24 @@ class SlideController {
         const progressPercent = (this.currentSlide / this.totalSlides) * 100;
         document.getElementById('progress-fill').style.width = `${progressPercent}%`;
 
+        // Update navigation buttons state
+        this.updateNavigationButtons();
+
         // Announce slide change for screen readers
         this.announceSlideChange();
+    }
+
+    updateNavigationButtons() {
+        const prevBtn = document.getElementById('prevSlideBtn');
+        const nextBtn = document.getElementById('nextSlideBtn');
+
+        if (prevBtn) {
+            prevBtn.disabled = this.currentSlide <= 1;
+        }
+
+        if (nextBtn) {
+            nextBtn.disabled = this.currentSlide >= this.totalSlides;
+        }
     }
 
     announceSlideChange() {
@@ -369,6 +413,38 @@ class SlideController {
     getTotalSlides() {
         return this.totalSlides;
     }
+
+    // Dynamic animation control
+    setAnimationTypeForSlides(slideNumbers, animationType) {
+        if (!this.customAnimationOverrides) {
+            this.customAnimationOverrides = new Map();
+        }
+        
+        slideNumbers.forEach(slideNum => {
+            this.customAnimationOverrides.set(slideNum, animationType);
+        });
+        
+        console.log(`🎬 Animation override set: slides ${slideNumbers.join(', ')} will use ${animationType}`);
+    }
+
+    clearAnimationOverrides() {
+        this.customAnimationOverrides = new Map();
+        console.log('🎬 All animation overrides cleared');
+    }
+
+    // Toggle circular reveal for current slide range
+    toggleCircularReveal(startSlide, endSlide) {
+        const slides = [];
+        for (let i = startSlide; i <= endSlide; i++) {
+            slides.push(i);
+        }
+        
+        const currentType = this.customAnimationOverrides?.get(startSlide) || 'slideLeft';
+        const newType = currentType === 'circularReveal' ? 'slideLeft' : 'circularReveal';
+        
+        this.setAnimationTypeForSlides(slides, newType);
+        return newType;
+    }
 }
 
 // Initialize the application when DOM is ready
@@ -381,6 +457,11 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('📱 Touch navigation enabled');
     console.log('⌨️ Keyboard navigation enabled');
     console.log(`📊 Total slides: ${window.slideController.getTotalSlides()}`);
+    console.log('🎬 View Transitions: Slides 22-25 use circular reveal by default');
+    console.log('💡 Console commands available:');
+    console.log('   - slideController.toggleCircularReveal(22, 25) // Toggle circular reveal for view transition slides');
+    console.log('   - slideController.setAnimationTypeForSlides([1,2,3], "circularReveal") // Set custom animation');
+    console.log('   - slideController.clearAnimationOverrides() // Reset all animations to default');
 
     // Preload next slides for better performance
     setTimeout(() => {
