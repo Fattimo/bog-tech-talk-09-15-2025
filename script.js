@@ -5,8 +5,8 @@
 
 class SlideController {
     constructor() {
-        this.currentSlide = 1;
-        this.totalSlides = 12;
+        this.totalSlides = document.querySelectorAll('.slide').length;
+        this.currentSlide = this.getSlideFromURL() || 1;
         this.isTransitioning = false;
 
         // Track current mouse position for view transitions
@@ -18,16 +18,66 @@ class SlideController {
 
     init() {
         this.bindEventListeners();
-        this.updateUI();
         this.setupKeyboardNavigation();
         this.setupTouchNavigation();
         this.setupMouseTracking();
+        this.setupBrowserNavigation();
+
+        // Initialize the correct slide display
+        this.initializeSlideDisplay();
+        this.updateUI();
 
         console.log('🎯 Slide deck initialized');
     }
 
     bindEventListeners() {
         // No demo functionality needed
+    }
+
+    getSlideFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const slideParam = urlParams.get('slide');
+        if (slideParam) {
+            const slideNumber = parseInt(slideParam, 10);
+            if (slideNumber >= 1 && slideNumber <= this.totalSlides) {
+                return slideNumber;
+            }
+        }
+        return null;
+    }
+
+    updateURL(slideNumber) {
+        const url = new URL(window.location);
+        url.searchParams.set('slide', slideNumber);
+        window.history.replaceState({}, '', url);
+    }
+
+    setupBrowserNavigation() {
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', event => {
+            const slideFromURL = this.getSlideFromURL() || 1;
+            if (slideFromURL !== this.currentSlide) {
+                this.currentSlide = slideFromURL;
+                this.showSlide(this.currentSlide);
+                this.updateUI();
+            }
+        });
+    }
+
+    initializeSlideDisplay() {
+        // Remove any existing active classes
+        document.querySelectorAll('.slide.active').forEach(slide => {
+            slide.classList.remove('active');
+        });
+
+        // Show the current slide
+        const targetSlide = document.querySelector(`[data-slide="${this.currentSlide}"]`);
+        if (targetSlide) {
+            targetSlide.classList.add('active');
+        }
+
+        // Update URL to match current slide
+        this.updateURL(this.currentSlide);
     }
 
     setupKeyboardNavigation() {
@@ -108,6 +158,7 @@ class SlideController {
         // Simple slide navigation without view transitions
         this.showSlide(slideNumber);
         this.currentSlide = slideNumber;
+        this.updateURL(slideNumber);
         this.updateUI();
         this.isTransitioning = false;
     }

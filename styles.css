@@ -492,6 +492,105 @@ body {
     position: relative;
 }
 
+/* Demo Container Styles for Centering Examples */
+.demo-container {
+    margin: 1.5rem 0;
+}
+
+.container-demo {
+    width: 200px;
+    height: 120px;
+    border: 2px dotted var(--pylon-primary-blue);
+    background: var(--pylon-gray-50);
+    position: relative;
+    margin: 0 auto;
+    border-radius: var(--pylon-radius-small);
+}
+
+/* Show center lines */
+.container-demo::before,
+.container-demo::after {
+    content: '';
+    position: absolute;
+    background: var(--pylon-primary-blue);
+    opacity: 0.3;
+}
+
+.container-demo::before {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform: translateY(-50%);
+}
+
+.container-demo::after {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    transform: translateX(-50%);
+}
+
+.centered-item {
+    background: var(--pylon-gradient-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--pylon-radius-small);
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: fit-content;
+    height: fit-content;
+}
+
+/* Flexbox demo */
+.flexbox-demo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Grid demo */
+.grid-demo {
+    display: grid;
+    place-items: center;
+}
+
+/* Block element centering demos */
+.align-content-demo {
+    align-content: center;
+}
+
+.justify-items-demo {
+    justify-items: center;
+    align-content: center;
+}
+
+/* Block element alignment variations */
+.align-start-demo {
+    align-content: start;
+}
+
+.align-center-demo {
+    align-content: center;
+}
+
+.align-end-demo {
+    align-content: end;
+}
+
+.justify-start-demo {
+    justify-items: start;
+}
+
+.justify-center-demo {
+    justify-items: center;
+}
+
+.justify-end-demo {
+    justify-items: end;
+}
+
 /* Keyboard Navigation Focus Styles */
 .demo-button:focus-visible,
 .secondary-btn:focus-visible,
