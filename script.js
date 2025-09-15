@@ -212,49 +212,41 @@ class SlideController {
         }
     }
 
-    getViewTransitionSlides() {
-        // Find slides that contain "View Transitions" in their title
-        const viewTransitionSlides = [];
-        document.querySelectorAll('.slide').forEach(slide => {
-            const title = slide.querySelector('.slide-title');
-            if (title && title.textContent.toLowerCase().includes('view transition')) {
-                const slideNumber = parseInt(slide.getAttribute('data-slide'));
-                if (!isNaN(slideNumber)) {
-                    viewTransitionSlides.push(slideNumber);
-                }
-            }
-        });
-        return viewTransitionSlides;
-    }
-
     getSlideAnimationType(targetSlide) {
         // Check for custom animation overrides first
         if (this.customAnimationOverrides?.has(targetSlide)) {
             return this.customAnimationOverrides.get(targetSlide);
         }
 
-        // Use circular reveal for View Transitions demonstration slides
-        // Find slides with "View Transitions" in their title (more flexible than hardcoded numbers)
-        const viewTransitionSlides = this.getViewTransitionSlides();
-        if (
-            viewTransitionSlides.includes(targetSlide) ||
-            viewTransitionSlides.includes(this.currentSlide)
-        ) {
-            return 'circularReveal';
+        // Get the current slide element
+        const currentSlideElement = document.querySelector(`[data-slide="${this.currentSlide}"]`);
+
+        // Determine if we're going forward or backward
+        const isForward = targetSlide > this.currentSlide;
+
+        // Check for data attributes on the current slide for the transition direction
+        let animationType = null;
+
+        if (currentSlideElement) {
+            if (isForward && currentSlideElement.hasAttribute('data-transition-next')) {
+                animationType = currentSlideElement.getAttribute('data-transition-next');
+            } else if (!isForward && currentSlideElement.hasAttribute('data-transition-prev')) {
+                animationType = currentSlideElement.getAttribute('data-transition-prev');
+            }
         }
 
-        // Going forward (higher slide number) - slide left
-        if (targetSlide > this.currentSlide) {
-            return 'slideLeft';
+        // If no specific transition is defined, use default slide animations
+        if (!animationType) {
+            if (isForward) {
+                animationType = 'slideLeft';
+            } else if (targetSlide < this.currentSlide) {
+                animationType = 'slideRight';
+            } else {
+                animationType = 'default';
+            }
         }
-        // Going backward (lower slide number) - slide right
-        else if (targetSlide < this.currentSlide) {
-            return 'slideRight';
-        }
-        // Same slide (shouldn't happen, but fallback)
-        else {
-            return 'default';
-        }
+
+        return animationType;
     }
 
     customViewTransition(updateCallback, animationType = 'slideLeft') {
@@ -692,12 +684,15 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('⌨️ Keyboard navigation enabled');
     console.log(`📊 Total slides: ${window.slideController.getTotalSlides()}`);
     console.log(
-        '🎬 View Transitions: Slides with "View Transitions" in title use circular reveal by default'
+        '🎬 View Transitions: Use data-transition-next and data-transition-prev attributes to control slide transitions'
     );
     console.log('🎨 Monaco Editor: VS Code-style code blocks with syntax highlighting');
     console.log('💡 Console commands available:');
     console.log(
-        '   - slideController.toggleCircularReveal(22, 25) // Toggle circular reveal for view transition slides'
+        '   - Available transitions: slideLeft, slideRight, circularReveal, clipPathSlideLeft, clipPathSlideRight'
+    );
+    console.log(
+        '   - Add data-transition-next="circularReveal" to slide elements for custom transitions'
     );
     console.log(
         '   - slideController.setAnimationTypeForSlides([1,2,3], "circularReveal") // Set custom animation'

@@ -940,9 +940,9 @@ oklch(0.7 0.15 240)"
                 </section>
 
                 <!-- Slide 15: Future contrast-color() with Complex Math -->
-                <section class="slide">
+                <section class="slide" data-transition-next="clipPathSlideRight">
                     <div class="slide-content">
-                        <h1 class="slide-title">Future: contrast-color() & WCAG Math</h1>
+                        <h1 class="slide-title">Future: contrast-color()</h1>
                         <div
                             class="content-grid"
                             style="
@@ -1081,7 +1081,11 @@ oklch(0.7 0.15 240)"
                 </section>
 
                 <!-- Slide 16: Dark Scheme: contrast-color() & WCAG Math -->
-                <section class="slide dark" style="color-scheme: dark">
+                <section
+                    class="slide dark"
+                    style="color-scheme: dark"
+                    data-transition-prev="clipPathSlideLeft"
+                >
                     <div class="slide-content">
                         <h1 class="slide-title">light-dark()</h1>
                         <div
@@ -1221,273 +1225,41 @@ oklch(0.7 0.15 240)"
                     </div>
                 </section>
 
-                <!-- Slide 17: Contrast-Color Problem -->
+                <!-- Slide 17: Browser Support - Relative Color Syntax -->
                 <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">Common Problem: Dynamic Contrast</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>The Challenge</h3>
-                                <div class="contrast-demo">
-                                    <div
-                                        class="contrast-box"
-                                        style="background: #ffeb3b; color: black"
-                                    >
-                                        <span>Yellow background - what text color?</span>
-                                    </div>
-                                    <div
-                                        class="contrast-box"
-                                        style="background: #1a1a1a; color: white"
-                                    >
-                                        <span>Dark background - what text color?</span>
-                                    </div>
-                                </div>
-                                <p>
-                                    How do we automatically choose the right text color for any
-                                    background?
-                                </p>
-                            </div>
-                            <div class="feature-card">
-                                <h3>contrast-color() Solution</h3>
-                                <div class="contrast-demo">
-                                    <div
-                                        class="contrast-box"
-                                        style="background: #ffeb3b; color: black"
-                                    >
-                                        <span>Auto contrast text!</span>
-                                    </div>
-                                    <div
-                                        class="contrast-box"
-                                        style="background: #1a1a1a; color: white"
-                                    >
-                                        <span>Auto contrast text!</span>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>color: contrast-color(var(--bg-color));
-/* Automatically picks best contrast */</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 18: Color Math Future -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">The Future: Color Math</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Complex Color-Mix Operations</h3>
-                                <div class="math-placeholder">
-                                    <div class="math-demo">📊 Advanced Color Mixing Chart</div>
-                                    <p>
-                                        Combining multiple colors with different color spaces and
-                                        weights
-                                    </p>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>color: color-mix(in oklch, 
-  color-mix(in srgb, red, blue) 60%,
-  yellow 40%);</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>contrast-color() on the Horizon</h3>
-                                <div class="future-demo">
-                                    <div class="status-badge">🚧 Coming Soon</div>
-                                    <p>
-                                        Automatic contrast calculation for accessibility and dynamic
-                                        theming
-                                    </p>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>/* Future CSS */
-color: contrast-color(var(--any-bg));
-border: 1px solid contrast-color(
-  var(--bg) vs white, black
-);</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 19: Light-Dark Theming -->
-                <section class="slide dark">
-                    <div class="slide-content">
-                        <h1 class="slide-title">light-dark() Function</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Automatic Theme Switching</h3>
-                                <div class="light-dark-demo">
-                                    <div class="theme-container light-theme">
-                                        <div class="theme-card">
-                                            <h4>Light Mode</h4>
-                                            <p>Background: light-dark(white, #1a1a1a)</p>
-                                            <p>Text: light-dark(black, white)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>background: light-dark(white, #1a1a1a);
-color: light-dark(black, white);
-border: 1px solid light-dark(#ccc, #444);</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>System Preference Aware</h3>
-                                <div class="system-demo">
-                                    <div class="preference-indicator">
-                                        🌞 Follows system preference automatically
-                                    </div>
-                                    <p>
-                                        No more complex media queries or CSS custom property
-                                        switching!
-                                    </p>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>/* Replaces this complexity: */
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #1a1a1a; }
-}
-
-/* With this simplicity: */
-background: light-dark(white, #1a1a1a);</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 20: Dark Version -->
-                <section
-                    class="slide"
-                    style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)"
-                >
-                    <div class="slide-content">
-                        <h1
-                            class="slide-title"
-                            style="
-                                background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
-                                -webkit-background-clip: text;
-                                -webkit-text-fill-color: transparent;
-                                background-clip: text;
-                            "
-                        >
-                            light-dark() in Action
-                        </h1>
-                        <div class="content-grid">
+                        <div class="content-grid" style="margin: 0">
                             <div
-                                class="feature-card"
-                                style="background: #2d2d2d; border-color: #4a5568; color: white"
+                                style="
+                                    max-width: 900px;
+                                    max-height: 80vh;
+                                    margin: 0 auto;
+                                    text-align: center;
+                                "
                             >
-                                <h3 style="color: #e2e8f0">Dark Theme Active</h3>
-                                <div class="light-dark-demo">
-                                    <div class="theme-container dark-theme">
-                                        <div
-                                            class="theme-card"
-                                            style="
-                                                background: #374151;
-                                                border-color: #6b7280;
-                                                color: #f9fafb;
-                                            "
-                                        >
-                                            <h4 style="color: #f3f4f6">Dark Mode</h4>
-                                            <p style="color: #d1d5db">
-                                                Background: light-dark(white, #1a1a1a)
-                                            </p>
-                                            <p style="color: #d1d5db">
-                                                Text: light-dark(black, white)
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example" style="background: #1f2937">
-                                    <pre><code style="color: #e5e7eb;">/* Same CSS, different result */
-background: light-dark(white, #1a1a1a);
-color: light-dark(black, white);
-border: 1px solid light-dark(#ccc, #444);</code></pre>
-                                </div>
-                            </div>
-                            <div
-                                class="feature-card"
-                                style="background: #2d2d2d; border-color: #4a5568; color: white"
-                            >
-                                <h3 style="color: #e2e8f0">Seamless Switching</h3>
-                                <div class="system-demo">
-                                    <div class="preference-indicator" style="color: #fbbf24">
-                                        🌙 Dark mode automatically applied
-                                    </div>
-                                    <p style="color: #d1d5db">
-                                        The same light-dark() function now returns the dark values!
-                                    </p>
-                                </div>
-                                <div class="code-example" style="background: #1f2937">
-                                    <pre><code style="color: #e5e7eb;">/* One function, two themes */
-.card {
-  background: light-dark(#f8fafc, #1e293b);
-  color: light-dark(#334155, #e2e8f0);
-  box-shadow: light-dark(
-    0 1px 3px rgba(0,0,0,0.1),
-    0 1px 3px rgba(0,0,0,0.5)
-  );
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 21: Duplicate Light-Dark for View Transition Demo -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">light-dark() Function</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Automatic Theme Switching</h3>
-                                <div class="light-dark-demo">
-                                    <div class="theme-container light-theme">
-                                        <div class="theme-card">
-                                            <h4>Light Mode</h4>
-                                            <p>Background: light-dark(white, #1a1a1a)</p>
-                                            <p>Text: light-dark(black, white)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>background: light-dark(white, #1a1a1a);
-color: light-dark(black, white);
-border: 1px solid light-dark(#ccc, #444);</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>System Preference Aware</h3>
-                                <div class="system-demo">
-                                    <div class="preference-indicator">
-                                        🌞 Follows system preference automatically
-                                    </div>
-                                    <p>
-                                        No more complex media queries or CSS custom property
-                                        switching!
-                                    </p>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>/* Replaces this complexity: */
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #1a1a1a; }
-}
-
-/* With this simplicity: */
-background: light-dark(white, #1a1a1a);</code></pre>
-                                </div>
+                                <img
+                                    src="caniuse-relative-color.png"
+                                    alt="Can I Use browser support chart for relative color syntax"
+                                    style="
+                                        max-width: 100%;
+                                        max-height: 100%;
+                                        height: auto;
+                                        border-radius: 12px;
+                                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                                        border: 2px solid var(--pylon-gray-200);
+                                    "
+                                />
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <!-- Slide 22: View Transitions Title -->
-                <section class="slide">
+                <section
+                    class="slide"
+                    data-transition-next="circularReveal"
+                    data-transition-prev="circularReveal"
+                >
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">View Transitions API</h1>
                         <h2 class="slide-subtitle">Smooth Page Transitions</h2>
@@ -1511,7 +1283,11 @@ background: light-dark(white, #1a1a1a);</code></pre>
                 </section>
 
                 <!-- Slide 23: View Transitions Title (Transitioned) -->
-                <section class="slide">
+                <section
+                    class="slide"
+                    data-transition-next="circularReveal"
+                    data-transition-prev="circularReveal"
+                >
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">🎬 View Transitions in Action</h1>
                         <h2 class="slide-subtitle">Seamless State Changes</h2>
@@ -1523,7 +1299,11 @@ background: light-dark(white, #1a1a1a);</code></pre>
                 </section>
 
                 <!-- Slide 24: Another View Transition Title -->
-                <section class="slide">
+                <section
+                    class="slide"
+                    data-transition-next="circularReveal"
+                    data-transition-prev="circularReveal"
+                >
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">✨ Magic of View Transitions</h1>
                         <h2 class="slide-subtitle">Browser-Native Animations</h2>
@@ -1535,7 +1315,11 @@ background: light-dark(white, #1a1a1a);</code></pre>
                 </section>
 
                 <!-- Slide 25: View Transitions Code -->
-                <section class="slide">
+                <section
+                    class="slide"
+                    data-transition-next="circularReveal"
+                    data-transition-prev="circularReveal"
+                >
                     <div class="slide-content">
                         <h1 class="slide-title">What's Happening Behind the Scenes</h1>
                         <div class="content-grid">
