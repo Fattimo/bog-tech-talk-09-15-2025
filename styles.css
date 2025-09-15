@@ -2354,3 +2354,93 @@ body {
     color: var(--pylon-gray-700);
     font-weight: 600;
 }
+
+/* QR Code Layout */
+.qr-code-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    height: 100%;
+    padding: 2rem 0;
+}
+
+.qr-code-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.qr-code-item h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--pylon-gray-800);
+    font-weight: 600;
+}
+
+.qr-code-image {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    border: 3px solid var(--pylon-primary-blue);
+    border-radius: var(--pylon-radius-large);
+    box-shadow: var(--pylon-shadow-card);
+}
+
+.qr-link {
+    color: var(--pylon-primary-blue);
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: 'Monaco', 'Menlo', monospace;
+    background: var(--pylon-gray-100);
+    padding: 0.75rem 1rem;
+    border-radius: var(--pylon-radius-small);
+    border: 1px solid var(--pylon-gray-300);
+    transition: all 0.2s ease;
+    max-width: 300px;
+    word-break: break-all;
+}
+
+.qr-link:hover {
+    background: var(--pylon-primary-blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--pylon-shadow-card);
+}
+
+/* Responsive QR codes */
+@media (max-width: 768px) {
+    .qr-code-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .qr-code-image {
+        width: 250px;
+        height: 250px;
+    }
+
+    .qr-code-item h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Image slide styles */
+.image-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.full-slide-image {
+    max-width: 100%;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
