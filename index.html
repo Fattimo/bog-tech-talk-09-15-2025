@@ -1804,46 +1804,225 @@ console.log('Dialog closed');
                 <!-- Slide 37: Popover Basics -->
                 <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">Popover Basics</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>💬 Popover API</h3>
-                                <p>
-                                    Native popover elements with automatic positioning, focus management,
-                                    and light dismiss behavior.
-                                </p>
+                        <h1 class="slide-title">Popovers</h1>
+                        <div class="popover-demo-container">
+                            <div class="demo-buttons">
+                                <button class="demo-button" popovertarget="helpPopover">
+                                    ❓ Help
+                                </button>
+                                
+                                <button class="demo-button" popovertarget="menuPopover" id="menuButton">
+                                    📋 Menu
+                                </button>
+                                
+                                <button class="demo-button" popovertarget="infoPopover" id="infoButton">
+                                    ℹ️ Info
+                                </button>
+                            </div>
+                            
+                            <!-- Help Popover -->
+                            <div popover id="helpPopover" class="demo-popover">
+                                <div class="popover-header">
+                                    <h3>💡 Help</h3>
+                                    <button popovertarget="helpPopover" popovertargetaction="hide" class="popover-close">✕</button>
+                                </div>
+                                <div class="popover-content">
+                                    <p>This is a native HTML popover! It automatically:</p>
+                                    <ul>
+                                        <li>✅ Renders in the top layer</li>
+                                        <li>✅ Handles focus management</li>
+                                        <li>✅ Provides light dismiss behavior</li>
+                                        <li>✅ Works with keyboard navigation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Menu Popover -->
+                            <div popover id="menuPopover" class="demo-popover anchored-popover" anchor="menuButton">
+                                <div class="popover-header">
+                                    <h3>📋 Menu</h3>
+                                    <button popovertarget="menuPopover" popovertargetaction="hide" class="popover-close">✕</button>
+                                </div>
+                                <div class="popover-content">
+                                    <div class="menu-items">
+                                        <button class="menu-item">🏠 Home</button>
+                                        <button class="menu-item">⚙️ Settings</button>
+                                        <button class="menu-item">📊 Analytics</button>
+                                        <button class="menu-item">❓ Help</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Info Popover -->
+                            <div popover id="infoPopover" class="demo-popover anchored-popover" anchor="infoButton">
+                                <div class="popover-header">
+                                    <h3>ℹ️ Information</h3>
+                                    <button popovertarget="infoPopover" popovertargetaction="hide" class="popover-close">✕</button>
+                                </div>
+                                <div class="popover-content">
+                                    <p><strong>Native Popover API</strong></p>
+                                    <p>No JavaScript required! Just use:</p>
+                                    <code>popovertarget="myPopover"</code>
+                                    <p>Click outside or press Escape to dismiss.</p>
+                                </div>
                             </div>
                         </div>
-                        <!-- TODO: Add popover demo -->
+                    </div>
+                </section>
+
+                <!-- Slide 37.5: Popover Code Implementation -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <div
+                            class="monaco-code-block"
+                            data-monaco
+                            data-snippet="<!-- HTML: Native Popover with Anchor Positioning -->
+<button id='menuButton' popovertarget='menuPopover'>📋 Menu</button>
+<button id='infoButton' popovertarget='infoPopover'>ℹ️ Info</button>
+
+<!-- Menu Popover (anchored below button) -->
+<div popover id='menuPopover' anchor='menuButton' class='demo-popover'>
+  <div class='popover-header'>
+    <h3>📋 Menu</h3>
+    <button popovertarget='menuPopover' popovertargetaction='hide'>✕</button>
+  </div>
+</div>
+
+<!-- Info Popover (anchored to the right) -->
+<div popover id='infoPopover' anchor='infoButton' class='demo-popover'>
+  <div class='popover-header'>
+    <h3>ℹ️ Information</h3>
+    <button popovertarget='infoPopover' popovertargetaction='hide'>✕</button>
+  </div>
+</div>"
+                            data-language="html"
+                            data-height="400px"
+                        ></div>
+                        <div
+                        class="monaco-code-block"
+                        data-monaco
+                        data-snippet="#menuButton { anchor-name: --menuButton; }
+#infoButton { anchor-name: --infoButton; }
+
+#menuPopover {
+    position-anchor: --menuButton;
+    top: anchor(bottom);
+    left: anchor(center);
+    translate: -50% 0.5rem;
+}
+
+#infoPopover {
+    position-anchor: --infoButton;
+    top: anchor(center);
+    left: anchor(right);
+    translate: 0.5rem -50%;
+}"
+                        data-language="css"
+                        data-height="350px"
+                    ></div> 
                     </div>
                 </section>
 
                 <!-- Slide 38: Anchor Positioned Nested Popover -->
                 <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">Anchor Positioned Nested Popover</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>⚓ Anchor Positioning</h3>
-                                <p>
-                                    Draggable button with nested popovers that stay anchored using
-                                    CSS anchor positioning. No JavaScript positioning required!
-                                </p>
+                        <h1 class="slide-title">Draggable Nested Popovers</h1>
+                            <!-- Draggable Button -->
+                            <button id="draggableButton" class="draggable-button" popovertarget="primaryPopover">
+                                🎯 I follow the cursor
+                            </button>
+
+                            <button class="demo-button" popovertarget="primaryPopover">
+                                Open first level popover
+                            </button>
+
+                            
+                            <!-- Primary Always-Open Popover -->
+                            <div popover="auto" id="primaryPopover" class="primary-popover" anchor="draggableButton">
+                                <div class="popover-header">
+                                    <h3>🎯 Primary Menu</h3>
+                                </div>
+                                <div class="popover-content">
+                                    <button class="menu-item" id="settingsMenuItem" popovertarget="nestedPopover">
+                                        ⚙️ Settings
+                                    </button>
+                                    <button class="menu-item">📊 Analytics</button>
+                                    <button class="menu-item">🔔 Notifications</button>
+                                </div>
                             </div>
-                        </div>
-                        <!-- TODO: Add draggable button with nested popover demo -->
+                            
+                            <!-- Nested Always-Open Popover -->
+                            <div popover="auto" id="nestedPopover" class="nested-popover" anchor="settingsMenuItem">
+                                <div class="popover-header">
+                                    <h3>⚙️ Settings</h3>
+                                </div>
+                                <div class="popover-content">
+                                    <div class="setting-item">
+                                        <label>🌙 Dark Mode</label>
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="setting-item">
+                                        <label>🔊 Sound</label>
+                                        <input type="checkbox" checked>
+                                    </div>
+                                    <div class="setting-item">
+                                        <label>📧 Email Notifications</label>
+                                        <input type="checkbox">
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </section>
 
-                <!-- Slide 39: Dialog/Popover CanIUse -->
+                <!-- Slide 38.5: Draggable Anchor Positioning Code -->
                 <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">Dialog & Popover Browser Support</h1>
-                        <div style="text-align: center; margin-top: 2rem">
-                            <!-- TODO: Add CanIUse screenshots -->
-                            <div class="demo-card">
-                                <h3>📊 Browser Support</h3>
-                                <p>CanIUse data for Dialog, Popover, and Anchor Positioning APIs</p>
+
+                        <div
+                            class="monaco-code-block"
+                            data-monaco
+                            data-snippet=".primary-popover {
+    inset: 0;
+    margin: 0;
+
+    position-anchor: --draggableButton;
+    top: anchor(bottom);
+    left: unset;
+    right: anchor(center);
+    bottom: unset;
+}"
+                            data-language="css"
+                            data-height="220px"
+                        ></div>
+                    </div>
+                </section>
+
+                <!-- Slide 39: Dialog/Popover/Anchor CanIUse -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <div class="caniuse-stack">
+                            <div class="caniuse-item">
+                                <img 
+                                    src="caniuse-dialog.png" 
+                                    alt="CanIUse data for HTML Dialog Element"
+                                    style="width: 90%; height: 27vh; object-fit: contain; border-radius: var(--pylon-radius-small);"
+                                />
+                            </div>
+                            
+                            <div class="caniuse-item">
+                                <img 
+                                    src="caniuse-popover.png" 
+                                    alt="CanIUse data for Popover API"
+                                    style="width: 90%; height: 27vh; object-fit: contain; border-radius: var(--pylon-radius-small);"
+                                />
+                            </div>
+                            
+                            <div class="caniuse-item">
+                                <img 
+                                    src="caniuse-anchor-positioning.png" 
+                                    alt="CanIUse data for CSS Anchor Positioning"
+                                    style="width: 90%; height: 27vh; object-fit: contain; border-radius: var(--pylon-radius-small);"
+                                />
                             </div>
                         </div>
                     </div>
@@ -1852,7 +2031,7 @@ console.log('Dialog closed');
                 <!-- SECTION 3: BUTTONS -->
 
                 <!-- Slide 40: Buttons Title -->
-                <section class="slide">
+                <!-- <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Buttons</h1>
                         <h2 class="slide-subtitle">Interactive Path Animations</h2>
@@ -1861,10 +2040,10 @@ console.log('Dialog closed');
                             <p>Creating Dynamic Visual Effects</p>
                         </div>
                     </div>
-                </section>
+                </section> -->
 
                 <!-- Slide 41: Button Demos -->
-                <section class="slide">
+                <!-- <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Advanced Button Animations</h1>
                         <div class="content-grid">
@@ -1876,9 +2055,8 @@ console.log('Dialog closed');
                                 </p>
                             </div>
                         </div>
-                        <!-- TODO: Add button animation demos -->
                     </div>
-                </section>
+                </section> -->
 
                 <!-- SECTION 4: PYLON -->
 

@@ -2062,3 +2062,295 @@ body {
         transition: opacity 0.3s ease;
     }
 }
+
+/* Popover Demo Styles */
+.popover-demo-container {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.demo-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+/* Popover Styling */
+.demo-popover {
+    border: none;
+    border-radius: var(--pylon-radius-large);
+    padding: 0;
+    max-width: 350px;
+    box-shadow: var(--pylon-shadow-card);
+    background: white;
+    overflow: hidden;
+}
+
+/* Anchor positioned buttons */
+#menuButton {
+    anchor-name: --menuButton;
+}
+
+#infoButton {
+    anchor-name: --infoButton;
+}
+
+/* Anchor positioned popovers */
+.anchored-popover {
+    position: absolute;
+    position-anchor: --anchor-element;
+}
+
+#menuPopover {
+    position-anchor: --menuButton;
+    top: anchor(bottom);
+    left: anchor(center);
+    translate: -50% 0.5rem;
+}
+
+#infoPopover {
+    position-anchor: --infoButton;
+    top: anchor(center);
+    left: anchor(right);
+    translate: 0.5rem -50%;
+}
+
+.popover-header {
+    background: var(--pylon-gradient-primary);
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popover-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.popover-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.popover-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.popover-content {
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.popover-content p {
+    margin: 0 0 1rem 0;
+    color: var(--pylon-gray-700);
+    line-height: 1.5;
+}
+
+.popover-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.popover-content li {
+    margin: 0.5rem 0;
+    color: var(--pylon-gray-700);
+}
+
+.popover-content code {
+    background: var(--pylon-gray-100);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.9em;
+    color: var(--pylon-primary-blue);
+}
+
+/* Menu Items in Popover */
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu-item {
+    background: none;
+    border: none;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-radius: var(--pylon-radius-small);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+    color: var(--pylon-gray-700);
+}
+
+.menu-item:hover {
+    background: var(--pylon-gray-100);
+    color: var(--pylon-gray-900);
+}
+
+.menu-item:focus {
+    outline: 2px solid var(--pylon-primary-blue);
+    outline-offset: -2px;
+}
+
+/* Draggable Demo Styles */
+.draggable-demo-container {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    border: 2px dashed var(--pylon-gray-300);
+    border-radius: var(--pylon-radius-large);
+    background: var(--pylon-gray-50);
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.demo-instruction {
+    text-align: center;
+    color: var(--pylon-gray-600);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+/* Draggable Button */
+.draggable-button {
+    position: fixed;
+    left: var(--x);
+    top: var(--y);
+    background: var(--pylon-gradient-primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--pylon-radius-large);
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: grab;
+    box-shadow: var(--pylon-shadow-card);
+    anchor-name: --draggableButton;
+    z-index: 10;
+}
+
+.draggable-button:hover {
+    box-shadow: var(--pylon-shadow-elevated);
+}
+
+.draggable-button:active,
+.draggable-button.dragging {
+    cursor: grabbing;
+    box-shadow: var(--pylon-shadow-card);
+}
+
+/* Settings Menu Item Anchor */
+#settingsMenuItem {
+    anchor-name: --settingsMenuItem;
+}
+
+/* Primary Popover with position-try-fallbacks */
+.primary-popover {
+    inset: 0;
+    margin: 0;
+
+    position-anchor: --draggableButton;
+    top: anchor(bottom);
+    left: unset;
+    right: anchor(center);
+    bottom: unset;
+
+    position-try-fallbacks: flip-block, flip-inline;
+
+    border: none;
+    border-radius: var(--pylon-radius-large);
+    padding: 0;
+    max-width: 200px;
+    box-shadow: var(--pylon-shadow-card);
+    background: white;
+    overflow: hidden;
+    z-index: 20;
+}
+
+/* Nested Popover with position-try-fallbacks */
+.nested-popover {
+    position-anchor: --settingsMenuItem;
+    top: anchor(center);
+    right: anchor(right);
+
+    /* Smart positioning with fallbacks */
+    position-try-fallbacks:
+        flip-inline,
+        flip-block,
+        flip-inline flip-block;
+
+    border: none;
+    border-radius: var(--pylon-radius-large);
+    padding: 0;
+    max-width: 220px;
+    box-shadow: var(--pylon-shadow-elevated);
+    background: white;
+    overflow: hidden;
+    z-index: 30;
+}
+
+/* Setting Items in Nested Popover */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--pylon-gray-100);
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-item label {
+    font-size: 0.9rem;
+    color: var(--pylon-gray-700);
+    font-weight: 500;
+}
+
+.setting-item input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--pylon-primary-blue);
+}
+
+/* CanIUse Stack Layout */
+.caniuse-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.caniuse-item {
+    width: 100%;
+    text-align: center;
+}
+
+.caniuse-item h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--pylon-gray-700);
+    font-weight: 600;
+}
