@@ -1301,7 +1301,84 @@ oklch(0.7 0.15 240)"
                     </div>
                 </section>
 
-                <!-- Slide 28: Button Exploration -->
+                <!-- Slide 28: View Transitions - How It Works -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">How View Transitions Work</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>🔄 The Process</h3>
+                                <p>
+                                    View Transitions capture the current state, apply your DOM
+                                    changes, then smoothly animate between the old and new states
+                                    using CSS pseudo-elements.
+                                </p>
+                            </div>
+                            <div class="feature-card">
+                                <h3>🎯 Element-Specific</h3>
+                                <p>
+                                    Use <code>view-transition-name</code> to create targeted
+                                    transitions for specific elements, allowing fine-grained control
+                                    over animations.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="monaco-code-block"
+                            data-monaco
+                            data-height="160px"
+                            data-language="javascript"
+                            data-snippet="// Basic View Transition
+if (document.startViewTransition) {
+  document.startViewTransition(() => {
+    // Make your DOM changes here
+    element.classList.toggle('active');
+  });
+}"
+                        ></div>
+
+                        <div
+                            class="monaco-code-block"
+                            data-monaco
+                            data-language="css"
+                            data-height="260px"
+                            data-snippet="/* Element-specific transition */
+.my-element {
+  view-transition-name: my-element;
+}
+
+::view-transition-old(my-element) {
+  animation: slideOut 0.3s ease-out;
+}
+
+::view-transition-new(my-element) {
+  animation: slideIn 0.3s ease-in;
+}"
+                        ></div>
+                    </div>
+                </section>
+
+                <!-- Slide 29: View Transitions Browser Support -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <div style="text-align: center; margin-top: 2rem">
+                            <img
+                                src="caniuse-view-transitions.png"
+                                alt="Can I Use - View Transitions API Browser Support"
+                                style="
+                                    max-width: 100%;
+                                    height: auto;
+                                    border-radius: var(--pylon-radius-large);
+                                    box-shadow: var(--pylon-shadow-card);
+                                    border: 2px solid var(--pylon-primary-blue);
+                                "
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 30: Button Exploration -->
                 <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Button Exploration</h1>
