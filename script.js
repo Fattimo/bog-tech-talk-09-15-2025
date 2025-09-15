@@ -841,6 +841,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize slide controller
     window.slideController = new SlideController();
 
+    // Initialize ball spawner for @starting-style demo
+    window.ballSpawner = new BallSpawner();
+
     // Log initialization
     console.log('🚀 Presentation initialized successfully');
     console.log('📱 Touch navigation enabled');
@@ -867,6 +870,13 @@ document.addEventListener('DOMContentLoaded', () => {
         '   - monacoCodeBlocks.addCodeBlock(".my-container", "code here", "css") // Add Monaco code block'
     );
     console.log('   - Use data-snippet="your code" for inline code in HTML attributes');
+    console.log(
+        '🎾 Ball Spawner: Click the "Spawn Ball" button on the @starting-style slide to see offset-path demo'
+    );
+    console.log('   - Balls originate from button top and randomly arc toward basketball hoops');
+    console.log(
+        '   - window.ballSpawner.spawnMultipleBalls(5) // Spawn multiple balls with random arcs'
+    );
 
     // Preload next slides for better performance
     setTimeout(() => {
@@ -876,7 +886,169 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 });
 
+/**
+ * Accordion Animation Function for interpolate-size demo
+ */
+function animateAccordions() {
+    const accordions = document.querySelectorAll('.accordion');
+    const button = document.querySelector('.accordion-animate-btn');
+
+    if (!accordions.length) return;
+
+    // Update button text and disable during animation
+    button.textContent = '🎬 Animating...';
+    button.disabled = true;
+
+    // Check if any accordion is currently expanded
+    const hasExpanded = Array.from(accordions).some(acc => acc.classList.contains('expanded'));
+
+    // Add animating class for longer transition duration
+    accordions.forEach(accordion => {
+        accordion.classList.add('animating');
+    });
+
+    // Toggle all accordions simultaneously
+    accordions.forEach((accordion, index) => {
+        // Small stagger for visual interest (optional)
+        setTimeout(() => {
+            if (hasExpanded) {
+                // Collapse all
+                accordion.classList.remove('expanded');
+            } else {
+                // Expand all
+                accordion.classList.add('expanded');
+            }
+        }, index * 50); // 50ms stagger between each accordion
+    });
+
+    // Reset button and remove animating class after animation completes
+    setTimeout(() => {
+        accordions.forEach(accordion => {
+            accordion.classList.remove('animating');
+        });
+
+        button.disabled = false;
+        button.textContent = hasExpanded
+            ? '🎬 Expand All Accordions'
+            : '🎬 Collapse All Accordions';
+    }, 1400); // Slightly longer than the CSS transition duration
+}
+
+// Add individual accordion click handlers
+document.addEventListener('DOMContentLoaded', () => {
+    // Individual accordion toggle functionality
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', e => {
+            e.preventDefault();
+            const accordion = header.parentElement;
+            accordion.classList.toggle('expanded');
+        });
+    });
+});
+
+/**
+ * Starting Style Ball Demo
+ */
+class BallSpawner {
+    constructor() {
+        this.ballCounter = 0;
+        this.maxBalls = 10; // Prevent too many balls from accumulating
+        this.init();
+    }
+
+    init() {
+        const button = document.getElementById('ballSpawnBtn');
+        if (button) {
+            button.addEventListener('click', () => this.spawnBall());
+        }
+    }
+
+    spawnBall() {
+        const button = document.getElementById('ballSpawnBtn');
+        if (!button) return;
+
+        // Clean up old balls if we have too many
+        this.cleanupOldBalls();
+
+        // Create ball element
+        const ball = document.createElement('div');
+        ball.className = 'ball';
+        ball.id = `ball-${++this.ballCounter}`;
+
+        // Randomly choose left or right arc
+        const isRightArc = Math.random() > 0.5;
+        if (isRightArc) {
+            ball.classList.add('arc-right');
+        }
+
+        // Position ball at the top of the button
+        const buttonRect = button.getBoundingClientRect();
+        ball.style.left = `${buttonRect.left + buttonRect.width / 2 - 20}px`; // Center horizontally, minus half ball width
+        ball.style.top = `${buttonRect.top - 20}px`; // Position at top of button, minus ball height
+
+        // Add ball to document body (starts with @starting-style: --present: 0)
+        document.body.appendChild(ball);
+
+        // Force reflow to ensure @starting-style applies
+        ball.offsetHeight;
+
+        // Trigger the animation by allowing the transition to start
+        // The @starting-style will transition to the normal .ball styles
+        requestAnimationFrame(() => {
+            // The CSS transition will automatically start due to @starting-style
+            // Ball will follow the offset-path from 0% to 100% distance
+            console.log(
+                `🎾 Ball spawned - following ${isRightArc ? 'right' : 'left'} offset-path arc`
+            );
+        });
+
+        // Clean up this ball after animation completes
+        setTimeout(() => {
+            this.removeBall(ball);
+        }, 2500); // Slightly longer than the 2s transition
+    }
+
+    cleanupOldBalls() {
+        const balls = document.querySelectorAll('.ball');
+        if (balls.length >= this.maxBalls) {
+            // Remove oldest balls
+            const ballsToRemove = balls.length - this.maxBalls + 1;
+            for (let i = 0; i < ballsToRemove; i++) {
+                if (balls[i]) {
+                    this.removeBall(balls[i]);
+                }
+            }
+        }
+    }
+
+    removeBall(ball) {
+        if (ball && ball.parentNode) {
+            ball.style.transition = 'opacity 0.3s ease-out';
+            ball.style.opacity = '0';
+
+            setTimeout(() => {
+                if (ball.parentNode) {
+                    ball.parentNode.removeChild(ball);
+                }
+            }, 300);
+        }
+    }
+
+    // Public method to spawn multiple balls at once
+    spawnMultipleBalls(count = 3) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                this.spawnBall();
+            }, i * 200); // Stagger spawning
+        }
+    }
+}
+
+// Ball spawner will be initialized when DOM is ready
+
 // Export for potential external use
 window.PresentationAPI = {
-    SlideController
+    SlideController,
+    animateAccordions,
+    BallSpawner
 };

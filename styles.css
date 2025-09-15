@@ -621,16 +621,34 @@ body {
 }
 
 .demo-button {
-    background: var(--pylon-gradient-primary);
-    color: white;
-    border: 2px solid var(--pylon-primary-blue);
+    background: var(--pylon-gray-100);
+    color: var(--pylon-gray-800);
+    border: 2px solid var(--pylon-gray-300);
     padding: 1rem 2rem;
     border-radius: var(--pylon-radius-xl);
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: var(--pylon-shadow-isometric-small);
+    box-shadow: 0 4px 0px var(--pylon-gray-400);
     position: relative;
+    transition: all 0.2s ease;
+}
+
+.demo-button:hover {
+    background: var(--pylon-gray-200);
+    transform: translateY(1px);
+    box-shadow: 0 3px 0px var(--pylon-gray-400);
+}
+
+.demo-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0px var(--pylon-gray-400);
+}
+
+.demo-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
 }
 
 .demo-card.transformed .demo-button {
@@ -1610,4 +1628,283 @@ body {
     margin: 0;
     text-align: center;
     font-weight: 500;
+}
+
+/* Accordion Demo Styles */
+.accordion-demo {
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.accordion-animate-btn {
+    display: block;
+    margin: 0 auto 2rem auto;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+}
+
+.accordion-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.accordion {
+    background: white;
+    border-radius: var(--pylon-radius-medium);
+    box-shadow: var(--pylon-shadow-card);
+    border: 2px solid var(--pylon-primary-blue);
+    overflow: hidden;
+    position: relative;
+}
+
+.accordion::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: -4px;
+    bottom: -4px;
+    background: var(--pylon-primary-blue);
+    border-radius: var(--pylon-radius-medium);
+    z-index: -1;
+}
+
+.accordion-header {
+    background: var(--pylon-gradient-primary);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.accordion-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.accordion-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion.expanded .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    height: 0;
+    overflow: hidden;
+    background: white;
+
+    /* Enable interpolate-size for smooth height transitions */
+    interpolate-size: allow-keywords;
+    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion.expanded .accordion-content {
+    height: auto;
+}
+
+.accordion-item {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--pylon-gray-200);
+    color: var(--pylon-gray-700);
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+/* Animation states for synchronized expansion */
+.accordion.animating .accordion-content {
+    transition-duration: 1.2s;
+}
+
+/* Code Demo Layout Styles */
+.code-demo-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+    height: 400px;
+}
+
+.code-section {
+    background: white;
+    border-radius: var(--pylon-radius-medium);
+    padding: 1.5rem;
+    box-shadow: var(--pylon-shadow-card);
+    border: 2px solid var(--pylon-gray-300);
+    display: flex;
+    flex-direction: column;
+}
+
+.code-section h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: var(--pylon-gray-800);
+    font-weight: 600;
+}
+
+.monaco-editor-container {
+    flex: 1;
+    border-radius: var(--pylon-radius-small);
+    overflow: hidden;
+    border: 1px solid var(--pylon-gray-300);
+}
+
+.code-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.highlight-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--pylon-radius-medium);
+    box-shadow: var(--pylon-shadow-card);
+    border: 2px solid var(--pylon-primary-blue);
+    position: relative;
+}
+
+.highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: -4px;
+    bottom: -4px;
+    background: var(--pylon-primary-blue);
+    border-radius: var(--pylon-radius-medium);
+    z-index: -1;
+}
+
+.highlight-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--pylon-gray-900);
+    font-weight: 600;
+}
+
+.highlight-card p {
+    margin: 0;
+    color: var(--pylon-gray-700);
+    line-height: 1.5;
+}
+
+.highlight-card code {
+    background: var(--pylon-gray-100);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+    color: var(--pylon-primary-blue);
+    font-weight: 600;
+}
+
+/* Starting Style Ball Demo */
+.starting-style-demo {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+/* Balls will be positioned relative to the button */
+
+.ball-spawn-btn {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    background: var(--pylon-gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--pylon-radius-xl);
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--pylon-shadow-isometric-small);
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.ball-spawn-btn:hover {
+    background: var(--pylon-gradient-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--pylon-shadow-isometric);
+    filter: brightness(1.1);
+}
+
+.ball-spawn-btn:active {
+    transform: translateY(0);
+    box-shadow: var(--pylon-shadow-isometric-hover);
+}
+
+.ball {
+    --present: 1;
+
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 30% 30%, #ff6b6b, #cc0000);
+    border-radius: 50%;
+    opacity: 1;
+    z-index: 1000;
+
+    /* Default arc path (left) - will be flipped randomly */
+    offset-path: path('M 0 0 Q -200 -300 -400 -200');
+    offset-distance: calc(var(--present) * 100%);
+
+    /* Enable smooth transitions from display: none */
+    transition:
+        offset-distance 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 2s ease-out;
+
+    @starting-style {
+        --present: 0;
+        offset-distance: calc(var(--present) * 100%);
+    }
+}
+
+/* Right arc variant */
+.ball.arc-right {
+    offset-path: path('M 0 0 Q 200 -300 400 -200');
+}
+
+/* Basketball Hoops */
+.basketball-hoop {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    z-index: 500; /* Below balls but above content */
+    pointer-events: none; /* Don't interfere with interactions */
+}
+
+.basketball-hoop img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Left hoop - reflected horizontally and positioned where left arc lands */
+.left-hoop {
+    left: 17%;
+    top: 25%;
+    transform: scaleX(-1); /* Reflect horizontally */
+}
+
+/* Right hoop - positioned where right arc lands */
+.right-hoop {
+    right: 19%;
+    top: 25%;
 }

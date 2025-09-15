@@ -1390,10 +1390,6 @@ if (document.startViewTransition) {
                 <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Transitions</h1>
-                        <h2 class="slide-subtitle">Modern Animation Capabilities</h2>
-                        <div class="slide-meta">
-                            <p>interpolate-size, @starting-style, and more</p>
-                        </div>
                     </div>
                 </section>
 
@@ -1401,45 +1397,217 @@ if (document.startViewTransition) {
                 <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">interpolate-size</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>🔄 Animate to Auto</h3>
-                                <p>
-                                    Enable smooth transitions to `auto` values like height, width, and flex-basis.
-                                    No more JavaScript height calculations!
-                                </p>
+                        <!-- Accordion Demo -->
+                        <div class="accordion-demo">
+                            <button class="demo-button accordion-animate-btn" onclick="animateAccordions()">
+                                🎬 Animate All Accordions
+                            </button>
+                            
+                            <div class="accordion-container">
+                                <div>
+                                    <!-- Accordion 1: Small (3 items) -->
+                                    <div class="accordion" data-accordion="small">
+                                    <div class="accordion-header">
+                                        <h3>Small Accordion</h3>
+                                        <span class="accordion-icon">▼</span>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <div class="accordion-item">Item 1: Short content</div>
+                                        <div class="accordion-item">Item 2: Another piece</div>
+                                        <div class="accordion-item">Item 3: Final element</div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- Accordion 2: Medium (5 items) -->
+                                 <div>
+
+                                <div class="accordion" data-accordion="medium">
+                                    <div class="accordion-header">
+                                        <h3>Medium Accordion</h3>
+                                        <span class="accordion-icon">▼</span>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <div class="accordion-item">Item 1: This is some content</div>
+                                        <div class="accordion-item">Item 2: More detailed information here</div>
+                                        <div class="accordion-item">Item 3: Additional data point</div>
+                                        <div class="accordion-item">Item 4: Extra information section</div>
+                                        <div class="accordion-item">Item 5: Final comprehensive entry</div>
+                                    </div>
+                                </div>
                             </div>
+
+                                <!-- Accordion 3: Large (8 items) -->
+                                 <div>
+
+                                <div class="accordion" data-accordion="large">
+                                    <div class="accordion-header">
+                                        <h3>Large Accordion</h3>
+                                        <span class="accordion-icon">▼</span>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <div class="accordion-item">Item 1: Comprehensive content section with detailed information</div>
+                                        <div class="accordion-item">Item 2: Extended description with multiple data points and examples</div>
+                                        <div class="accordion-item">Item 3: Additional context and supporting materials</div>
+                                        <div class="accordion-item">Item 4: Further elaboration on the topic at hand</div>
+                                        <div class="accordion-item">Item 5: Supplementary information and related details</div>
+                                        <div class="accordion-item">Item 6: Extra documentation and reference materials</div>
+                                        <div class="accordion-item">Item 7: Concluding thoughts and final observations</div>
+                                    </div>
+                                </div>
+                                 </div>
+                                </div>
                         </div>
-                        <!-- TODO: Add demo and code examples -->
                     </div>
                 </section>
 
-                <!-- Slide 32: @starting-style -->
+                <!-- Slide 32: How to Build Accordions with interpolate-size -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Building Accordions with interpolate-size</h1>
+                        
+                                <div
+                                class="monaco-code-block"
+                                data-monaco
+                                data-snippet="/* Accordion Implementation with interpolate-size */
+
+.accordion-content {
+    height: 0;
+    overflow: hidden;
+    background: white;
+    
+    /* Enable interpolate-size for smooth height transitions */
+    interpolate-size: allow-keywords;
+    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion.expanded .accordion-content {
+    height: auto;
+}
+
+.accordion {
+    background: white;
+    border-radius: var(--pylon-radius-medium);
+    box-shadow: var(--pylon-shadow-card);
+    border: 2px solid var(--pylon-primary-blue);
+    overflow: hidden;
+    position: relative;
+}
+
+.accordion-header {
+    background: var(--pylon-gradient-primary);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Animation states for synchronized expansion */
+.accordion.animating .accordion-content {
+    transition-duration: 1.2s;
+}"
+                                data-language="css"
+                                data-height="320px"
+                            ></div>
+                        
+                    </div>
+                </section>
+
+                <!-- Slide 33: @starting-style -->
                 <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">@starting-style</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>✨ Entry Animations</h3>
-                                <p>
-                                    Define initial styles for elements entering the DOM, enabling smooth
-                                    animations from display: none and dynamic content.
-                                </p>
+
+                        <!-- Starting Style Ball Demo -->
+                        <div class="starting-style-demo">
+                            <button class="demo-button ball-spawn-btn" id="ballSpawnBtn">
+                                🎾 Spawn Ball
+                            </button>
+                            
+                            <!-- Basketball Hoops positioned where balls land -->
+                            <div class="basketball-hoop left-hoop">
+                                <img src="https://www.goalsetter.com/cdn/shop/files/B2609W_180BreakawayRim_8671_600x600_crop_center.png?v=1740154197" alt="Basketball Hoop" />
+                            </div>
+                            <div class="basketball-hoop right-hoop">
+                                <img src="https://www.goalsetter.com/cdn/shop/files/B2609W_180BreakawayRim_8671_600x600_crop_center.png?v=1740154197" alt="Basketball Hoop" />
                             </div>
                         </div>
-                        <!-- TODO: Add demo and code examples -->
                     </div>
                 </section>
 
-                <!-- Slide 33: Transitions CanIUse -->
+                <!-- Slide 33: @starting-style Code -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">@starting-style Implementation</h1>
+                        <div
+                            class="monaco-code-block"
+                            data-monaco
+                            data-snippet="/* @starting-style with offset-path and transition-behavior: allow-discrete */
+.ball {  
+  /* Default left arc path */
+  offset-path: path('M 0 0 Q -200 -300 -400 -200');
+  offset-distance: calc(var(--present) * 100%);
+  
+  transition: 
+    offset-distance 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 2s ease-out;
+  
+  @starting-style {
+    --present: 0;
+    offset-distance: calc(var(--present) * 100%);
+  }
+
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #cc0000);
+  border-radius: 50%;
+  opacity: 1;
+  z-index: 1000;
+}
+
+/* Right arc variant - randomly applied */
+.ball.arc-right {
+  offset-path: path('M 0 0 Q 200 -300 400 -200');
+}"
+                            data-language="css"
+                            data-height="500px"
+                        ></div>
+                    </div>
+                </section>
+
+                <!-- Slide 34: Transitions CanIUse -->
                 <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Transitions Browser Support</h1>
-                        <div style="text-align: center; margin-top: 2rem">
-                            <!-- TODO: Add CanIUse screenshot for transitions -->
-                            <div class="demo-card">
-                                <h3>📊 Browser Support</h3>
-                                <p>CanIUse data for interpolate-size and @starting-style</p>
+                        <div style="display: flex; flex-direction: column; gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                                <div style="text-align: center; margin-top: 1rem">
+                                    <img
+                                        src="caniuse-interpolate-size.png"
+                                        alt="Can I Use browser support chart for interpolate-size"
+                                        style="
+                                            max-width: 90%;
+                                            height: auto;
+                                            border-radius: 12px;
+                                            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                                        "
+                                    />
+                                </div>
+                            
+                                <div style="text-align: center; margin-top: 1rem">
+                                    <img
+                                        src="caniuse-starting-style.png"
+                                        alt="Can I Use browser support chart for @starting-style"
+                                        style="
+                                            max-width: 90%;
+                                            height: auto;
+                                            border-radius: 12px;
+                                            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                                        "
+                                    />
                             </div>
                         </div>
                     </div>
@@ -1451,9 +1619,8 @@ if (document.startViewTransition) {
                 <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Dialog, Popover & Anchor Positioning</h1>
-                        <h2 class="slide-subtitle">Native HTML Layer Management</h2>
                         <div class="slide-meta">
-                            <p>Top-layer elements and positioning</p>
+                            <p>Top-layer elements</p>
                         </div>
                     </div>
                 </section>
