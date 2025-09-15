@@ -1908,3 +1908,157 @@ body {
     right: 19%;
     top: 25%;
 }
+
+/* Dialog Demo Styles */
+.dialog-demo-container {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+/* Search Dialog Styles */
+.search-dialog {
+    border: none;
+    border-radius: var(--pylon-radius-large);
+    padding: 0;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: var(--pylon-shadow-card);
+    background: white;
+    overflow: hidden;
+    margin: auto;
+}
+
+.search-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.dialog-header {
+    background: var(--pylon-gradient-primary);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dialog-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.dialog-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.dialog-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dialog-body {
+    padding: 2rem;
+}
+
+.search-input-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid var(--pylon-gray-300);
+    border-radius: var(--pylon-radius-medium);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--pylon-primary-blue);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.search-button {
+    padding: 1rem 1.5rem;
+    background: var(--pylon-primary-blue);
+    color: white;
+    border: none;
+    border-radius: var(--pylon-radius-medium);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-button:hover {
+    background: var(--pylon-primary-purple);
+}
+
+.search-results {
+    min-height: 100px;
+    padding: 1rem;
+    background: var(--pylon-gray-50);
+    border-radius: var(--pylon-radius-medium);
+    text-align: left;
+}
+
+.search-results p {
+    margin: 0;
+    color: var(--pylon-gray-600);
+    font-style: italic;
+}
+
+/* Animated Dialog with transition-behavior: allow-discrete */
+.animated-dialog {
+    --present: 0;
+
+    /* Animated properties using --present custom property */
+    opacity: var(--present);
+    transform: scale(calc(0.8 + 0.2 * var(--present)))
+        translateY(calc(-20px * (1 - var(--present))));
+
+    /* Enable transitions on discrete properties */
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        overlay 0.3s ease allow-discrete,
+        display 0.3s ease allow-discrete;
+    transition-behavior: allow-discrete;
+
+    &[open] {
+        --present: 1;
+        @starting-style {
+            --present: 0;
+        }
+
+        &::backdrop {
+            @starting-style {
+                --present: 0;
+            }
+        }
+    }
+
+    @starting-style {
+        --present: 0;
+    }
+
+    &::backdrop {
+        opacity: var(--present);
+        transition: opacity 0.3s ease;
+    }
+}

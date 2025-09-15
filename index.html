@@ -1625,37 +1625,179 @@ if (document.startViewTransition) {
                     </div>
                 </section>
 
-                <!-- Slide 35: Dialog Basics -->
+                <!-- Slide 35: Basic Dialog -->
                 <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">Dialog Basics with Nested Dialogs</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>🗨️ Native Dialogs</h3>
-                                <p>
-                                    HTML dialog elements with backdrop, focus management, and nested dialog support.
-                                    No more z-index battles!
-                                </p>
-                            </div>
+                        
+                        <div class="dialog-demo-container">
+                            <button class="demo-button" id="openSearchBtn">
+                                🔍 Open Search
+                            </button>
+                            
+                            <dialog class="search-dialog" id="searchDialog">
+                                <div class="dialog-header">
+                                    <h2>Search</h2>
+                                    <button class="dialog-close" id="closeSearchBtn">✕</button>
+                                </div>
+                                <div class="dialog-body">
+                                    <div class="search-input-container">
+                                        <input 
+                                            type="text" 
+                                            class="search-input" 
+                                            placeholder="Search documentation..."
+                                            id="searchInput"
+                                        />
+                                    </div>
+                                </div>
+                            </dialog>
                         </div>
-                        <!-- TODO: Add nested dialog demo -->
                     </div>
                 </section>
 
-                <!-- Slide 36: Animate Dialog from Display None -->
+                <!-- Slide 35.5: Basic Dialog HTML -->
                 <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">Animate Dialog from Display None</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>🎭 Smooth Transitions</h3>
-                                <p>
-                                    Combine @starting-style with transition-behavior to animate dialogs
-                                    smoothly in and out of display: none.
-                                </p>
-                            </div>
+                        <h1 class="slide-title">Basic Dialog HTML Structure</h1>
+                        <div
+                            class="monaco-code-block"
+                            data-monaco
+                            data-snippet="<!-- HTML: Native Dialog Element -->
+<button id='openSearchBtn'>🔍 Open Search</button>
+
+<dialog id='searchDialog' class='search-dialog'>
+  <div class='dialog-header'>
+    <h2>Search</h2>
+    <button id='closeSearchBtn'>✕</button>
+  </div>
+  <div class='dialog-body'>
+    <input type='text' placeholder='Search documentation...' />
+  </div>
+</dialog>
+"
+                            data-language="html"
+                            data-height="270px"
+                        ></div>
+
+                        <div
+                        class="monaco-code-block"
+                        data-monaco
+                        data-snippet="// JavaScript: Dialog Controls
+const openBtn = document.getElementById('openSearchBtn');
+const closeBtn = document.getElementById('closeSearchBtn');
+const dialog = document.getElementById('searchDialog');
+
+// Open dialog as modal
+openBtn.addEventListener('click', () => {
+dialog.showModal(); // Opens with backdrop and focus trap
+});
+
+// Close dialog
+closeBtn.addEventListener('click', () => {
+dialog.close(); // Closes and returns focus
+});
+
+// Close on backdrop click
+dialog.addEventListener('click', e => {
+if (e.target === dialog) {
+dialog.close();
+}
+});
+
+// Close on Escape key (built-in, but can be customized)
+dialog.addEventListener('keydown', e => {
+if (e.key === 'Escape') {
+dialog.close();
+}
+});
+
+// Optional: Handle dialog close event
+dialog.addEventListener('close', () => {
+console.log('Dialog closed');
+});"
+                        data-language="javascript"
+                        data-height="400px"
+                    ></div>
+                    </div>
+                </section>
+
+                <!-- Slide 36: Animated Dialog -->
+                <section class="slide">
+                    <div class="slide-content">
+                        
+                        <div class="dialog-demo-container">
+                            <button class="demo-button" id="openAnimatedSearchBtn">
+                                🔍 Open Animated Search
+                            </button>
+                            
+                            <dialog class="search-dialog animated-dialog" id="animatedSearchDialog">
+                                <div class="dialog-header">
+                                    <h2>Search</h2>
+                                    <button class="dialog-close" id="closeAnimatedSearchBtn">✕</button>
+                                </div>
+                                <div class="dialog-body">
+                                    <div class="search-input-container">
+                                        <input 
+                                            type="text" 
+                                            class="search-input" 
+                                            placeholder="Search documentation..."
+                                            id="animatedSearchInput"
+                                        />
+                                    </div>
+                                </div>
+                            </dialog>
                         </div>
-                        <!-- TODO: Add animated dialog demo -->
+                    </div>
+                </section>
+
+                <!-- Slide 36.5: Animated Dialog Code -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Animated Dialog with transition-behavior</h1>
+                        <div
+                            class="monaco-code-block"
+                            data-monaco
+                            data-snippet="/* CSS: Animated Dialog with transition-behavior: allow-discrete */
+.animated-dialog {
+  --present: 0;
+
+  /* Animated properties using --present custom property */
+  opacity: var(--present);
+  transform: scale(calc(0.8 + 0.2 * var(--present)))
+      translateY(calc(-20px * (1 - var(--present))));
+
+  /* Enable transitions on discrete properties */
+  transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      overlay 0.3s ease allow-discrete,
+      display 0.3s ease allow-discrete;
+  transition-behavior: allow-discrete;
+
+  &[open] {
+      --present: 1;
+      @starting-style {
+          --present: 0;
+      }
+
+      &::backdrop {
+          @starting-style {
+              --present: 0;
+          }
+      }
+  }
+
+  @starting-style {
+      --present: 0;
+  }
+
+  &::backdrop {
+      opacity: var(--present);
+      transition: opacity 0.3s ease;
+  }
+}"
+                            data-language="css"
+                            data-height="600px"
+                        ></div>
                     </div>
                 </section>
 

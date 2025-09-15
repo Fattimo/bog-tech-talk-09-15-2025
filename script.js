@@ -844,6 +844,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize ball spawner for @starting-style demo
     window.ballSpawner = new BallSpawner();
 
+    // Initialize dialog demos
+    window.dialogDemo = new DialogDemo();
+
     // Log initialization
     console.log('🚀 Presentation initialized successfully');
     console.log('📱 Touch navigation enabled');
@@ -877,6 +880,9 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(
         '   - window.ballSpawner.spawnMultipleBalls(5) // Spawn multiple balls with random arcs'
     );
+    console.log('🗨️ Dialog Demos: Two search dialog examples in the Dialog section');
+    console.log('   - First slide: Basic native dialog functionality');
+    console.log('   - Second slide: Enhanced with transition-behavior: allow-discrete animations');
 
     // Preload next slides for better performance
     setTimeout(() => {
@@ -1046,9 +1052,102 @@ class BallSpawner {
 
 // Ball spawner will be initialized when DOM is ready
 
+/**
+ * Dialog Demo Controller
+ */
+class DialogDemo {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.setupBasicDialog();
+        this.setupAnimatedDialog();
+    }
+
+    setupBasicDialog() {
+        const openBtn = document.getElementById('openSearchBtn');
+        const closeBtn = document.getElementById('closeSearchBtn');
+        const dialog = document.getElementById('searchDialog');
+        const searchInput = document.getElementById('searchInput');
+
+        if (openBtn && dialog) {
+            openBtn.addEventListener('click', () => {
+                dialog.showModal();
+                // Focus the search input when dialog opens
+                setTimeout(() => {
+                    if (searchInput) searchInput.focus();
+                }, 100);
+            });
+        }
+
+        if (closeBtn && dialog) {
+            closeBtn.addEventListener('click', () => {
+                dialog.close();
+            });
+        }
+
+        // Close on backdrop click
+        if (dialog) {
+            dialog.addEventListener('click', e => {
+                if (e.target === dialog) {
+                    dialog.close();
+                }
+            });
+
+            // Close on Escape key
+            dialog.addEventListener('keydown', e => {
+                if (e.key === 'Escape') {
+                    dialog.close();
+                }
+            });
+        }
+    }
+
+    setupAnimatedDialog() {
+        const openBtn = document.getElementById('openAnimatedSearchBtn');
+        const closeBtn = document.getElementById('closeAnimatedSearchBtn');
+        const dialog = document.getElementById('animatedSearchDialog');
+        const searchInput = document.getElementById('animatedSearchInput');
+
+        if (openBtn && dialog) {
+            openBtn.addEventListener('click', () => {
+                dialog.showModal();
+                // Focus the search input when dialog opens
+                setTimeout(() => {
+                    if (searchInput) searchInput.focus();
+                }, 150); // Slightly longer delay for animation
+            });
+        }
+
+        if (closeBtn && dialog) {
+            closeBtn.addEventListener('click', () => {
+                dialog.close();
+            });
+        }
+
+        // Close on backdrop click
+        if (dialog) {
+            dialog.addEventListener('click', e => {
+                if (e.target === dialog) {
+                    dialog.close();
+                }
+            });
+
+            // Close on Escape key
+            dialog.addEventListener('keydown', e => {
+                if (e.key === 'Escape') {
+                    dialog.close();
+                }
+            });
+        }
+    }
+}
+
 // Export for potential external use
 window.PresentationAPI = {
     SlideController,
     animateAccordions,
-    BallSpawner
+    BallSpawner,
+    DialogDemo
 };
