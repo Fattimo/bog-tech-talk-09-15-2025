@@ -203,12 +203,36 @@ class SlideController {
             // Determine animation direction based on slide navigation
             const animationType = this.getSlideAnimationType(slideNumber);
 
-            this.customViewTransition(() => {
+            const transition = this.customViewTransition(() => {
                 activeSlide.forEach(slide => {
                     slide.classList.remove('active');
                 });
                 targetSlide.classList.add('active');
             }, animationType);
+
+            // Handle post-transition effects for specific animations
+            if (animationType === 'elementSpecific' && transition) {
+                transition.finished
+                    .then(() => {
+                        const testElement = document.querySelector('.test-body-first');
+                        if (testElement) {
+                            testElement.classList.add('scaled-up');
+                        }
+                    })
+                    .catch(() => {
+                        // Fallback if transition fails
+                        const testElement = document.querySelector('.test-body-first');
+                        if (testElement) {
+                            testElement.classList.add('scaled-up');
+                        }
+                    });
+            } else {
+                // Remove scaled-up class when navigating away from the element-specific slide
+                const testElement = document.querySelector('.test-body-first');
+                if (testElement) {
+                    testElement.classList.remove('scaled-up');
+                }
+            }
         }
     }
 
@@ -253,7 +277,7 @@ class SlideController {
         // Fallback for browsers that don't support this API
         if (!document.startViewTransition) {
             updateCallback();
-            return;
+            return Promise.resolve();
         }
 
         // Create the view transition
@@ -265,6 +289,9 @@ class SlideController {
         transition.ready.then(() => {
             this.applyTransitionAnimation(transition, animationType);
         });
+
+        // Return the transition for promise handling
+        return transition;
     }
 
     applyTransitionAnimation(transition, animationType) {
@@ -277,6 +304,21 @@ class SlideController {
                 break;
             case 'slideRight':
                 this.slideRightAnimation();
+                break;
+            case 'slideUp':
+                this.slideUpAnimation();
+                break;
+            case 'wipeLeft':
+                this.wipeLeftAnimation();
+                break;
+            case 'rotatingCircle':
+                this.rotatingCircleAnimation();
+                break;
+            case 'fadeScale':
+                this.fadeScaleAnimation();
+                break;
+            case 'elementSpecific':
+                this.elementSpecificAnimation();
                 break;
             case 'clipPathSlideLeft':
                 this.clipPathSlideLeftAnimation();
@@ -420,6 +462,127 @@ class SlideController {
                 pseudoElement: '::view-transition-old(root)'
             }
         );
+    }
+
+    slideUpAnimation() {
+        // Animate the old view sliding out upward
+        document.documentElement.animate(
+            {
+                transform: ['translateY(0)', 'translateY(-100%)']
+            },
+            {
+                duration: 600,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-old(root)'
+            }
+        );
+
+        // Animate the new view sliding in from below
+        document.documentElement.animate(
+            {
+                transform: ['translateY(100%)', 'translateY(0)']
+            },
+            {
+                duration: 600,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-new(root)'
+            }
+        );
+    }
+
+    wipeLeftAnimation() {
+        // Simple and reliable wipe from right to left
+        document.documentElement.animate(
+            {
+                clipPath: ['inset(0 0 0 100%)', 'inset(0 0 0 0)']
+            },
+            {
+                duration: 500,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-new(root)'
+            }
+        );
+
+        // Keep old view visible until wiped away
+        document.documentElement.animate(
+            {
+                opacity: [1, 1]
+            },
+            {
+                duration: 500,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-old(root)'
+            }
+        );
+    }
+
+    rotatingCircleAnimation() {
+        // Get current mouse position, or fallback to center of screen
+        const x = this.mouseX ?? window.innerWidth / 2;
+        const y = this.mouseY ?? window.innerHeight / 2;
+
+        // Calculate the distance to the furthest corner
+        const endRadius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+        );
+
+        // Create a rotating circular reveal with spin effect
+        document.documentElement.animate(
+            [
+                {
+                    clipPath: `circle(0px at ${x}px ${y}px)`,
+                    transform: 'rotate(0deg)'
+                },
+                {
+                    clipPath: `circle(${endRadius * 0.3}px at ${x}px ${y}px)`,
+                    transform: 'rotate(180deg)'
+                },
+                {
+                    clipPath: `circle(${endRadius}px at ${x}px ${y}px)`,
+                    transform: 'rotate(360deg)'
+                }
+            ],
+            {
+                duration: 1000,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                pseudoElement: '::view-transition-new(root)'
+            }
+        );
+    }
+
+    fadeScaleAnimation() {
+        // Fade out old view while scaling down slightly
+        document.documentElement.animate(
+            {
+                opacity: [1, 0],
+                transform: ['scale(1)', 'scale(0.95)']
+            },
+            {
+                duration: 300,
+                easing: 'cubic-bezier(0.4, 0, 0.6, 1)',
+                pseudoElement: '::view-transition-old(root)'
+            }
+        );
+
+        // Fade in new view while scaling up from slightly smaller
+        document.documentElement.animate(
+            {
+                opacity: [0, 1],
+                transform: ['scale(1.05)', 'scale(1)']
+            },
+            {
+                duration: 400,
+                delay: 150,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-new(root)'
+            }
+        );
+    }
+
+    elementSpecificAnimation() {
+        // Element-specific animations are now handled in the main transition logic
+        // This allows for proper promise-based timing
     }
 
     updateUI() {
@@ -689,7 +852,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🎨 Monaco Editor: VS Code-style code blocks with syntax highlighting');
     console.log('💡 Console commands available:');
     console.log(
-        '   - Available transitions: slideLeft, slideRight, circularReveal, clipPathSlideLeft, clipPathSlideRight'
+        '   - Available transitions: slideLeft, slideRight, slideUp, circularReveal, wipeLeft, rotatingCircle, fadeScale, elementSpecific, clipPathSlideLeft, clipPathSlideRight'
     );
     console.log(
         '   - Add data-transition-next="circularReveal" to slide elements for custom transitions'

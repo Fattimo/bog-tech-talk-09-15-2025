@@ -1257,119 +1257,51 @@ oklch(0.7 0.15 240)"
                 <!-- Slide 22: View Transitions Title -->
                 <section
                     class="slide"
-                    data-transition-next="circularReveal"
+                    data-transition-next="slideUp"
                     data-transition-prev="circularReveal"
                 >
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">View Transitions API</h1>
-                        <h2 class="slide-subtitle">Smooth Page Transitions</h2>
-                        <div class="slide-meta">
-                            <p>Native Browser Animation Between States</p>
-                            <p>No JavaScript Animation Libraries Required</p>
-                            <p
-                                style="
-                                    margin-top: 1rem;
-                                    padding: 0.5rem;
-                                    background: var(--pylon-gray-100);
-                                    border-radius: var(--pylon-radius-small);
-                                    font-size: 0.9rem;
-                                "
-                            >
-                                💡 <strong>Demo Feature:</strong> These slides use circular reveal
-                                transitions
-                            </p>
-                        </div>
                     </div>
                 </section>
 
-                <!-- Slide 23: View Transitions Title (Transitioned) -->
+                <!-- Slide 23: View Transitions API - Slide Up -->
                 <section
                     class="slide"
                     data-transition-next="circularReveal"
-                    data-transition-prev="circularReveal"
+                    data-transition-prev="slideUp"
                 >
                     <div class="slide-content title-slide">
-                        <h1 class="slide-title">🎬 View Transitions in Action</h1>
-                        <h2 class="slide-subtitle">Seamless State Changes</h2>
-                        <div class="slide-meta">
-                            <p>This slide transitioned smoothly from the previous one</p>
-                            <p>Using document.startViewTransition()</p>
-                        </div>
+                        <h1 class="slide-title">🚀 1. View Transitions API</h1>
                     </div>
                 </section>
 
-                <!-- Slide 24: Another View Transition Title -->
+                <!-- Slide 24: View Transitions API - Rotating Circle -->
                 <section
                     class="slide"
-                    data-transition-next="circularReveal"
-                    data-transition-prev="circularReveal"
+                    data-transition-next="rotatingCircle"
+                    data-transition-prev="rotatingCircle"
                 >
                     <div class="slide-content title-slide">
-                        <h1 class="slide-title">✨ Magic of View Transitions</h1>
-                        <h2 class="slide-subtitle">Browser-Native Animations</h2>
-                        <div class="slide-meta">
-                            <p>Each slide transition is handled by the browser</p>
-                            <p>Smooth, performant, and accessible</p>
-                        </div>
+                        <h1 class="slide-title">🌀 2. View Transitions API</h1>
                     </div>
                 </section>
 
-                <!-- Slide 25: View Transitions Code -->
-                <section
-                    class="slide"
-                    data-transition-next="circularReveal"
-                    data-transition-prev="circularReveal"
-                >
-                    <div class="slide-content">
-                        <h1 class="slide-title">What's Happening Behind the Scenes</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>JavaScript API</h3>
-                                <div class="code-example">
-                                    <pre><code>// Start a view transition
-const transition = document.startViewTransition(() => {
-  // Update the DOM
-  targetSlide.classList.add('active');
-  currentSlide.classList.remove('active');
-});
-
-// Optional: customize the transition
-transition.ready.then(() => {
-  // Apply custom animations to pseudo-elements
-  document.documentElement.animate({
-    clipPath: ['circle(0)', 'circle(100%)']
-  }, {
-    duration: 500,
-    pseudoElement: '::view-transition-new(root)'
-  });
-});</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>CSS Pseudo-Elements</h3>
-                                <div class="code-example">
-                                    <pre><code>/* Browser automatically creates these */
-::view-transition
-::view-transition-group(*)
-::view-transition-image-pair(*)
-::view-transition-old(*)
-::view-transition-new(*)
-
-/* You can style them */
-::view-transition-old(root) {
-  animation: slide-out 0.3s ease-out;
-}
-
-::view-transition-new(root) {
-  animation: slide-in 0.3s ease-in;
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Slide 27: View Transitions API - Element Specific -->
+                <section class="slide" data-transition-next="elementSpecific">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">🎯 3. View Transitions API</h1>
                     </div>
                 </section>
 
-                <!-- Slide 26: Button Exploration -->
+                <!-- Slide 27: View Transitions API - Element Specific -->
+                <section class="slide" data-transition-next="elementSpecific">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title test-body-first">🎯 3. View Transitions API</h1>
+                    </div>
+                </section>
+
+                <!-- Slide 28: Button Exploration -->
                 <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Button Exploration</h1>
