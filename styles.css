@@ -16,9 +16,16 @@
     --color-magenta: oklch(0.7 0.2 300);
 
     /* Primary Brand Colors from Pylon */
-    --pylon-primary-blue: #0066ff;
-    --pylon-primary-purple: #6366f1;
-    --pylon-primary-teal: #06b6d4;
+    --pylon-primary-blue: #4f46e5;
+    --pylon-primary-purple: #7c3aed;
+    --pylon-primary-teal: #9333ea;
+    --pylon-accent-purple: #6d28d9;
+    --pylon-light-purple: #c4b5fd;
+
+    /* Darker gradient colors for better text contrast */
+    --pylon-text-gradient-start: #4338ca;
+    --pylon-text-gradient-mid: #6d28d9;
+    --pylon-text-gradient-end: #7e22ce;
 
     /* Neutral Colors */
     --pylon-gray-50: #f8fafc;
@@ -41,12 +48,19 @@
     --pylon-gradient-primary: linear-gradient(
         135deg,
         var(--pylon-primary-blue) 0%,
-        var(--pylon-primary-purple) 100%
+        var(--pylon-primary-purple) 50%,
+        var(--pylon-primary-teal) 100%
     );
     --pylon-gradient-secondary: linear-gradient(
         135deg,
-        var(--pylon-primary-teal) 0%,
-        var(--pylon-primary-blue) 100%
+        var(--pylon-primary-purple) 0%,
+        var(--pylon-primary-teal) 100%
+    );
+    --pylon-gradient-text: linear-gradient(
+        135deg,
+        var(--pylon-text-gradient-start) 0%,
+        var(--pylon-text-gradient-mid) 50%,
+        var(--pylon-text-gradient-end) 100%
     );
     --pylon-gradient-neutral: linear-gradient(
         135deg,
@@ -55,10 +69,10 @@
     );
 
     /* Isometric Shadows */
-    --pylon-shadow-isometric: 8px 8px 0px var(--pylon-primary-blue);
-    --pylon-shadow-isometric-hover: 12px 12px 0px var(--pylon-primary-blue);
-    --pylon-shadow-isometric-small: 4px 4px 0px var(--pylon-primary-purple);
-    --pylon-shadow-card: 0 20px 40px rgba(6, 102, 255, 0.15);
+    --pylon-shadow-isometric: 8px 8px 0px var(--pylon-primary-purple);
+    --pylon-shadow-isometric-hover: 4px 4px 0px var(--pylon-primary-purple);
+    --pylon-shadow-isometric-small: 4px 4px 0px var(--pylon-primary-teal);
+    --pylon-shadow-card: 0 20px 40px rgba(139, 92, 246, 0.15);
 
     /* Border Radius */
     --pylon-radius-small: 8px;
@@ -74,6 +88,7 @@ html {
 
 body {
     font-family:
+        'Space Grotesk',
         'Inter',
         -apple-system,
         BlinkMacSystemFont,
@@ -152,15 +167,17 @@ body {
     position: absolute;
     left: 1rem;
     bottom: 1rem;
-    background: var(--pylon-gradient-primary);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: var(--pylon-radius-medium);
     font-weight: 700;
     font-size: 0.9rem;
-    border: 2px solid var(--pylon-primary-blue);
-    box-shadow: var(--pylon-shadow-isometric-small);
     z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    view-transition-name: progress-logo;
 }
 
 /* Progress Bar Navigation */
@@ -171,46 +188,60 @@ body {
     display: flex;
     gap: 0.5rem;
     z-index: 1001;
+
+    view-transition-name: progress-navigation;
 }
 
 .nav-arrow {
     width: 40px;
     height: 40px;
-    background: var(--pylon-gradient-primary);
-    color: white;
-    border: 2px solid var(--pylon-primary-blue);
-    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--pylon-primary-blue);
+    border: 1px solid var(--pylon-primary-purple);
+    border-radius: 8px;
     font-size: 1.2rem;
     font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--pylon-shadow-isometric-small);
+    box-shadow: var(--pylon-shadow-isometric-hover);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
     user-select: none;
 }
 
 .nav-arrow:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--pylon-shadow-isometric-hover);
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+    border-color: var(--pylon-primary-blue);
 }
 
 .nav-arrow:active {
     transform: translateY(0);
-    box-shadow: var(--pylon-shadow-isometric-small);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .nav-arrow:focus-visible {
-    outline: 2px solid #667eea;
+    outline: 2px solid var(--pylon-primary-blue);
     outline-offset: 2px;
 }
 
 .nav-arrow:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
     transform: none;
-    box-shadow: var(--pylon-shadow-isometric-small);
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--pylon-gray-400);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.nav-arrow:disabled:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* Slide Container */
@@ -274,7 +305,7 @@ body {
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 800;
     margin-bottom: 1.5rem;
-    background: var(--pylon-gradient-primary);
+    background: var(--pylon-gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1408,7 +1439,7 @@ body {
 .fluid-text {
     font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 800;
-    background: var(--pylon-gradient-primary);
+    background: var(--pylon-gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1466,6 +1497,7 @@ body {
 
 .font-weight-demo p {
     font-family:
+        'Space Grotesk',
         'Inter',
         -apple-system,
         BlinkMacSystemFont,
@@ -1518,7 +1550,7 @@ body {
     fill: var(--pylon-primary-blue);
     font-size: 18px;
     font-weight: 600;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
 }
 
 /* CSS Curve Demo */
@@ -1536,7 +1568,7 @@ body {
     font-size: 2rem;
     font-weight: bold;
     letter-spacing: 0.2em;
-    background: var(--pylon-gradient-primary);
+    background: var(--pylon-gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

@@ -4,6 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>bog talk</title>
+        
+        <!-- Space Grotesk Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+        
         <link rel="stylesheet" href="styles.css" />
         <meta name="view-transition" content="same-origin" />
 
@@ -17,9 +23,9 @@
                 <!-- Slide 1: Title -->
                 <section class="slide active">
                     <div class="slide-content title-slide">
-                        <h1 class="slide-title">Yay Modern CSS</h1>
+                        <h1 class="slide-title">Creative CSS</h1>
                         <h2 class="slide-subtitle">
-                            expanding your knowledge of the browser, and your potential as a builder
+                            Expanding your knowledge of the browser, and your potential as a builder
                         </h2>
                         <div class="slide-meta">
                             <p>Matt Chen • Pylon • Sep 15, 2025</p>
@@ -1378,10 +1384,168 @@ if (document.startViewTransition) {
                     </div>
                 </section>
 
-                <!-- Slide 30: Button Exploration -->
+                <!-- SECTION 1: TRANSITIONS -->
+
+                <!-- Slide 30: Transitions Title -->
                 <section class="slide">
                     <div class="slide-content title-slide">
-                        <h1 class="slide-title">Button Exploration</h1>
+                        <h1 class="slide-title">Transitions</h1>
+                        <h2 class="slide-subtitle">Modern Animation Capabilities</h2>
+                        <div class="slide-meta">
+                            <p>interpolate-size, @starting-style, and more</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 31: interpolate-size -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">interpolate-size</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>🔄 Animate to Auto</h3>
+                                <p>
+                                    Enable smooth transitions to `auto` values like height, width, and flex-basis.
+                                    No more JavaScript height calculations!
+                                </p>
+                            </div>
+                        </div>
+                        <!-- TODO: Add demo and code examples -->
+                    </div>
+                </section>
+
+                <!-- Slide 32: @starting-style -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">@starting-style</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>✨ Entry Animations</h3>
+                                <p>
+                                    Define initial styles for elements entering the DOM, enabling smooth
+                                    animations from display: none and dynamic content.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- TODO: Add demo and code examples -->
+                    </div>
+                </section>
+
+                <!-- Slide 33: Transitions CanIUse -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Transitions Browser Support</h1>
+                        <div style="text-align: center; margin-top: 2rem">
+                            <!-- TODO: Add CanIUse screenshot for transitions -->
+                            <div class="demo-card">
+                                <h3>📊 Browser Support</h3>
+                                <p>CanIUse data for interpolate-size and @starting-style</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: DIALOG, POPOVER, AND ANCHOR POSITIONING -->
+
+                <!-- Slide 34: Dialog, Popover, and Anchor Positioning Title -->
+                <section class="slide">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">Dialog, Popover & Anchor Positioning</h1>
+                        <h2 class="slide-subtitle">Native HTML Layer Management</h2>
+                        <div class="slide-meta">
+                            <p>Top-layer elements and positioning</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 35: Dialog Basics -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Dialog Basics with Nested Dialogs</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>🗨️ Native Dialogs</h3>
+                                <p>
+                                    HTML dialog elements with backdrop, focus management, and nested dialog support.
+                                    No more z-index battles!
+                                </p>
+                            </div>
+                        </div>
+                        <!-- TODO: Add nested dialog demo -->
+                    </div>
+                </section>
+
+                <!-- Slide 36: Animate Dialog from Display None -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Animate Dialog from Display None</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>🎭 Smooth Transitions</h3>
+                                <p>
+                                    Combine @starting-style with transition-behavior to animate dialogs
+                                    smoothly in and out of display: none.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- TODO: Add animated dialog demo -->
+                    </div>
+                </section>
+
+                <!-- Slide 37: Popover Basics -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Popover Basics</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>💬 Popover API</h3>
+                                <p>
+                                    Native popover elements with automatic positioning, focus management,
+                                    and light dismiss behavior.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- TODO: Add popover demo -->
+                    </div>
+                </section>
+
+                <!-- Slide 38: Anchor Positioned Nested Popover -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Anchor Positioned Nested Popover</h1>
+                        <div class="content-grid">
+                            <div class="feature-card">
+                                <h3>⚓ Anchor Positioning</h3>
+                                <p>
+                                    Draggable button with nested popovers that stay anchored using
+                                    CSS anchor positioning. No JavaScript positioning required!
+                                </p>
+                            </div>
+                        </div>
+                        <!-- TODO: Add draggable button with nested popover demo -->
+                    </div>
+                </section>
+
+                <!-- Slide 39: Dialog/Popover CanIUse -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Dialog & Popover Browser Support</h1>
+                        <div style="text-align: center; margin-top: 2rem">
+                            <!-- TODO: Add CanIUse screenshots -->
+                            <div class="demo-card">
+                                <h3>📊 Browser Support</h3>
+                                <p>CanIUse data for Dialog, Popover, and Anchor Positioning APIs</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: BUTTONS -->
+
+                <!-- Slide 40: Buttons Title -->
+                <section class="slide">
+                    <div class="slide-content title-slide">
+                        <h1 class="slide-title">Buttons</h1>
                         <h2 class="slide-subtitle">Interactive Path Animations</h2>
                         <div class="slide-meta">
                             <p>Using CSS Path Functions & Mouse Tracking</p>
@@ -1390,955 +1554,118 @@ if (document.startViewTransition) {
                     </div>
                 </section>
 
-                <!-- Slide 27: Glowing Path -->
+                <!-- Slide 41: Button Demos -->
                 <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">Glowing Path Using Path Functions</h1>
+                        <h1 class="slide-title">Advanced Button Animations</h1>
                         <div class="content-grid">
                             <div class="feature-card">
-                                <h3>SVG Path Animation</h3>
-                                <div class="demo-area">
-                                    <div class="path-demo">
-                                        <svg width="300" height="200" class="path-svg">
-                                            <path
-                                                d="M50,100 Q150,50 250,100"
-                                                stroke="var(--pylon-primary-blue)"
-                                                stroke-width="3"
-                                                fill="none"
-                                                class="glowing-path"
-                                            />
-                                            <circle
-                                                r="8"
-                                                fill="var(--pylon-primary-blue)"
-                                                class="path-dot"
-                                            >
-                                                <animateMotion dur="3s" repeatCount="indefinite">
-                                                    <mpath href="#glow-path" />
-                                                </animateMotion>
-                                            </circle>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>.glowing-path {
-  filter: drop-shadow(0 0 10px currentColor);
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: drawPath 3s ease-in-out infinite;
-}
-
-@keyframes drawPath {
-  to { stroke-dashoffset: 0; }
-}</code></pre>
-                                </div>
+                                <h3>✨ Interactive Effects</h3>
+                                <p>
+                                    Glowing paths, mouse tracking, and dynamic animations using
+                                    modern CSS features like @property and path functions.
+                                </p>
                             </div>
                         </div>
+                        <!-- TODO: Add button animation demos -->
                     </div>
                 </section>
 
-                <!-- Slide 28: Expose Path Based on Mouse -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Expose Path Based on --x and --y</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Mouse-Reactive Path</h3>
-                                <div class="demo-area">
-                                    <div class="mouse-path-demo" id="mousePathDemo">
-                                        <div class="path-revealer">
-                                            Move mouse here to reveal path
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>.path-revealer {
-  background: linear-gradient(
-    45deg,
-    transparent,
-    var(--pylon-primary-blue)
-  );
-  clip-path: circle(50px at var(--x, 50%) var(--y, 50%));
-  transition: clip-path 0.3s ease;
-}
+                <!-- SECTION 4: PYLON -->
 
-/* JavaScript sets CSS variables */
-element.style.setProperty('--x', `${e.clientX}px`);
-element.style.setProperty('--y', `${e.clientY}px`);</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 29: Masking Effect -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Masking Effect</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>CSS Mask with Mouse Interaction</h3>
-                                <div class="demo-area">
-                                    <div class="mask-demo" id="maskDemo">
-                                        <div class="masked-content">
-                                            <h4>Hidden Content Revealed</h4>
-                                            <p>
-                                                This content is revealed through CSS masking based
-                                                on mouse position
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>.masked-content {
-  mask: radial-gradient(
-    circle at var(--x, 50%) var(--y, 50%),
-    black 100px,
-    transparent 150px
-  );
-  background: var(--pylon-gradient-primary);
-  color: white;
-  padding: 2rem;
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 30: Advanced Button Animation -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Advanced Button Animation</h1>
-                        <div class="content-grid">
-                            <p
-                                class="codepen"
-                                data-height="400"
-                                data-default-tab="result"
-                                data-slug-hash="QWYPaax"
-                                data-pen-title="Magnetic Buttons"
-                                data-user="jh3y"
-                                style="
-                                    height: 400px;
-                                    box-sizing: border-box;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    border: 2px solid var(--pylon-primary-blue);
-                                    margin: 1em 0;
-                                    padding: 1em;
-                                    border-radius: var(--pylon-radius-large);
-                                    background: var(--pylon-gray-50);
-                                "
-                            >
-                                <span
-                                    >See the Pen
-                                    <a href="https://codepen.io/jh3y/pen/QWYPaax">
-                                        Magnetic Buttons</a
-                                    >
-                                    by Jhey (<a href="https://codepen.io/jh3y">@jh3y</a>) on
-                                    <a href="https://codepen.io">CodePen</a>.</span
-                                >
-                            </p>
-                            <script
-                                async
-                                src="https://public.codepenassets.com/embed/index.js"
-                            ></script>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 31: @property Exploration -->
+                <!-- Slide 42: Pylon Title -->
                 <section class="slide">
                     <div class="slide-content title-slide">
-                        <h1 class="slide-title">@property Exploration</h1>
-                        <h2 class="slide-subtitle">Custom CSS Properties with Superpowers</h2>
-                        <div class="slide-meta">
-                            <p>Type-Safe Custom Properties</p>
-                            <p>Smooth Animations & Interpolation</p>
-                        </div>
+                        <h1 class="slide-title">Pylon</h1>
+                        <h2 class="slide-subtitle">Building the Future</h2>
                     </div>
                 </section>
 
-                <!-- Slide 32: Gradient Animation -->
+                <!-- Slide 43: Hawaii -->
                 <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">Gradient Animation with @property</h1>
+                        <h1 class="slide-title">Hawaii</h1>
                         <div class="content-grid">
                             <div class="feature-card">
-                                <h3>Smooth Gradient Transitions</h3>
-                                <div class="demo-area">
-                                    <div class="gradient-demo">
-                                        <div class="animated-gradient">
-                                            Animated Gradient Background
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>@property --gradient-angle {
-  syntax: '&lt;angle&gt;';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-.animated-gradient {
-  background: linear-gradient(
-    var(--gradient-angle),
-    var(--pylon-primary-blue),
-    var(--pylon-primary-purple)
-  );
-  animation: rotateGradient 3s linear infinite;
-}
-
-@keyframes rotateGradient {
-  to { --gradient-angle: 360deg; }
-}</code></pre>
-                                </div>
+                                <h3>🌺 Paradise Found</h3>
+                                <p>
+                                    <!-- TODO: Add Hawaii content -->
+                                    Beautiful islands, amazing culture, and the perfect place to innovate.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Slide 33: Smooth Number Counter -->
+                <!-- Slide 44: Velocity and Ownership -->
                 <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">Smooth Number Counter</h1>
+                        <h1 class="slide-title">Velocity & Ownership</h1>
+                        <h2 class="slide-subtitle">Sprint the Marathon</h2>
                         <div class="content-grid">
                             <div class="feature-card">
-                                <h3>CSS-Only Number Animation</h3>
-                                <div class="demo-area">
-                                    <div class="counter-demo">
-                                        <div class="number-counter" id="numberCounter">0</div>
-                                        <button class="demo-button" onclick="animateCounter()">
-                                            Count to 100
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>@property --num {
-  syntax: '&lt;integer&gt;';
-  initial-value: 0;
-  inherits: false;
-}
-
-.number-counter {
-  counter-reset: num var(--num);
-  animation: count 2s ease-in-out forwards;
-}
-
-.number-counter::before {
-  content: counter(num);
-}
-
-@keyframes count {
-  to { --num: 100; }
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 34: Stopwatch with @property -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Stopwatch with @property</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>CSS-Only Stopwatch</h3>
-                                <div class="demo-area">
-                                    <div class="stopwatch-demo">
-                                        <div class="stopwatch-display">00:00</div>
-                                        <div class="stopwatch-controls">
-                                            <button class="demo-button">Start</button>
-                                            <button class="secondary-btn">Reset</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>@property --seconds {
-  syntax: '&lt;integer&gt;';
-  initial-value: 0;
-  inherits: false;
-}
-
-.stopwatch-display {
-  counter-reset: sec var(--seconds);
-  animation: stopwatch 60s linear infinite paused;
-}
-
-.stopwatch-display::before {
-  content: counter(sec, decimal-leading-zero) ':00';
-}
-
-@keyframes stopwatch {
-  to { --seconds: 60; }
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 35: @starting-style -->
-                <section class="slide">
-                    <div class="slide-content title-slide">
-                        <h1 class="slide-title">@starting-style</h1>
-                        <h2 class="slide-subtitle">Entry Animations Made Simple</h2>
-                        <div class="slide-meta">
-                            <p>Define Initial Styles for New Elements</p>
-                            <p>Smooth Transitions from the Start</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 36: Generating DOM Elements -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Generating DOM Elements with Initial Style</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Elements Start with opacity: 0</h3>
-                                <div class="demo-area">
-                                    <div class="element-generator">
-                                        <button class="demo-button" onclick="addElement()">
-                                            Add Element
-                                        </button>
-                                        <div class="element-container" id="elementContainer"></div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>@starting-style {
-  .new-element {
-    opacity: 0;
-    transform: translateY(20px) scale(0.8);
-  }
-}
-
-.new-element {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition: all 0.5s ease;
-}
-
-/* JavaScript */
-const newEl = document.createElement('div');
-newEl.className = 'new-element';
-container.appendChild(newEl);</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 37: Interpolate Size and Auto Sizes -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Interpolate Size & Animating to Auto Sizes</h1>
-                        <div class="slide-meta" style="margin-bottom: 2rem">
-                            <p>
-                                📚 Reference:
-                                <a
-                                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size"
-                                    target="_blank"
-                                    style="
-                                        color: var(--pylon-primary-blue);
-                                        text-decoration: underline;
-                                    "
-                                >
-                                    MDN: interpolate-size
-                                </a>
-                            </p>
-                        </div>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Height: auto Animations</h3>
-                                <div class="demo-area">
-                                    <div class="auto-size-demo">
-                                        <div class="expandable-content" id="expandableContent">
-                                            <div class="content-header">
-                                                <h4>Click to expand</h4>
-                                            </div>
-                                            <div class="content-body">
-                                                <p>
-                                                    This content animates to its natural height
-                                                    using interpolate-size: allow-keywords
-                                                </p>
-                                                <p>No more JavaScript height calculations!</p>
-                                                <p>CSS can now smoothly animate to height: auto</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>/* Enable interpolation to auto */
-html {
-  interpolate-size: allow-keywords;
-}
-
-@starting-style {
-  .expandable-content .content-body {
-    height: 0;
-    opacity: 0;
-  }
-}
-
-.expandable-content .content-body {
-  height: auto;
-  opacity: 1;
-  transition: height 0.3s ease, opacity 0.3s ease;
-  overflow: hidden;
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 38: Animating Out of Display None -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Animating Out of Display None</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Smooth Transitions from display: none</h3>
-                                <div class="demo-area">
-                                    <div class="display-none-demo">
-                                        <button class="demo-button" onclick="toggleDisplay()">
-                                            Toggle Element
-                                        </button>
-                                        <div class="hidden-element" id="hiddenElement">
-                                            <h4>I was display: none!</h4>
-                                            <p>Now I can animate smoothly into view</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>@starting-style {
-  .hidden-element {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-}
-
-.hidden-element {
-  display: block;
-  opacity: 1;
-  transform: scale(1);
-  transition: all 0.4s ease;
-  transition-behavior: allow-discrete;
-}
-
-.hidden-element.hidden {
-  display: none;
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 39: Dialogs & Popovers -->
-                <section class="slide">
-                    <div class="slide-content title-slide">
-                        <h1 class="slide-title">Dialogs & Popovers</h1>
-                        <h2 class="slide-subtitle">Native HTML Layer Management</h2>
-                        <div class="slide-meta">
-                            <p>Beyond Z-Index Stacking Context Issues</p>
-                            <p>Built-in Accessibility & Focus Management</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 40: Dialogs & Z-Index Problems -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Dialogs & the Problem with Z-Index</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>❌ The Old Way: Z-Index Hell</h3>
-                                <div class="demo-area">
-                                    <div class="z-index-problem">
-                                        <div class="stacking-context">
-                                            <div class="high-z-index">z-index: 9999</div>
-                                            <div class="higher-z-index">z-index: 99999</div>
-                                            <div class="highest-z-index">z-index: 999999</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>/* Z-index arms race */
-.modal { z-index: 9999; }
-.tooltip { z-index: 99999; }
-.dropdown { z-index: 999999; }
-
-/* Still gets clipped by parent stacking context! */</code></pre>
-                                </div>
+                                <h3>🚀 Move Fast</h3>
+                                <p>
+                                    Maintain startup velocity while building for the long term.
+                                    Own your domain, ship quickly, iterate constantly.
+                                </p>
                             </div>
                             <div class="feature-card">
-                                <h3>✅ The New Way: Top Layer</h3>
-                                <div class="demo-area">
-                                    <div class="top-layer-demo">
-                                        <button class="demo-button" onclick="showDialog()">
-                                            Show Dialog
-                                        </button>
-                                        <dialog id="demoDialog" class="demo-dialog">
-                                            <h4>I'm in the top layer!</h4>
-                                            <p>
-                                                No z-index needed. I always appear above everything.
-                                            </p>
-                                            <button onclick="closeDialog()">Close</button>
-                                        </dialog>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>&lt;dialog id="myDialog"&gt;
-  &lt;h2&gt;Dialog Content&lt;/h2&gt;
-  &lt;button onclick="myDialog.close()"&gt;Close&lt;/button&gt;
-&lt;/dialog&gt;
-
-&lt;script&gt;
-myDialog.showModal(); // Moves to top layer
-&lt;/script&gt;</code></pre>
-                                </div>
+                                <h3>🎯 Think Long-term</h3>
+                                <p>
+                                    Sprint the marathon - move with urgency but build sustainable systems
+                                    and relationships that compound over time.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Slide 41: Popovers -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Popovers</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Native Popover API</h3>
-                                <div class="demo-area">
-                                    <div class="popover-demo">
-                                        <button class="demo-button" popovertarget="basicPopover">
-                                            Toggle Popover
-                                        </button>
-                                        <div id="basicPopover" popover class="demo-popover">
-                                            <h4>I'm a native popover!</h4>
-                                            <p>No JavaScript required for basic functionality</p>
-                                            <button
-                                                popovertarget="basicPopover"
-                                                popovertargetaction="hide"
-                                            >
-                                                Close
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>&lt;button popovertarget="myPopover"&gt;
-  Toggle Popover
-&lt;/button&gt;
+                <!-- SECTION 5: CREDITS -->
 
-&lt;div id="myPopover" popover&gt;
-  &lt;h3&gt;Popover Content&lt;/h3&gt;
-  &lt;p&gt;Automatically positioned in top layer&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 42: Anchor Positioning -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Anchor Positioning</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>CSS Anchor Positioning</h3>
-                                <div class="demo-area">
-                                    <div class="anchor-positioning-demo">
-                                        <button class="demo-button anchor-button" id="anchorButton">
-                                            I'm an anchor ⚓
-                                        </button>
-                                        <div class="anchored-popover" popover id="anchoredPopover">
-                                            <h4>Anchored to button!</h4>
-                                            <p>
-                                                I position myself relative to the anchor
-                                                automatically
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>.anchor-button {
-  anchor-name: --my-anchor;
-}
-
-.anchored-popover {
-  position: absolute;
-  top: anchor(--my-anchor bottom);
-  left: anchor(--my-anchor center);
-  translate: -50% 0;
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 43: Double Nested Menu Demo -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Demo: Double Nested Menu</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Complex Menu System</h3>
-                                <div class="demo-area">
-                                    <div class="nested-menu-demo">
-                                        <button class="demo-button" popovertarget="mainMenu">
-                                            Main Menu
-                                        </button>
-                                        <div id="mainMenu" popover class="demo-menu">
-                                            <h4>Main Menu</h4>
-                                            <button class="menu-item" popovertarget="subMenu1">
-                                                Submenu 1 →
-                                            </button>
-                                            <button class="menu-item" popovertarget="subMenu2">
-                                                Submenu 2 →
-                                            </button>
-                                            <button class="menu-item">Simple Item</button>
-                                        </div>
-                                        <div id="subMenu1" popover class="demo-submenu">
-                                            <h4>Submenu 1</h4>
-                                            <button class="menu-item">Sub Item 1</button>
-                                            <button class="menu-item">Sub Item 2</button>
-                                            <button class="menu-item" popovertarget="deepMenu">
-                                                Deep Menu →
-                                            </button>
-                                        </div>
-                                        <div id="subMenu2" popover class="demo-submenu">
-                                            <h4>Submenu 2</h4>
-                                            <button class="menu-item">Another Item</button>
-                                            <button class="menu-item">Final Item</button>
-                                        </div>
-                                        <div id="deepMenu" popover class="demo-submenu">
-                                            <h4>Deep Menu</h4>
-                                            <button class="menu-item">Deep Item 1</button>
-                                            <button class="menu-item">Deep Item 2</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>&lt;button popovertarget="mainMenu"&gt;Menu&lt;/button&gt;
-&lt;div id="mainMenu" popover&gt;
-  &lt;button popovertarget="subMenu"&gt;Submenu&lt;/button&gt;
-&lt;/div&gt;
-&lt;div id="subMenu" popover&gt;
-  &lt;!-- Nested menu content --&gt;
-&lt;/div&gt;
-
-/* All positioning handled automatically! */</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 44: Typography -->
-                <section class="slide">
-                    <div class="slide-content title-slide">
-                        <h1 class="slide-title">Typography</h1>
-                        <h2 class="slide-subtitle">Modern Web Typography</h2>
-                        <div class="slide-meta">
-                            <p>Variable Fonts & Advanced Text Effects</p>
-                            <p>Beyond Basic Font Styling</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 45: Variable Size Typography -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Variable Size Typography</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Fluid Typography with clamp()</h3>
-                                <div class="demo-area">
-                                    <div class="fluid-text-demo">
-                                        <h2 class="fluid-text">Responsive Text</h2>
-                                        <p class="fluid-body">
-                                            This text scales smoothly between minimum and maximum
-                                            sizes based on viewport width.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  /* min: 2rem, preferred: 5vw, max: 4rem */
-}
-
-p {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  line-height: clamp(1.4, 1.5, 1.6);
-}</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>Container Query Typography</h3>
-                                <div class="demo-area">
-                                    <div class="container-query-demo">
-                                        <div class="text-container">
-                                            <h3>Container-Based Text</h3>
-                                            <p>
-                                                This text adjusts based on its container size, not
-                                                the viewport.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>.text-container {
-  container-type: inline-size;
-}
-
-@container (min-width: 300px) {
-  h3 { font-size: 1.5rem; }
-}
-
-@container (min-width: 500px) {
-  h3 { font-size: 2rem; }
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 46: Variable Fonts -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Variable Fonts</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Single Font, Multiple Styles</h3>
-                                <div class="demo-area">
-                                    <div class="variable-font-demo">
-                                        <div class="font-weight-demo">
-                                            <p style="font-weight: 100">Ultra Light (100)</p>
-                                            <p style="font-weight: 300">Light (300)</p>
-                                            <p style="font-weight: 400">Regular (400)</p>
-                                            <p style="font-weight: 600">Semi Bold (600)</p>
-                                            <p style="font-weight: 800">Extra Bold (800)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
-.variable-text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 450; /* Any value between 100-900 */
-  font-variation-settings: 'wght' 450;
-}</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>Custom Axes</h3>
-                                <div class="demo-area">
-                                    <div class="custom-axes-demo">
-                                        <p class="width-demo">Width Variations</p>
-                                        <p class="slant-demo">Slant Variations</p>
-                                        <p class="optical-demo">Optical Size</p>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>/* Custom font variation axes */
-.text {
-  font-variation-settings: 
-    'wdth' 125,  /* Width */
-    'slnt' -10,  /* Slant */
-    'opsz' 48;   /* Optical Size */
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 47: Typography on an Arc -->
-                <section class="slide">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Typography on an Arc</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>CSS Path-Based Text</h3>
-                                <div class="demo-area">
-                                    <div class="arc-text-demo">
-                                        <svg width="400" height="200" class="arc-text-svg">
-                                            <defs>
-                                                <path
-                                                    id="arc-path"
-                                                    d="M 50,150 A 150,150 0 0,1 350,150"
-                                                    fill="none"
-                                                    stroke="#0066ff"
-                                                    stroke-width="2"
-                                                    opacity="0.3"
-                                                />
-                                            </defs>
-                                            <text class="arc-text">
-                                                <textPath href="#arc-path">
-                                                    Typography following a curved path!
-                                                </textPath>
-                                            </text>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>&lt;svg&gt;
-  &lt;defs&gt;
-    &lt;path id="arc-path" d="M 50,150 A 150,150 0 0,1 350,150" /&gt;
-  &lt;/defs&gt;
-  &lt;text&gt;
-    &lt;textPath href="#arc-path"&gt;
-      Text following the curve!
-    &lt;/textPath&gt;
-  &lt;/text&gt;
-&lt;/svg&gt;</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>CSS-Only Curved Text</h3>
-                                <div class="demo-area">
-                                    <div class="css-curve-demo">
-                                        <div class="curved-text">CURVED TEXT</div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>.curved-text {
-  transform-origin: center;
-  transform: rotate(-20deg) 
-             perspective(200px) 
-             rotateX(30deg);
-  font-size: 2rem;
-  font-weight: bold;
-  letter-spacing: 0.2em;
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 48: Pylon Shill -->
-                <section class="slide">
-                    <div class="slide-content title-slide">
-                        <h1 class="slide-title">🚀 Pylon</h1>
-                        <h2 class="slide-subtitle">The Developer Platform for Discord</h2>
-                        <div class="slide-meta">
-                            <p>Build powerful Discord bots with ease</p>
-                            <p>Type-safe, scalable, and developer-friendly</p>
-                        </div>
-                        <div class="final-content">
-                            <div class="links">
-                                <a
-                                    href="https://pylon.bot"
-                                    target="_blank"
-                                    class="resource-link"
-                                    style="
-                                        background: var(--pylon-gradient-primary);
-                                        color: white;
-                                        border-color: var(--pylon-primary-blue);
-                                    "
-                                >
-                                    🌐 pylon.bot
-                                </a>
-                                <a
-                                    href="https://github.com/pylonbot"
-                                    target="_blank"
-                                    class="resource-link"
-                                >
-                                    🐙 GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 49: Bits of Good Shill -->
-                <section class="slide">
-                    <div class="slide-content title-slide">
-                        <h1 class="slide-title">💻 Bits of Good</h1>
-                        <h2 class="slide-subtitle">Georgia Tech's Student-Run Nonprofit</h2>
-                        <div class="slide-meta">
-                            <p>Building technology for social impact</p>
-                            <p>Empowering nonprofits through innovative solutions</p>
-                        </div>
-                        <div class="final-content">
-                            <div class="links">
-                                <a
-                                    href="https://bitsofgood.org"
-                                    target="_blank"
-                                    class="resource-link"
-                                    style="background: #f59e0b; color: white; border-color: #f59e0b"
-                                >
-                                    🌐 bitsofgood.org
-                                </a>
-                                <a
-                                    href="https://github.com/GTBitsOfGood"
-                                    target="_blank"
-                                    class="resource-link"
-                                >
-                                    🐙 GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 50: Thank You -->
+                <!-- Slide 45: Credits -->
                 <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Thank You!</h1>
+                        <h2 class="slide-subtitle">Bits of Good</h2>
+                        <div class="slide-meta">
+                            <p>Building technology for social good</p>
+                            <p>🌟 Keep exploring modern CSS!</p>
+                        </div>
                         <div class="final-content">
-                            <p class="final-message">Questions & Discussion</p>
                             <div class="links">
-                                <a
-                                    href="https://developer.mozilla.org/en-US/docs/Web/CSS"
-                                    target="_blank"
-                                    class="resource-link"
-                                >
-                                    📚 MDN Documentation
+                                <a href="https://bitsofgood.org" class="resource-link">
+                                    Visit Bits of Good
                                 </a>
-                                <a href="https://github.com" target="_blank" class="resource-link">
-                                    🐙 Source Code
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" class="resource-link">
+                                    MDN CSS Docs
                                 </a>
                             </div>
                         </div>
                     </div>
                 </section>
-            </main>
 
-            <!-- Progress Indicator -->
+            </div>
+
+
+            <!-- Progress Bar -->
             <div class="progress-bar">
                 <div class="progress-fill" id="progress-fill"></div>
+            </div>
 
-                <!-- Logo Placeholder -->
-                <div class="progress-logo">LOGO</div>
+            <!-- Progress Bar Logo -->
+            <div class="progress-logo">
+                <img 
+                    src="https://cdn.prod.website-files.com/689071d222bec6ce3d3d6fbf/68907a7621c7c8dbde21c45b_logo.svg" 
+                    alt="Pylon" 
+                    style="height: 24px; width: auto;"
+                />
+            </div>
 
-                <!-- Navigation Arrows -->
-                <div class="progress-navigation">
-                    <button
-                        class="nav-arrow nav-arrow-left"
-                        id="prevSlideBtn"
-                        aria-label="Previous slide"
-                    >
-                        ←
-                    </button>
-                    <button
-                        class="nav-arrow nav-arrow-right"
-                        id="nextSlideBtn"
-                        aria-label="Next slide"
-                    >
-                        →
-                    </button>
-                </div>
+            <!-- Progress Bar Navigation -->
+            <div class="progress-navigation">
+                <button class="nav-arrow" id="prevSlideBtn" aria-label="Previous slide">‹</button>
+                <button class="nav-arrow" id="nextSlideBtn" aria-label="Next slide">›</button>
             </div>
         </div>
 
