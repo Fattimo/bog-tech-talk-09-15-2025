@@ -1,0 +1,31 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# All files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Web files
+[*.{html,css,js,json}]
+indent_style = space
+indent_size = 4
+
+# Disable formatting for Monaco code blocks
+[*.{html,htm}]
+# This won't prevent all formatting, but helps with some editors
+max_line_length = off
+
+# JavaScript files
+[*.js]
+indent_style = space
+indent_size = 4
+
+# CSS files  
+[*.css]
+indent_style = space
+indent_size = 4

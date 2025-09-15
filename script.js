@@ -5,6 +5,9 @@
 
 class SlideController {
     constructor() {
+        // Auto-assign data-slide attributes based on DOM order
+        this.autoAssignSlideNumbers();
+
         this.totalSlides = document.querySelectorAll('.slide').length;
         this.currentSlide = this.getSlideFromURL() || 1;
         this.isTransitioning = false;
@@ -14,6 +17,19 @@ class SlideController {
         this.mouseY = window.innerHeight / 2;
 
         this.init();
+    }
+
+    autoAssignSlideNumbers() {
+        // Get all slides in DOM order
+        const slides = document.querySelectorAll('.slide');
+
+        // Assign data-slide attributes sequentially
+        slides.forEach((slide, index) => {
+            const slideNumber = index + 1;
+            slide.setAttribute('data-slide', slideNumber);
+        });
+
+        console.log(`🔢 Auto-assigned slide numbers to ${slides.length} slides`);
     }
 
     init() {
@@ -196,14 +212,30 @@ class SlideController {
         }
     }
 
+    getViewTransitionSlides() {
+        // Find slides that contain "View Transitions" in their title
+        const viewTransitionSlides = [];
+        document.querySelectorAll('.slide').forEach(slide => {
+            const title = slide.querySelector('.slide-title');
+            if (title && title.textContent.toLowerCase().includes('view transition')) {
+                const slideNumber = parseInt(slide.getAttribute('data-slide'));
+                if (!isNaN(slideNumber)) {
+                    viewTransitionSlides.push(slideNumber);
+                }
+            }
+        });
+        return viewTransitionSlides;
+    }
+
     getSlideAnimationType(targetSlide) {
         // Check for custom animation overrides first
         if (this.customAnimationOverrides?.has(targetSlide)) {
             return this.customAnimationOverrides.get(targetSlide);
         }
-        
-        // Use circular reveal for View Transitions demonstration slides (22-25)
-        const viewTransitionSlides = [22, 23, 24, 25];
+
+        // Use circular reveal for View Transitions demonstration slides
+        // Find slides with "View Transitions" in their title (more flexible than hardcoded numbers)
+        const viewTransitionSlides = this.getViewTransitionSlides();
         if (
             viewTransitionSlides.includes(targetSlide) ||
             viewTransitionSlides.includes(this.currentSlide)
@@ -419,12 +451,14 @@ class SlideController {
         if (!this.customAnimationOverrides) {
             this.customAnimationOverrides = new Map();
         }
-        
+
         slideNumbers.forEach(slideNum => {
             this.customAnimationOverrides.set(slideNum, animationType);
         });
-        
-        console.log(`🎬 Animation override set: slides ${slideNumbers.join(', ')} will use ${animationType}`);
+
+        console.log(
+            `🎬 Animation override set: slides ${slideNumbers.join(', ')} will use ${animationType}`
+        );
     }
 
     clearAnimationOverrides() {
@@ -438,17 +472,159 @@ class SlideController {
         for (let i = startSlide; i <= endSlide; i++) {
             slides.push(i);
         }
-        
+
         const currentType = this.customAnimationOverrides?.get(startSlide) || 'slideLeft';
         const newType = currentType === 'circularReveal' ? 'slideLeft' : 'circularReveal';
-        
+
         this.setAnimationTypeForSlides(slides, newType);
         return newType;
     }
 }
 
+// Monaco Editor Helper Class
+class MonacoCodeBlocks {
+    constructor() {
+        this.editors = new Map();
+        this.isMonacoLoaded = false;
+        this.initMonaco();
+    }
+
+    async initMonaco() {
+        if (typeof require === 'undefined') {
+            console.warn('Monaco loader not available');
+            return;
+        }
+
+        try {
+            require.config({
+                paths: {
+                    vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.44.0/min/vs'
+                }
+            });
+
+            require(['vs/editor/editor.main'], () => {
+                this.isMonacoLoaded = true;
+                console.log('🎨 Monaco Editor loaded successfully');
+
+                // Set VS Code Dark theme as default
+                monaco.editor.setTheme('vs-dark');
+
+                // Initialize any existing code blocks
+                this.initializeCodeBlocks();
+            });
+        } catch (error) {
+            console.warn('Monaco Editor failed to load:', error);
+        }
+    }
+
+    createCodeBlock(container, code, language = 'css', options = {}) {
+        if (!this.isMonacoLoaded) {
+            console.warn('Monaco not loaded yet, falling back to regular code block');
+            this.createFallbackCodeBlock(container, code, language);
+            return;
+        }
+
+        const defaultOptions = {
+            value: code.trim(),
+            language: language,
+            theme: 'vs-dark',
+            readOnly: true,
+            minimap: { enabled: false },
+            scrollBeyondLastLine: false,
+            lineNumbers: 'on',
+            glyphMargin: false,
+            folding: false,
+            lineDecorationsWidth: 0,
+            lineNumbersMinChars: 3,
+            renderLineHighlight: 'none',
+            scrollbar: {
+                vertical: 'hidden',
+                horizontal: 'hidden'
+            },
+            overviewRulerLanes: 0,
+            hideCursorInOverviewRuler: true,
+            overviewRulerBorder: false,
+            automaticLayout: true,
+            fontSize: 14,
+            fontFamily: 'Fira Code, Monaco, Consolas, monospace'
+        };
+
+        const editorOptions = { ...defaultOptions, ...options };
+
+        // Set container styles
+        container.style.height = options.height || 'auto';
+        container.style.minHeight = '100px';
+        container.style.border = '1px solid var(--pylon-gray-300)';
+        container.style.borderRadius = '8px';
+        container.style.overflow = 'hidden';
+
+        const editor = monaco.editor.create(container, editorOptions);
+
+        // Auto-resize based on content
+        if (!options.height) {
+            const lineCount = code.trim().split('\n').length;
+            const height = Math.min(Math.max(lineCount * 19 + 10, 100), 400);
+            container.style.height = `${height}px`;
+            editor.layout();
+        }
+
+        // Store editor reference
+        const editorId = `editor-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+        this.editors.set(editorId, editor);
+        container.dataset.editorId = editorId;
+
+        return editor;
+    }
+
+    createFallbackCodeBlock(container, code, language) {
+        container.innerHTML = `
+            <pre class="fallback-code-block"><code class="language-${language}">${this.escapeHtml(code.trim())}</code></pre>
+        `;
+        container.style.background = '#1e1e1e';
+        container.style.color = '#d4d4d4';
+        container.style.padding = '1rem';
+        container.style.borderRadius = '8px';
+        container.style.fontSize = '14px';
+        container.style.fontFamily = 'Fira Code, Monaco, Consolas, monospace';
+        container.style.overflow = 'auto';
+    }
+
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    initializeCodeBlocks() {
+        // Find all elements with data-monaco attribute
+        document.querySelectorAll('[data-monaco]').forEach(container => {
+            // Priority: data-snippet > data-code > textContent
+            const code =
+                container.dataset.snippet || container.dataset.code || container.textContent || '';
+
+            const language = container.dataset.language || 'css';
+            const height = container.dataset.height;
+
+            container.innerHTML = ''; // Clear existing content
+            this.createCodeBlock(container, code, language, height ? { height } : {});
+        });
+    }
+
+    // Public method to create code blocks programmatically
+    addCodeBlock(selector, code, language = 'css', options = {}) {
+        const container = document.querySelector(selector);
+        if (container) {
+            return this.createCodeBlock(container, code, language, options);
+        }
+        console.warn(`Container not found: ${selector}`);
+    }
+}
+
 // Initialize the application when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Monaco code blocks
+    window.monacoCodeBlocks = new MonacoCodeBlocks();
+
     // Initialize slide controller
     window.slideController = new SlideController();
 
@@ -457,11 +633,24 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('📱 Touch navigation enabled');
     console.log('⌨️ Keyboard navigation enabled');
     console.log(`📊 Total slides: ${window.slideController.getTotalSlides()}`);
-    console.log('🎬 View Transitions: Slides 22-25 use circular reveal by default');
+    console.log(
+        '🎬 View Transitions: Slides with "View Transitions" in title use circular reveal by default'
+    );
+    console.log('🎨 Monaco Editor: VS Code-style code blocks with syntax highlighting');
     console.log('💡 Console commands available:');
-    console.log('   - slideController.toggleCircularReveal(22, 25) // Toggle circular reveal for view transition slides');
-    console.log('   - slideController.setAnimationTypeForSlides([1,2,3], "circularReveal") // Set custom animation');
-    console.log('   - slideController.clearAnimationOverrides() // Reset all animations to default');
+    console.log(
+        '   - slideController.toggleCircularReveal(22, 25) // Toggle circular reveal for view transition slides'
+    );
+    console.log(
+        '   - slideController.setAnimationTypeForSlides([1,2,3], "circularReveal") // Set custom animation'
+    );
+    console.log(
+        '   - slideController.clearAnimationOverrides() // Reset all animations to default'
+    );
+    console.log(
+        '   - monacoCodeBlocks.addCodeBlock(".my-container", "code here", "css") // Add Monaco code block'
+    );
+    console.log('   - Use data-snippet="your code" for inline code in HTML attributes');
 
     // Preload next slides for better performance
     setTimeout(() => {

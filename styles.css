@@ -263,10 +263,10 @@ body {
 }
 
 .slide-subtitle {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 500;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
+    font-weight: 400;
     color: var(--pylon-gray-600);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 /* Title Slide Specific */
@@ -275,7 +275,7 @@ body {
 }
 
 .slide-meta {
-    margin-top: 3rem;
+    margin-top: 0rem;
 }
 
 .slide-meta p {
@@ -394,6 +394,10 @@ body {
     color: #065f46;
 }
 
+.view-lines {
+    margin-left: 8px;
+}
+
 .partial .status {
     background: #fef3c7;
     color: #92400e;
@@ -408,6 +412,42 @@ body {
     box-shadow: var(--pylon-shadow-card);
     border: 2px solid var(--pylon-primary-blue);
     position: relative;
+}
+
+/* Monaco Code Block */
+.monaco-code-block {
+    margin-top: 2rem;
+    overflow: hidden;
+    box-shadow: var(--pylon-shadow-card);
+    position: relative;
+    background: #1e1e1e;
+    text-align: left;
+}
+
+.monaco-code-block::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: -6px;
+    bottom: -6px;
+    background: var(--pylon-primary-blue);
+    border-radius: var(--pylon-radius-large);
+    z-index: -1;
+}
+
+/* Fallback code block styles */
+.fallback-code-block {
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+}
+
+.fallback-code-block code {
+    color: #d4d4d4;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 .code-example::before {
