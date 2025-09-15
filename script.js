@@ -286,6 +286,12 @@ class SlideController {
             case 'slideRight':
                 this.slideRightAnimation();
                 break;
+            case 'clipPathSlideLeft':
+                this.clipPathSlideLeftAnimation();
+                break;
+            case 'clipPathSlideRight':
+                this.clipPathSlideRightAnimation();
+                break;
             case 'default':
                 // Let the browser handle default animation
                 break;
@@ -368,6 +374,58 @@ class SlideController {
                 duration: 400,
                 easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
                 pseudoElement: '::view-transition-new(root)'
+            }
+        );
+    }
+
+    clipPathSlideLeftAnimation() {
+        // Animate the new view with a clip-path reveal from right to left
+        document.documentElement.animate(
+            {
+                clipPath: ['inset(0 100% 0 0)', 'inset(0 0% 0 0)']
+            },
+            {
+                duration: 500,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-new(root)'
+            }
+        );
+
+        // Keep the old view static (no transform, just gets clipped away)
+        document.documentElement.animate(
+            {
+                opacity: [1, 1]
+            },
+            {
+                duration: 500,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-old(root)'
+            }
+        );
+    }
+
+    clipPathSlideRightAnimation() {
+        // Animate the new view with a clip-path reveal from left to right
+        document.documentElement.animate(
+            {
+                clipPath: ['inset(0 0 0 100%)', 'inset(0 0 0 0)']
+            },
+            {
+                duration: 500,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-new(root)'
+            }
+        );
+
+        // Keep the old view static (no transform, just gets clipped away)
+        document.documentElement.animate(
+            {
+                opacity: [1, 1]
+            },
+            {
+                duration: 500,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                pseudoElement: '::view-transition-old(root)'
             }
         );
     }

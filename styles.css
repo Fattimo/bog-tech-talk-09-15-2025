@@ -7,6 +7,14 @@
 
 /* Pylon-inspired Color Tokens */
 :root {
+    /* OKLCH Color Palette */
+    --color-red: oklch(0.7 0.2 0);
+    --color-orange: light-dark(oklch(0.7 0.2 60), oklch(0.4 0.2 60));
+    --color-green: light-dark(oklch(0.7 0.2 120), oklch(0.4 0.2 120));
+    --color-cyan: oklch(0.7 0.2 180);
+    --color-blue: oklch(0.7 0.2 240);
+    --color-magenta: oklch(0.7 0.2 300);
+
     /* Primary Brand Colors from Pylon */
     --pylon-primary-blue: #0066ff;
     --pylon-primary-purple: #6366f1;
@@ -233,6 +241,14 @@ body {
     justify-content: center;
 
     background: var(--pylon-gradient-neutral);
+
+    &.dark {
+        --pylon-gradient-neutral: linear-gradient(
+            135deg,
+            var(--pylon-gray-900) 0%,
+            var(--pylon-gray-800) 100%
+        );
+    }
 
     visibility: hidden;
 }

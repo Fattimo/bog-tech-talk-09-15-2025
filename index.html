@@ -135,7 +135,7 @@
                 </section>
 
                 <!-- Slide 6: Flexbox Froggy -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <div class="content-grid" style="margin: 0">
                             <div
@@ -164,7 +164,7 @@
                 </section>
 
                 <!-- Slide 6: Flex/Grid Centering -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Flex and grid</h1>
                         <div class="content-grid">
@@ -210,7 +210,7 @@
                 </section>
 
                 <!-- Slide 7: New School Centering -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">New School: Block Element Centering</h1>
                         <div class="content-grid">
@@ -256,7 +256,7 @@
                 </section>
 
                 <!-- Slide 8: Browser Support for align-content in Block Context -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <div class="content-grid" style="margin: 0">
                             <div
@@ -285,17 +285,16 @@
                 </section>
 
                 <!-- Slide 9: Colors Title -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <h1 class="slide-title">Colors</h1>
                 </section>
 
                 <!-- Slide 10: What We Know -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">What We Know</h1>
+                        <h1 class="slide-title">RGB/Hex</h1>
                         <div class="content-grid">
                             <div class="feature-card">
-                                <h3>RGB & Hex</h3>
                                 <div class="color-demo">
                                     <div class="color-box" style="background: #ff6b6b"></div>
                                     <div
@@ -304,379 +303,926 @@
                                     ></div>
                                 </div>
                                 <div class="code-example">
-                                    <pre><code>color: #ff6b6b;
-color: rgb(255, 107, 107);</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>RGBA (If You're Spicy 🌶️)</h3>
-                                <div class="color-demo">
-                                    <div
-                                        class="color-box"
-                                        style="background: rgba(255, 107, 107, 0.8)"
-                                    ></div>
-                                    <div
-                                        class="color-box"
-                                        style="background: rgba(255, 107, 107, 0.4)"
-                                    ></div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>color: rgba(255, 107, 107, 0.8);
-background: rgba(255, 107, 107, 0.4);</code></pre>
+                                    <pre><code>background-color: #ff6b6b;
+background-color: rgb(255, 107, 107);</code></pre>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Slide 11: New Age Colors -->
-                <section class="slide" data-slide="51">
+                <!-- Slide 11: OKLCH -->
+                <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">New Age Colors</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>OKLCH</h3>
-                                <div class="color-demo">
-                                    <div
-                                        class="color-box"
-                                        style="background: oklch(0.7 0.15 180)"
-                                    ></div>
-                                    <div
-                                        class="color-box"
-                                        style="background: oklch(0.8 0.1 45)"
-                                    ></div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>color: oklch(0.7 0.15 180);
-/* Lightness, Chroma, Hue */</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>OKLAB</h3>
-                                <div class="color-demo">
-                                    <div
-                                        class="color-box"
-                                        style="background: oklab(0.7 0.1 0.05)"
-                                    ></div>
-                                    <div
-                                        class="color-box"
-                                        style="background: oklab(0.6 -0.1 0.1)"
-                                    ></div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>color: oklab(0.7 0.1 0.05);
-/* Lightness, A, B */</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>LCH & Others</h3>
-                                <div class="color-demo">
-                                    <div
-                                        class="color-box"
-                                        style="background: lch(70% 50 180)"
-                                    ></div>
-                                    <div
-                                        class="color-box"
-                                        style="background: hsl(200 100% 70%)"
-                                    ></div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>color: lch(70% 50 180);
-color: hsl(200 100% 70%);</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 12: OKLAB Chart Placeholder -->
-                <section class="slide" data-slide="51">
-                    <div class="slide-content">
-                        <h1 class="slide-title">OKLAB Color Space</h1>
-                        <div class="content-grid">
-                            <div class="feature-card" style="max-width: 800px; margin: 0 auto">
-                                <h3>Colors Beyond Monitor Capabilities</h3>
-                                <div class="oklab-chart-placeholder">
-                                    <div class="chart-container">
-                                        <div class="chart-label">
-                                            OKLAB Color Space Visualization
-                                        </div>
-                                        <div class="chart-note">
-                                            📊 Interactive Chart Placeholder
-                                        </div>
-                                        <div class="chart-description">
-                                            Shows the full range of human-visible colors, including
-                                            those that current monitors cannot display
-                                        </div>
-                                    </div>
-                                </div>
-                                <p>
-                                    <strong>OKLAB</strong> represents colors that don't exist on
-                                    current displays, preparing us for future wide-gamut monitors.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 13: OKLAB Explanation -->
-                <section class="slide" data-slide="51">
-                    <div class="slide-content">
-                        <h1 class="slide-title">OKLAB for Theming</h1>
+                        <h1 class="slide-title">OKLCH</h1>
                         <div class="content-grid">
                             <div class="feature-card">
                                 <h3>Lightness (L)</h3>
+                                <p>Controls how light or dark the color appears (0-1)</p>
                                 <div class="color-demo">
                                     <div
                                         class="color-box"
                                         style="background: oklch(0.3 0.15 200)"
+                                        title="Dark (0.3)"
                                     ></div>
                                     <div
                                         class="color-box"
                                         style="background: oklch(0.7 0.15 200)"
+                                        title="Medium (0.7)"
                                     ></div>
                                     <div
                                         class="color-box"
                                         style="background: oklch(0.9 0.15 200)"
+                                        title="Light (0.9)"
                                     ></div>
                                 </div>
-                                <div class="code-example">
-                                    <pre><code>/* Dark to Light */
+                                <div
+                                    class="monaco-code-block"
+                                    data-monaco
+                                    data-snippet="/* Dark to Light */
 oklch(0.3 0.15 200)
 oklch(0.7 0.15 200)
-oklch(0.9 0.15 200)</code></pre>
-                                </div>
+oklch(0.9 0.15 200)"
+                                    data-language="css"
+                                    data-height="120px"
+                                ></div>
                             </div>
+
                             <div class="feature-card">
                                 <h3>Chroma (C)</h3>
+                                <p>
+                                    Controls color intensity/saturation (0 = gray, higher = more
+                                    vivid)
+                                </p>
                                 <div class="color-demo">
                                     <div
                                         class="color-box"
                                         style="background: oklch(0.7 0.05 200)"
+                                        title="Low chroma (0.05)"
                                     ></div>
                                     <div
                                         class="color-box"
                                         style="background: oklch(0.7 0.15 200)"
+                                        title="Medium chroma (0.15)"
                                     ></div>
                                     <div
                                         class="color-box"
                                         style="background: oklch(0.7 0.25 200)"
+                                        title="High chroma (0.25)"
                                     ></div>
                                 </div>
-                                <div class="code-example">
-                                    <pre><code>/* Muted to Vibrant */
+                                <div
+                                    class="monaco-code-block"
+                                    data-monaco
+                                    data-snippet="/* Muted to Vibrant */
 oklch(0.7 0.05 200)
 oklch(0.7 0.15 200)
-oklch(0.7 0.25 200)</code></pre>
-                                </div>
+oklch(0.7 0.25 200)"
+                                    data-language="css"
+                                    data-height="120px"
+                                ></div>
                             </div>
+
                             <div class="feature-card">
                                 <h3>Hue (H)</h3>
+                                <p>The color itself on the color wheel (0-360 degrees)</p>
                                 <div class="color-demo">
                                     <div
                                         class="color-box"
                                         style="background: oklch(0.7 0.15 0)"
+                                        title="Red (0°)"
                                     ></div>
                                     <div
                                         class="color-box"
                                         style="background: oklch(0.7 0.15 120)"
+                                        title="Green (120°)"
                                     ></div>
                                     <div
                                         class="color-box"
                                         style="background: oklch(0.7 0.15 240)"
+                                        title="Blue (240°)"
                                     ></div>
                                 </div>
-                                <div class="code-example">
-                                    <pre><code>/* Red, Green, Blue */
+                                <div
+                                    class="monaco-code-block"
+                                    data-monaco
+                                    data-snippet="/* Red, Green, Blue */
 oklch(0.7 0.15 0)
 oklch(0.7 0.15 120)
-oklch(0.7 0.15 240)</code></pre>
-                                </div>
+oklch(0.7 0.15 240)"
+                                    data-language="css"
+                                    data-height="120px"
+                                ></div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Slide 14: Theme Hue Adjustments -->
-                <section class="slide" data-slide="51">
+                <!-- Slide 12: OKLCH Color Palette -->
+                <section class="slide">
                     <div class="slide-content">
-                        <h1 class="slide-title">Theme: Adjusting Hue = New Colors</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Base Theme</h3>
-                                <div class="theme-demo">
-                                    <div class="theme-colors">
+                        <h1 class="slide-title">OKLCH Color Palette</h1>
+                        <div class="content-grid" style="max-width: 1000px; margin: 0 auto">
+                            <div class="feature-card" style="text-align: center">
+                                <div
+                                    class="color-palette"
+                                    style="
+                                        display: grid;
+                                        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                                        gap: 0.5rem;
+                                        margin: 2rem 0;
+                                    "
+                                >
+                                    <div class="palette-color" style="text-align: center">
                                         <div
-                                            class="color-box"
-                                            style="background: oklch(0.8 0.1 200)"
-                                            title="Primary"
-                                        ></div>
-                                        <div
-                                            class="color-box"
-                                            style="background: oklch(0.6 0.1 200)"
-                                            title="Secondary"
-                                        ></div>
-                                        <div
-                                            class="color-box"
-                                            style="background: oklch(0.4 0.1 200)"
-                                            title="Accent"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>--primary: oklch(0.8 0.1 200);
---secondary: oklch(0.6 0.1 200);
---accent: oklch(0.4 0.1 200);</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>Shifted Theme (+60°)</h3>
-                                <div class="theme-demo">
-                                    <div class="theme-colors">
-                                        <div
-                                            class="color-box"
-                                            style="background: oklch(0.8 0.1 260)"
-                                            title="Primary"
-                                        ></div>
-                                        <div
-                                            class="color-box"
-                                            style="background: oklch(0.6 0.1 260)"
-                                            title="Secondary"
-                                        ></div>
-                                        <div
-                                            class="color-box"
-                                            style="background: oklch(0.4 0.1 260)"
-                                            title="Accent"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>--primary: oklch(0.8 0.1 260);
---secondary: oklch(0.6 0.1 260);
---accent: oklch(0.4 0.1 260);</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 15: Color-Mix -->
-                <section class="slide" data-slide="51">
-                    <div class="slide-content">
-                        <h1 class="slide-title">color-mix(): Making Colors from Colors</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>Basic Mixing</h3>
-                                <div class="color-demo">
-                                    <div class="color-mix-demo">
-                                        <div
-                                            class="color-box"
-                                            style="background: red"
-                                            title="Red"
-                                        ></div>
-                                        <span>+</span>
-                                        <div
-                                            class="color-box"
-                                            style="background: blue"
-                                            title="Blue"
-                                        ></div>
-                                        <span>=</span>
-                                        <div
-                                            class="color-box"
-                                            style="background: color-mix(in srgb, red, blue)"
-                                            title="Mixed"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>color: color-mix(in srgb, red, blue);
-/* 50/50 mix by default */</code></pre>
-                                </div>
-                            </div>
-                            <div class="feature-card">
-                                <h3>Weighted Mixing</h3>
-                                <div class="color-demo">
-                                    <div class="color-mix-demo">
-                                        <div
-                                            class="color-box"
-                                            style="background: red"
-                                            title="Red 70%"
-                                        ></div>
-                                        <span>+</span>
-                                        <div
-                                            class="color-box"
-                                            style="background: blue"
-                                            title="Blue 30%"
-                                        ></div>
-                                        <span>=</span>
-                                        <div
-                                            class="color-box"
-                                            style="background: color-mix(in srgb, red 70%, blue)"
-                                            title="Mixed"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>color: color-mix(in srgb, red 70%, blue);
-/* 70% red, 30% blue */</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Slide 16: Color-Mix Practical -->
-                <section class="slide" data-slide="51">
-                    <div class="slide-content">
-                        <h1 class="slide-title">Color-Mix: Practical Usage</h1>
-                        <div class="content-grid">
-                            <div class="feature-card">
-                                <h3>❌ Old Way: Opacity</h3>
-                                <div class="color-demo">
-                                    <div class="old-way-demo">
-                                        <div
-                                            class="color-box"
-                                            style="background: rgba(239, 68, 68, 0.5)"
-                                            title="red-500 50% opacity"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="code-example">
-                                    <pre><code>/* Problem: Shows background through */
-background: rgba(239, 68, 68, 0.5);</code></pre>
-                                </div>
-                                <p>❌ Transparency reveals background</p>
-                            </div>
-                            <div class="feature-card">
-                                <h3>✅ New Way: Solid Lightened</h3>
-                                <div class="color-demo">
-                                    <div class="new-way-demo">
-                                        <div
-                                            class="color-box"
                                             style="
-                                                background: color-mix(
-                                                    in srgb,
-                                                    rgb(239, 68, 68) 50%,
-                                                    white
-                                                );
+                                                width: 100px;
+                                                height: 100px;
+                                                background: var(--color-red);
+                                                border-radius: 16px;
+                                                margin: 0 auto 0.5rem;
+                                                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                                                border: 3px solid white;
                                             "
-                                            title="red-500 lightened 50%"
                                         ></div>
+                                        <h4
+                                            style="
+                                                margin: 0.5rem 0 0.25rem;
+                                                color: var(--color-red);
+                                            "
+                                        >
+                                            Red
+                                        </h4>
+                                        <code style="font-size: 0.85rem; color: #666"
+                                            >--color-red</code
+                                        >
+                                    </div>
+
+                                    <div class="palette-color" style="text-align: center">
+                                        <div
+                                            style="
+                                                width: 100px;
+                                                height: 100px;
+                                                background: var(--color-orange);
+                                                border-radius: 16px;
+                                                margin: 0 auto 0.5rem;
+                                                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                                                border: 3px solid white;
+                                            "
+                                        ></div>
+                                        <h4
+                                            style="
+                                                margin: 0.5rem 0 0.25rem;
+                                                color: var(--color-orange);
+                                            "
+                                        >
+                                            Orange
+                                        </h4>
+                                        <code style="font-size: 0.85rem; color: #666"
+                                            >--color-orange</code
+                                        >
+                                    </div>
+
+                                    <div class="palette-color" style="text-align: center">
+                                        <div
+                                            style="
+                                                width: 100px;
+                                                height: 100px;
+                                                background: var(--color-green);
+                                                border-radius: 16px;
+                                                margin: 0 auto 0.5rem;
+                                                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                                                border: 3px solid white;
+                                            "
+                                        ></div>
+                                        <h4
+                                            style="
+                                                margin: 0.5rem 0 0.25rem;
+                                                color: var(--color-green);
+                                            "
+                                        >
+                                            Green
+                                        </h4>
+                                        <code style="font-size: 0.85rem; color: #666"
+                                            >--color-green</code
+                                        >
+                                    </div>
+
+                                    <div class="palette-color" style="text-align: center">
+                                        <div
+                                            style="
+                                                width: 100px;
+                                                height: 100px;
+                                                background: var(--color-cyan);
+                                                border-radius: 16px;
+                                                margin: 0 auto 0.5rem;
+                                                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                                                border: 3px solid white;
+                                            "
+                                        ></div>
+                                        <h4
+                                            style="
+                                                margin: 0.5rem 0 0.25rem;
+                                                color: var(--color-cyan);
+                                            "
+                                        >
+                                            Cyan
+                                        </h4>
+                                        <code style="font-size: 0.85rem; color: #666"
+                                            >--color-cyan</code
+                                        >
+                                    </div>
+
+                                    <div class="palette-color" style="text-align: center">
+                                        <div
+                                            style="
+                                                width: 100px;
+                                                height: 100px;
+                                                background: var(--color-blue);
+                                                border-radius: 16px;
+                                                margin: 0 auto 0.5rem;
+                                                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                                                border: 3px solid white;
+                                            "
+                                        ></div>
+                                        <h4
+                                            style="
+                                                margin: 0.5rem 0 0.25rem;
+                                                color: var(--color-blue);
+                                            "
+                                        >
+                                            Blue
+                                        </h4>
+                                        <code style="font-size: 0.85rem; color: #666"
+                                            >--color-blue</code
+                                        >
+                                    </div>
+
+                                    <div class="palette-color" style="text-align: center">
+                                        <div
+                                            style="
+                                                width: 100px;
+                                                height: 100px;
+                                                background: var(--color-magenta);
+                                                border-radius: 16px;
+                                                margin: 0 auto 0.5rem;
+                                                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                                                border: 3px solid white;
+                                            "
+                                        ></div>
+                                        <h4
+                                            style="
+                                                margin: 0.5rem 0 0.25rem;
+                                                color: var(--color-magenta);
+                                            "
+                                        >
+                                            Magenta
+                                        </h4>
+                                        <code style="font-size: 0.85rem; color: #666"
+                                            >--color-magenta</code
+                                        >
                                     </div>
                                 </div>
-                                <div class="code-example">
-                                    <pre><code>/* Solid color, lightened */
-background: color-mix(in srgb, 
-  rgb(239, 68, 68) 50%, white);</code></pre>
-                                </div>
-                                <p>✅ Solid color with perfect opacity effect</p>
+
+                                <div
+                                    class="monaco-code-block"
+                                    data-monaco
+                                    data-snippet=":root {
+  /* OKLCH Primary Colors - Same L(0.7) & C(0.2), Different Hue */
+  --color-red: oklch(0.7 0.2 0);
+  --color-orange: oklch(0.7 0.2 60);
+  --color-green: oklch(0.7 0.2 120);
+  --color-cyan: oklch(0.7 0.2 180);
+  --color-blue: oklch(0.7 0.2 240);
+  --color-magenta: oklch(0.7 0.2 300);
+}"
+                                    data-language="css"
+                                    data-height="220px"
+                                ></div>
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 13: OKLCH Themed Banners -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Practical Application: Themed Banners</h1>
+                        <div
+                            class="content-grid"
+                            style="
+                                max-width: 1100px;
+                                margin: 0 auto;
+                                grid-template-columns: minmax(300px, 1fr) minmax(700px, 1fr);
+                            "
+                        >
+                            <!-- Banner Examples -->
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                                    gap: 1.5rem;
+                                    margin: 2rem 0;
+                                "
+                            >
+                                <!-- Success Banner -->
+                                <div
+                                    class="themed-banner success-banner"
+                                    style="
+                                        --base-color: var(--color-green);
+                                        background: oklch(
+                                            from var(--base-color) calc(l + 0.2) calc(c * 0.3) h
+                                        );
+                                        border: 2px solid
+                                            oklch(from var(--base-color) calc(l - 0.2) c h);
+                                        color: oklch(from var(--base-color) calc(l - 0.3) c h);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ✅ Success!
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            Your changes have been saved successfully.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Warning Banner -->
+                                <div
+                                    class="themed-banner warning-banner"
+                                    style="
+                                        --base-color: var(--color-orange);
+                                        background: oklch(
+                                            from var(--base-color) calc(l + 0.2) calc(c * 0.3) h
+                                        );
+                                        border: 2px solid
+                                            oklch(from var(--base-color) calc(l - 0.2) c h);
+                                        color: oklch(from var(--base-color) calc(l - 0.3) c h);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ⚠️ Warning
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            Please review your settings before continuing.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Error Banner -->
+                                <div
+                                    class="themed-banner error-banner"
+                                    style="
+                                        --base-color: var(--color-red);
+                                        background: oklch(
+                                            from var(--base-color) calc(l + 0.2) calc(c * 0.3) h
+                                        );
+                                        border: 2px solid
+                                            oklch(from var(--base-color) calc(l - 0.2) c h);
+                                        color: oklch(from var(--base-color) calc(l - 0.3) c h);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ❌ Error
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            Something went wrong. Please try again.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Info Banner -->
+                                <div
+                                    class="themed-banner info-banner"
+                                    style="
+                                        --base-color: var(--color-blue);
+                                        background: oklch(
+                                            from var(--base-color) calc(l + 0.2) calc(c * 0.3) h
+                                        );
+                                        border: 2px solid
+                                            oklch(from var(--base-color) calc(l - 0.2) c h);
+                                        color: oklch(from var(--base-color) calc(l - 0.3) c h);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ℹ️ Info
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            New features are now available in your dashboard.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Code Example -->
+                            <div
+                                class="monaco-code-block"
+                                data-monaco
+                                data-snippet="/* Reusable OKLCH Banner System */
+.themed-banner {
+  --base-color: var(--color-green); /* Any base color */
+  
+  /* Light background using base color */
+  background: oklch(from var(--base-color) calc(l + 0.2) calc(c * 0.3) h);
+  
+  /* Darker border for definition */
+  border: 2px solid oklch(from var(--base-color) calc(l - 0.2) c h);
+  
+  /* Dark text for readability */
+  color: oklch(from var(--base-color) calc(l - 0.3) c h);
+  
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+/* Usage Examples */
+.success-banner { --base-color: var(--color-green); }
+.warning-banner { --base-color: var(--color-orange); }
+.error-banner   { --base-color: var(--color-red); }
+.info-banner    { --base-color: var(--color-blue); }"
+                                data-language="css"
+                                data-height="480px"
+                            ></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 14: Color-Mix Themed Banners -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Similar: Using color-mix()</h1>
+                        <div
+                            class="content-grid"
+                            style="
+                                max-width: 1100px;
+                                margin: 0 auto;
+                                grid-template-columns: minmax(300px, 1fr) minmax(700px, 1fr);
+                            "
+                        >
+                            <!-- Banner Examples -->
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                                    gap: 1.5rem;
+                                    margin: 2rem 0;
+                                "
+                            >
+                                <!-- Success Banner -->
+                                <div
+                                    class="themed-banner success-banner"
+                                    style="
+                                        --base-color: var(--color-green);
+                                        background: color-mix(
+                                            in oklch,
+                                            var(--base-color) 30%,
+                                            transparent
+                                        );
+                                        border: 2px solid
+                                            color-mix(in oklch, var(--base-color) 80%, black);
+                                        color: color-mix(in oklch, var(--base-color) 90%, black);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ✅ Success!
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            Your changes have been saved successfully.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Warning Banner -->
+                                <div
+                                    class="themed-banner warning-banner"
+                                    style="
+                                        --base-color: var(--color-orange);
+                                        background: color-mix(
+                                            in oklch,
+                                            var(--base-color) 30%,
+                                            transparent
+                                        );
+                                        border: 2px solid
+                                            color-mix(in oklch, var(--base-color) 80%, black);
+                                        color: color-mix(in oklch, var(--base-color) 90%, black);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ⚠️ Warning
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            Please review your settings before continuing.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Error Banner -->
+                                <div
+                                    class="themed-banner error-banner"
+                                    style="
+                                        --base-color: var(--color-red);
+                                        background: color-mix(
+                                            in oklch,
+                                            var(--base-color) 30%,
+                                            transparent
+                                        );
+                                        border: 2px solid
+                                            color-mix(in oklch, var(--base-color) 80%, black);
+                                        color: color-mix(in oklch, var(--base-color) 90%, black);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ❌ Error
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            Something went wrong. Please try again.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Info Banner -->
+                                <div
+                                    class="themed-banner info-banner"
+                                    style="
+                                        --base-color: var(--color-blue);
+                                        background: color-mix(
+                                            in oklch,
+                                            var(--base-color) 30%,
+                                            transparent
+                                        );
+                                        border: 2px solid
+                                            color-mix(in oklch, var(--base-color) 80%, black);
+                                        color: color-mix(in oklch, var(--base-color) 90%, black);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ℹ️ Info
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            New features are now available in your dashboard.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Code Example -->
+                            <div
+                                class="monaco-code-block"
+                                data-monaco
+                                data-snippet="/* Alternative: Using color-mix() */
+.themed-banner {
+  --base-color: var(--color-green); /* Any base color */
+  
+  /* Light background - mix 30% base color with transparent */
+  background: color-mix(in oklch, var(--base-color) 30%, transparent);
+  
+  /* Darker border - mix 80% base color with black */
+  border: 2px solid color-mix(in oklch, var(--base-color) 80%, black);
+  
+  /* Dark text - mix 90% base color with black */
+  color: color-mix(in oklch, var(--base-color) 90%, black);
+  
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+/* Usage Examples */
+.success-banner { --base-color: var(--color-green); }
+.warning-banner { --base-color: var(--color-orange); }
+.error-banner   { --base-color: var(--color-red); }
+.info-banner    { --base-color: var(--color-blue); }
+"
+                                data-language="css"
+                                data-height="480px"
+                            ></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 15: Future contrast-color() with Complex Math -->
+                <section class="slide">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Future: contrast-color() & WCAG Math</h1>
+                        <div
+                            class="content-grid"
+                            style="
+                                max-width: 1100px;
+                                margin: 0 auto;
+                                grid-template-columns: minmax(300px, 1fr) minmax(700px, 1fr);
+                            "
+                        >
+                            <!-- Banner Examples with Complex Math -->
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                                    gap: 1.5rem;
+                                    margin: 2rem 0;
+                                "
+                            >
+                                <!-- Success Banner with Current Complex Math -->
+                                <div
+                                    class="themed-banner success-banner"
+                                    style="
+                                        --base-color: var(--color-green);
+                                        --l-threshold: 0.623;
+                                        --l: clamp(
+                                            0.2,
+                                            (l / var(--l-threshold) - 1) * -infinity + 0.8,
+                                            0.8
+                                        );
+                                        --c: clamp(0.08, c * 0.6, 0.25);
+                                        background: color-mix(
+                                            in oklch,
+                                            var(--base-color) 30%,
+                                            transparent
+                                        );
+                                        border: 2px solid
+                                            color-mix(in oklch, var(--base-color) 80%, black);
+                                        color: oklch(from var(--base-color) var(--l) var(--c) h);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ✅ Success!
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            Your changes have been saved successfully.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Warning Banner with Algorithm -->
+                                <div
+                                    class="themed-banner warning-banner"
+                                    style="
+                                        --base-color: var(--color-orange);
+                                        --l-threshold: 0.623;
+                                        --l: clamp(
+                                            0.2,
+                                            (l / var(--l-threshold) - 1) * -infinity + 0.8,
+                                            0.8
+                                        );
+                                        --c: clamp(0.08, c * 0.6, 0.25);
+                                        color: oklch(from var(--base-color) var(--l) var(--c) h);
+                                        background: color-mix(
+                                            in oklch,
+                                            var(--base-color) 30%,
+                                            transparent
+                                        );
+                                        border: 2px solid
+                                            color-mix(in oklch, var(--base-color) 80%, black);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ⚠️ Warning
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            Please review your settings before continuing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Code Example showing the complexity -->
+                            <div
+                                class="monaco-code-block"
+                                data-monaco
+                                data-snippet="/* The WCAG Compliance Algorithm in Action */
+.contrast-color-current {
+  /* 62.3% threshold found through extensive research */
+  --l-threshold: 0.623;
+  
+  /* Complex math to flip between light (0.8) and dark (0.2) */
+  --l: clamp(0.2, (l / var(--l-threshold) - 1) * -infinity + 0.8, 0.8);
+  
+  /* Preserve more of the original color - 60% chroma, wider range */
+  --c: clamp(0.08, c * 0.6, 0.25);
+  
+  /* Apply the calculated lightness and chroma, keep original hue */
+  color: oklch(from var(--base-color) var(--l) var(--c) h);
+}"
+                                data-language="css"
+                                data-height="300px"
+                            ></div>
+                        </div>
+
+                        <div
+                            style="
+                                margin-top: 2rem;
+                                padding: 1rem;
+                                background: var(--pylon-gray-100);
+                                border-radius: 8px;
+                                font-size: 0.9rem;
+                            "
+                        >
+                            <p style="margin: 0; text-align: center">
+                                📚 <strong>Deep dive research:</strong>
+                                <a
+                                    href="https://lea.verou.me/blog/2024/contrast-color/"
+                                    target="_blank"
+                                    style="color: var(--pylon-primary-blue)"
+                                >
+                                    "On compliance vs readability: Generating text colors with CSS"
+                                    by Lea Verou
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 16: Dark Scheme: contrast-color() & WCAG Math -->
+                <section class="slide dark" style="color-scheme: dark">
+                    <div class="slide-content">
+                        <h1 class="slide-title">light-dark()</h1>
+                        <div
+                            class="content-grid"
+                            style="
+                                max-width: 1100px;
+                                margin: 0 auto;
+                                grid-template-columns: minmax(300px, 1fr) minmax(700px, 1fr);
+                            "
+                        >
+                            <!-- Banner Examples with light-dark tokens -->
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                                    gap: 1.5rem;
+                                    margin: 2rem 0;
+                                "
+                            >
+                                <!-- Success Banner using light-dark tokens -->
+                                <div
+                                    class="themed-banner success-banner"
+                                    style="
+                                        --base-color: var(--color-green);
+                                        --l-threshold: 0.623;
+                                        --l: clamp(
+                                            0.2,
+                                            (l / var(--l-threshold) - 1) * -infinity + 0.8,
+                                            0.8
+                                        );
+                                        --c: clamp(0.08, c * 0.6, 0.25);
+                                        color: oklch(from var(--base-color) var(--l) var(--c) h);
+
+                                        background: color-mix(
+                                            in oklch,
+                                            var(--base-color) 30%,
+                                            transparent
+                                        );
+                                        border: 2px solid
+                                            color-mix(in oklch, var(--base-color) 80%, black);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ✅ Success!
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            Token automatically adapts to dark mode!
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Warning Banner using light-dark tokens -->
+                                <div
+                                    class="themed-banner warning-banner"
+                                    style="
+                                        --base-color: var(--color-orange);
+                                        --l-threshold: 0.623;
+                                        --l: clamp(
+                                            0.2,
+                                            (l / var(--l-threshold) - 1) * -infinity + 0.8,
+                                            0.8
+                                        );
+                                        --c: clamp(0.08, c * 0.6, 0.25);
+                                        color: oklch(from var(--base-color) var(--l) var(--c) h);
+                                        background: color-mix(
+                                            in oklch,
+                                            var(--base-color) 30%,
+                                            transparent
+                                        );
+                                        border: 2px solid
+                                            color-mix(in oklch, var(--base-color) 80%, black);
+                                        padding: 1.5rem;
+                                        border-radius: 12px;
+                                        position: relative;
+                                        overflow: hidden;
+                                    "
+                                >
+                                    <div style="position: relative; z-index: 2">
+                                        <h3 style="margin: 0 0 0.5rem; font-size: 1.2rem">
+                                            ⚠️ Warning
+                                        </h3>
+                                        <p style="margin: 0; opacity: 0.9">
+                                            Smart tokens handle theming automatically!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Code Example showing light-dark approach -->
+                            <div
+                                class="monaco-code-block"
+                                data-monaco
+                                data-snippet="/* Smart Token-Level light-dark() Implementation */
+
+:root {
+  /* Strategic light-dark() on specific color tokens */
+  --color-orange: light-dark(oklch(0.7 0.2 60), oklch(0.4 0.2 60));
+  --color-green: light-dark(oklch(0.7 0.2 120), oklch(0.4 0.2 120));
+  
+
+}
+
+.banner {
+  background: var(--color-green); /* ✨ Auto light/dark */
+}"
+                                data-language="css"
+                                data-height="300px"
+                            ></div>
+                        </div>
+
+                        <div
+                            style="
+                                margin-top: 2rem;
+                                padding: 1rem;
+                                background: var(--pylon-gray-100);
+                                border-radius: 8px;
+                                font-size: 0.9rem;
+                            "
+                        >
+                            <p style="margin: 0; text-align: center">
+                                📚 <strong>Deep dive research:</strong>
+                                <a
+                                    href="https://lea.verou.me/blog/2024/contrast-color/"
+                                    target="_blank"
+                                    style="color: var(--pylon-primary-blue)"
+                                >
+                                    "On compliance vs readability: Generating text colors with CSS"
+                                    by Lea Verou
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </section>
 
                 <!-- Slide 17: Contrast-Color Problem -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Common Problem: Dynamic Contrast</h1>
                         <div class="content-grid">
@@ -727,7 +1273,7 @@ background: color-mix(in srgb,
                 </section>
 
                 <!-- Slide 18: Color Math Future -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">The Future: Color Math</h1>
                         <div class="content-grid">
@@ -768,7 +1314,7 @@ border: 1px solid contrast-color(
                 </section>
 
                 <!-- Slide 19: Light-Dark Theming -->
-                <section class="slide" data-slide="51">
+                <section class="slide dark">
                     <div class="slide-content">
                         <h1 class="slide-title">light-dark() Function</h1>
                         <div class="content-grid">
@@ -817,7 +1363,6 @@ background: light-dark(white, #1a1a1a);</code></pre>
                 <!-- Slide 20: Dark Version -->
                 <section
                     class="slide"
-                    data-slide="51"
                     style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)"
                 >
                     <div class="slide-content">
@@ -895,7 +1440,7 @@ border: 1px solid light-dark(#ccc, #444);</code></pre>
                 </section>
 
                 <!-- Slide 21: Duplicate Light-Dark for View Transition Demo -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">light-dark() Function</h1>
                         <div class="content-grid">
@@ -942,7 +1487,7 @@ background: light-dark(white, #1a1a1a);</code></pre>
                 </section>
 
                 <!-- Slide 22: View Transitions Title -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">View Transitions API</h1>
                         <h2 class="slide-subtitle">Smooth Page Transitions</h2>
@@ -966,7 +1511,7 @@ background: light-dark(white, #1a1a1a);</code></pre>
                 </section>
 
                 <!-- Slide 23: View Transitions Title (Transitioned) -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">🎬 View Transitions in Action</h1>
                         <h2 class="slide-subtitle">Seamless State Changes</h2>
@@ -978,7 +1523,7 @@ background: light-dark(white, #1a1a1a);</code></pre>
                 </section>
 
                 <!-- Slide 24: Another View Transition Title -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">✨ Magic of View Transitions</h1>
                         <h2 class="slide-subtitle">Browser-Native Animations</h2>
@@ -990,7 +1535,7 @@ background: light-dark(white, #1a1a1a);</code></pre>
                 </section>
 
                 <!-- Slide 25: View Transitions Code -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">What's Happening Behind the Scenes</h1>
                         <div class="content-grid">
@@ -1041,7 +1586,7 @@ transition.ready.then(() => {
                 </section>
 
                 <!-- Slide 26: Button Exploration -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Button Exploration</h1>
                         <h2 class="slide-subtitle">Interactive Path Animations</h2>
@@ -1053,7 +1598,7 @@ transition.ready.then(() => {
                 </section>
 
                 <!-- Slide 27: Glowing Path -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Glowing Path Using Path Functions</h1>
                         <div class="content-grid">
@@ -1099,7 +1644,7 @@ transition.ready.then(() => {
                 </section>
 
                 <!-- Slide 28: Expose Path Based on Mouse -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Expose Path Based on --x and --y</h1>
                         <div class="content-grid">
@@ -1133,7 +1678,7 @@ element.style.setProperty('--y', `${e.clientY}px`);</code></pre>
                 </section>
 
                 <!-- Slide 29: Masking Effect -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Masking Effect</h1>
                         <div class="content-grid">
@@ -1168,7 +1713,7 @@ element.style.setProperty('--y', `${e.clientY}px`);</code></pre>
                 </section>
 
                 <!-- Slide 30: Advanced Button Animation -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Advanced Button Animation</h1>
                         <div class="content-grid">
@@ -1210,7 +1755,7 @@ element.style.setProperty('--y', `${e.clientY}px`);</code></pre>
                 </section>
 
                 <!-- Slide 31: @property Exploration -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">@property Exploration</h1>
                         <h2 class="slide-subtitle">Custom CSS Properties with Superpowers</h2>
@@ -1222,7 +1767,7 @@ element.style.setProperty('--y', `${e.clientY}px`);</code></pre>
                 </section>
 
                 <!-- Slide 32: Gradient Animation -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Gradient Animation with @property</h1>
                         <div class="content-grid">
@@ -1261,7 +1806,7 @@ element.style.setProperty('--y', `${e.clientY}px`);</code></pre>
                 </section>
 
                 <!-- Slide 33: Smooth Number Counter -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Smooth Number Counter</h1>
                         <div class="content-grid">
@@ -1301,7 +1846,7 @@ element.style.setProperty('--y', `${e.clientY}px`);</code></pre>
                 </section>
 
                 <!-- Slide 34: Stopwatch with @property -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Stopwatch with @property</h1>
                         <div class="content-grid">
@@ -1342,7 +1887,7 @@ element.style.setProperty('--y', `${e.clientY}px`);</code></pre>
                 </section>
 
                 <!-- Slide 35: @starting-style -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">@starting-style</h1>
                         <h2 class="slide-subtitle">Entry Animations Made Simple</h2>
@@ -1354,7 +1899,7 @@ element.style.setProperty('--y', `${e.clientY}px`);</code></pre>
                 </section>
 
                 <!-- Slide 36: Generating DOM Elements -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Generating DOM Elements with Initial Style</h1>
                         <div class="content-grid">
@@ -1393,7 +1938,7 @@ container.appendChild(newEl);</code></pre>
                 </section>
 
                 <!-- Slide 37: Interpolate Size and Auto Sizes -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Interpolate Size & Animating to Auto Sizes</h1>
                         <div class="slide-meta" style="margin-bottom: 2rem">
@@ -1457,7 +2002,7 @@ html {
                 </section>
 
                 <!-- Slide 38: Animating Out of Display None -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Animating Out of Display None</h1>
                         <div class="content-grid">
@@ -1500,7 +2045,7 @@ html {
                 </section>
 
                 <!-- Slide 39: Dialogs & Popovers -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Dialogs & Popovers</h1>
                         <h2 class="slide-subtitle">Native HTML Layer Management</h2>
@@ -1512,7 +2057,7 @@ html {
                 </section>
 
                 <!-- Slide 40: Dialogs & Z-Index Problems -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Dialogs & the Problem with Z-Index</h1>
                         <div class="content-grid">
@@ -1568,7 +2113,7 @@ myDialog.showModal(); // Moves to top layer
                 </section>
 
                 <!-- Slide 41: Popovers -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Popovers</h1>
                         <div class="content-grid">
@@ -1607,7 +2152,7 @@ myDialog.showModal(); // Moves to top layer
                 </section>
 
                 <!-- Slide 42: Anchor Positioning -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Anchor Positioning</h1>
                         <div class="content-grid">
@@ -1645,7 +2190,7 @@ myDialog.showModal(); // Moves to top layer
                 </section>
 
                 <!-- Slide 43: Double Nested Menu Demo -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Demo: Double Nested Menu</h1>
                         <div class="content-grid">
@@ -1703,7 +2248,7 @@ myDialog.showModal(); // Moves to top layer
                 </section>
 
                 <!-- Slide 44: Typography -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Typography</h1>
                         <h2 class="slide-subtitle">Modern Web Typography</h2>
@@ -1715,7 +2260,7 @@ myDialog.showModal(); // Moves to top layer
                 </section>
 
                 <!-- Slide 45: Variable Size Typography -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Variable Size Typography</h1>
                         <div class="content-grid">
@@ -1774,7 +2319,7 @@ p {
                 </section>
 
                 <!-- Slide 46: Variable Fonts -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Variable Fonts</h1>
                         <div class="content-grid">
@@ -1825,7 +2370,7 @@ p {
                 </section>
 
                 <!-- Slide 47: Typography on an Arc -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content">
                         <h1 class="slide-title">Typography on an Arc</h1>
                         <div class="content-grid">
@@ -1889,7 +2434,7 @@ p {
                 </section>
 
                 <!-- Slide 48: Pylon Shill -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">🚀 Pylon</h1>
                         <h2 class="slide-subtitle">The Developer Platform for Discord</h2>
@@ -1924,7 +2469,7 @@ p {
                 </section>
 
                 <!-- Slide 49: Bits of Good Shill -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">💻 Bits of Good</h1>
                         <h2 class="slide-subtitle">Georgia Tech's Student-Run Nonprofit</h2>
@@ -1955,7 +2500,7 @@ p {
                 </section>
 
                 <!-- Slide 50: Thank You -->
-                <section class="slide" data-slide="51">
+                <section class="slide">
                     <div class="slide-content title-slide">
                         <h1 class="slide-title">Thank You!</h1>
                         <div class="final-content">
